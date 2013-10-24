@@ -1,5 +1,9 @@
 <template name="list">
+  <ul class="list-unstyled vectorList">
   {{#each data}}
-    <div>Titolo: {{title}}<br><a href="#">GO</a><hr></div>
+    <li>
+      <a href="/{{../collectionName}}/{{_id}}">{{title}}</a>
+    </li>
   {{/each}}
+  </ul>
 </template>
