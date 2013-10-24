@@ -5,40 +5,48 @@
 </head>
 
 <body>
-  <div class="container">
-    {{> vectorNav}}
+ </body>
+
+<template name="layout">
+ <div class="container-fluid">
     {{yield}}
   </div>
-</body>
-
+</template>
 
 <template name="vectorDashboard">
-  <h1>Dashboard</h1>
+  {{> vectorNav}}
+  <div id="contentWrap">
+    <h1>Dashboard</h1>
+  </div>
 </template>
 
 <template name="vectorCollection">
-  <h1>List collections</h1>
-  {{#each collectionFields}}
-    <div class="collectionField">{{renderField this ../collection}}</div><br>
-  {{/each}}
+  {{> vectorNav}}
+  <div id="contentWrap">
+    <h1>List collections</h1>
+    {{#each collectionFields}}
+      <div class="collectionField">{{renderField this ../collection ../collectionName}}</div><br>
+    {{/each}}
+  </div>
 </template>
 
 <template name="vectorDocument">
-  edit document: {{document.title}}
-  <hr>
-  <h2>Fields</h2>
-  {{#each documentFields}}
-    <div class="documentField">{{renderField this ../document}}</div><br>
-  {{/each}}
-  <hr>
-  <button id="save">save</button>
+  {{> vectorNav}}
+  <div id="contentWrap">
+    <h1>Fields</h1>
+    {{#each documentFields}}
+      <div class="documentField">{{renderField this ../document ../collectionName}}</div><br>
+    {{/each}}
+    <button class="btn btn-success" id="save">save</button>    
+  </div>
+
 </template>
 
 <template name="vectorNav">
-  <ul id="vectorNavMain">
+  <ul id="vectorNavMain" class="list-unstyled">
+    <li><a href="/">Dashboard</a></li>
     {{#each navMain}}
       <li><a href="{{url}}">{{label}}</a></li>
     {{/each}}
   </ul>
-  <hr>
 </template>
