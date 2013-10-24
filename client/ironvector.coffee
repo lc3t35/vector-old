@@ -1,13 +1,18 @@
 
-Handlebars.registerHelper 'renderField', (field,data) ->
+Handlebars.registerHelper 'renderField', (field,data,collectionName) ->
     context =
       data: data
       field: field
+      collectionName: collectionName
     new Handlebars.SafeString(Template[field.type](context))
 
 Handlebars.registerHelper 'plainValue', () ->
   if @field and @field.key and @data
     @data[@field.key]
+
+
+Router.configure
+  layoutTemplate: 'layout'
 
 Router.map ->
 
@@ -17,29 +22,34 @@ Router.map ->
     template: 'vectorDashboard'
 
   @route 'collection',
-    path: '/collections/:collection'
+    path: '/:collectionName'
     data: ->
-      model = Meteor.vectorResources[@params.collection]
+      model = Meteor.vectorResources[@params.collectionName]
+      collectionName = @params.collectionName
       collectionFields: if model.collectionFields then model.collectionFields else []
-      collection: Meteor.vectorCollections[@params.collection].find().fetch()
+      collection: Meteor.vectorCollections[@params.collectionName].find().fetch()
+      collectionName: collectionName
     template: 'vectorCollection'
 
   @route 'edit',
-    path: '/collections/:collection/:_id'
+    path: '/:collectionName/:_id'
     data: ->
       _id = @params._id
-      model = Meteor.vectorResources[@params.collection]
+      model = Meteor.vectorResources[@params.collectionName]
+      collectionName = @params.collectionName
       documentFields: if model.documentFields then model.documentFields else []
-      document: Meteor.vectorCollections[@params.collection].findOne({_id:_id})
+      document: Meteor.vectorCollections[@params.collectionName].findOne({_id:_id})
+      collectionName: collectionName
     template: 'vectorDocument'
 
 Template.vectorNav.helpers
   navMain: ->
+    Meteor.vectorCollections
     nav = []
     for i, resource of Meteor.vectorResources
       nav.push
         label: resource.label
-        url: "/collections/#{i}"
+        url: "/#{i}"
     nav
 
 
