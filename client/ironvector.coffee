@@ -31,6 +31,7 @@ Router.map ->
       model = Meteor.vectorResources[@params.collectionName]
       collectionName = @params.collectionName
       collectionFields: if model.collectionFields then model.collectionFields else []
+      collectionActions: if model.collectionActions then model.collectionActions else []
       collection: Meteor.vectorCollections[collectionName].find().fetch()
       collectionName: collectionName
     template: 'vectorCollection'

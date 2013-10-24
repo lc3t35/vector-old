@@ -8,10 +8,8 @@
  </body>
 
 <template name="layout">
- <div class="container-fluid">
-    {{#isolate}}  
-      {{yield}}
-    {{/isolate}}
+  <div class="container-fluid">
+    {{yield}}
   </div>
 </template>
 
@@ -24,16 +22,21 @@
 
 <template name="vectorCollection">
   {{> vectorNav}}
-  <div id="contentWrap">
+  <div id="actionsWrap">
+    {{#each collectionActions}}
+      <div class="collectionAction">{{renderField this ../collection ../collectionName}}</div><br>
+    {{/each}}
+  </div>
+  <div id="fieldsWrap">
     {{#each collectionFields}}
-      <div class="collectionField" id="collectionField_{{key}}">{{renderField this ../collection ../collectionName}}</div><br>
+      <div class="collectionField">{{renderField this ../collection ../collectionName}}</div><br>
     {{/each}}
   </div>
 </template>
 
 <template name="vectorDocument">
   {{> vectorNav}}
-  <div id="contentWrap">
+  <div id="fieldsWrap">
     <h1>Edit document</h1>
     {{#each documentFields}}
       <div class="documentField">{{renderField this ../document ../collectionName}}</div><br>

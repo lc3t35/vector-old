@@ -6,14 +6,16 @@ Meteor.vectorResources =
       type: "welcome"
       label: "Welcome to vector.<br>Select a collection to start editing"
     ]
-
   pages:
     label: "Pages"
     collectionFields: [
       label: "Manage pages"
       type: "list"
     ]
-    collectionActions: []
+    collectionActions: [
+      label: 'Create new'
+      type: 'create'
+    ]
     documentFields: [
       key: 'title'
       label: "Title"
