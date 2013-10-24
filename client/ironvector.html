@@ -1,0 +1,44 @@
+<head>
+  <title>vector</title>
+  <link rel="stylesheet" type="text/css" href="/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/bootstrap-theme.min.css">
+</head>
+
+<body>
+  <div class="container">
+    {{> vectorNav}}
+    {{yield}}
+  </div>
+</body>
+
+
+<template name="vectorDashboard">
+  <h1>Dashboard</h1>
+</template>
+
+<template name="vectorCollection">
+  <h1>List collections</h1>
+  {{#each collectionFields}}
+    <div class="collectionField">{{renderField this ../collection}}</div><br>
+  {{/each}}
+</template>
+
+<template name="vectorDocument">
+  edit document: {{document.title}}
+  <hr>
+  <h2>Fields</h2>
+  {{#each documentFields}}
+    <div class="documentField">{{renderField this ../document}}</div><br>
+  {{/each}}
+  <hr>
+  <button id="save">save</button>
+</template>
+
+<template name="vectorNav">
+  <ul id="vectorNavMain">
+    {{#each navMain}}
+      <li><a href="{{url}}">{{label}}</a></li>
+    {{/each}}
+  </ul>
+  <hr>
+</template>
