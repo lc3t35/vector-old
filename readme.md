@@ -22,6 +22,8 @@ Early alpha. Not usable
 ## Dependecies
 
 - iron router
+- preserve-inputs
+- accounts-password
 - roles
 - coffeescript
 - stylus

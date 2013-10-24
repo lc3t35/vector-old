@@ -56,5 +56,7 @@ Template.vectorNav.helpers
         url: "/#{i}"
     nav
 
-
+Template.layout.preserve ['.container-fluid']
+# Template.vectorDocument.preserve
+#   'input[id]':  (node) -> node.id
 

@@ -9,7 +9,9 @@
 
 <template name="layout">
  <div class="container-fluid">
-    {{yield}}
+    {{#isolate}}  
+      {{yield}}
+    {{/isolate}}
   </div>
 </template>
 
@@ -24,7 +26,7 @@
   {{> vectorNav}}
   <div id="contentWrap">
     {{#each collectionFields}}
-      <div class="collectionField">{{renderField this ../collection ../collectionName}}</div><br>
+      <div class="collectionField" id="collectionField_{{key}}">{{renderField this ../collection ../collectionName}}</div><br>
     {{/each}}
   </div>
 </template>

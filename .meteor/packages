@@ -6,9 +6,9 @@
 standard-app-packages
 autopublish
 insecure
-preserve-inputs
 stylus
 coffeescript
 iron-router
 accounts-password
 roles
+preserve-inputs
