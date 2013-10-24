@@ -16,10 +16,14 @@ Router.configure
 
 Router.map ->
 
-  @route 'dashboard',
+  @route 'index',
     path: '/'
-    data: Meteor.Collections
-    template: 'vectorDashboard'
+    action: ->
+      for i,m of Meteor.vectorResources
+        collectionName = i
+        break
+      @redirect "/#{collectionName}"
+
 
   @route 'collection',
     path: '/:collectionName'
@@ -27,7 +31,7 @@ Router.map ->
       model = Meteor.vectorResources[@params.collectionName]
       collectionName = @params.collectionName
       collectionFields: if model.collectionFields then model.collectionFields else []
-      collection: Meteor.vectorCollections[@params.collectionName].find().fetch()
+      collection: Meteor.vectorCollections[collectionName].find().fetch()
       collectionName: collectionName
     template: 'vectorCollection'
 
@@ -38,7 +42,7 @@ Router.map ->
       model = Meteor.vectorResources[@params.collectionName]
       collectionName = @params.collectionName
       documentFields: if model.documentFields then model.documentFields else []
-      document: Meteor.vectorCollections[@params.collectionName].findOne({_id:_id})
+      document: Meteor.vectorCollections[collectionName].findOne({_id:_id})
       collectionName: collectionName
     template: 'vectorDocument'
 

@@ -7,3 +7,7 @@ Cleaner urls
 Additional parameters
 - pagination
 - search / filter
+
+Localization
+- i18n integration for labels and other texts
+- all text should be dynamic and localizable

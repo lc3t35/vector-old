@@ -1,8 +1,16 @@
 Meteor.vectorResources =
 
+  dashboard:
+    label: "Dashboard"
+    collectionFields: [
+      type: "welcome"
+      label: "Welcome to vector.<br>Select a collection to start editing"
+    ]
+
   pages:
     label: "Pages"
     collectionFields: [
+      label: "Manage pages"
       type: "list"
     ]
     collectionActions: []
@@ -20,6 +28,7 @@ Meteor.vectorResources =
   articles:
     label: "Articles"
     collectionFields: [
+      label: "Manage articles"
       type: "list"
     ]
     collectionActions: []
