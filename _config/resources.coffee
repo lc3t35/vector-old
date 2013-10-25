@@ -25,7 +25,10 @@ Meteor.vectorResources =
       label: "Description"
       type: "textarea"
     ]
-    documentActions: []
+    documentActions: [
+      type: "delete"
+      label: "Delete document"
+    ]
     
   articles:
     label: "Articles"

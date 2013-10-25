@@ -38,11 +38,19 @@ Router.map ->
 
   @route 'edit',
     path: '/:collectionName/:_id'
+    waitOn: ->
+      Meteor.subscribe @params.collectionName
+    before: ->
+      _id = @params._id
+      collectionName = @params.collectionName
+      unless Meteor.vectorCollections[collectionName].findOne({_id:_id})
+        @redirect "/#{collectionName}"
     data: ->
       _id = @params._id
       model = Meteor.vectorResources[@params.collectionName]
       collectionName = @params.collectionName
       documentFields: if model.documentFields then model.documentFields else []
+      documentActions: if model.documentActions then model.documentActions else []
       document: Meteor.vectorCollections[collectionName].findOne({_id:_id})
       collectionName: collectionName
     template: 'vectorDocument'
