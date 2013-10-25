@@ -59,9 +59,11 @@ Template.vectorNav.helpers
   navMain: ->
     Meteor.vectorCollections
     nav = []
+    collectionName = Router.getData().collectionName
     for i, resource of Meteor.vectorResources
       nav.push
         label: resource.label
         url: "/#{i}"
+        active: i is collectionName
     nav
 
