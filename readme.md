@@ -30,6 +30,8 @@ Early alpha. Not usable
 
 ## Changelog
 
+### 10.24.2013
+
 0.01
 - Helper for rendering custom templates with context  
 - Custom templates for document fields and collection fields
@@ -37,3 +39,9 @@ Early alpha. Not usable
 0.02
 - Some style
 - Improved routes
+
+### 10.25.2013
+
+0.0.3
+- detete and create document options
+- input preservation
