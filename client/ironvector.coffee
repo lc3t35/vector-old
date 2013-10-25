@@ -68,3 +68,6 @@ Template.vectorNav.helpers
         active: i is collectionName
     nav
 
+Template.vectorNav.events
+  'click #vectorNavSide_login': ->
+    alert 'login is not yet implemented'
