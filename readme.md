@@ -16,7 +16,7 @@ Reactivity is fully suported on all components
 
 ## Status
 
-Early alpha. Not usable
+Early alpha. Just demo functionalities
 
 ## Dependecies
 
@@ -29,26 +29,22 @@ Early alpha. Not usable
 
 ## Changelog
 
-#### 10.24.2013
+0.0.4 10.26.2013
+- Duplicate action
+- 2 steps delete
+- begin of auth
 
-0.0.1
-- Helper for rendering custom templates with context  
-- Custom templates for document fields and collection fields
-
-0.0.2
-- Some style
-- Improved routes
-
-#### 10.25.2013
-
-0.0.3
+0.0.3 10.25.2013
 - Detete and create document options
 - Input preservation
 
-0.0.4
-- Duplicate action
-- 2 steps delete
+0.0.2 10.24.2013
+- Some style
+- Improved routes
 
+0.0.1 10.24.2013
+- Helper for rendering custom templates with context  
+- Custom templates for document fields and collection fields
 
 ## License
 
