@@ -14,16 +14,19 @@ Handlebars.registerHelper 'plainValue', () ->
 Router.configure
   layoutTemplate: 'layout'
 
+# VectorController = RouteController.extend
+#   before: ->
+#     unless Meteor.user()
+#       Router.go Router.path('login')
+
 Router.map ->
 
   @route 'index',
     path: '/'
-    action: ->
+    before: ->
       for i,m of Meteor.vectorResources
-        collectionName = i
+        Router.go Router.path('collection',{collectionName:i})
         break
-      @redirect "/#{collectionName}"
-
 
   @route 'collection',
     path: '/:collectionName'
@@ -38,8 +41,6 @@ Router.map ->
 
   @route 'edit',
     path: '/:collectionName/:_id'
-    waitOn: ->
-      Meteor.subscribe @params.collectionName
     before: ->
       _id = @params._id
       collectionName = @params.collectionName
