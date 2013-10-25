@@ -36,22 +36,7 @@ Meteor.vectorResources =
     documentActions: [
       type: "delete"
       label: "Delete document"
-    ]
-    
-  articles:
-    label: "Articles"
-    collectionFields: [
-      label: "Manage articles"
-      type: "list"
-    ]
-    collectionActions: []
-    documentFields: [
-      key: 'title'
-      label: "Title"
-      type: "text"
     ,
-      key: 'description'
-      label: "Description"
-      type: "textarea"
+      type: 'duplicate'
+      label: 'Create a copy'
     ]
-    documentActions: []

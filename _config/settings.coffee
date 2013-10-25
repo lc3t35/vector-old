@@ -1,3 +1,3 @@
 Meteor.vectorConfig =
-  defaultFieldType: "text"
+  defaultDocumentTitleKey: 'title'
   defaultDocumentTitle: "New document"
