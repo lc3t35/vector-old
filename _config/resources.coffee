@@ -6,6 +6,14 @@ Meteor.vectorResources =
       type: "welcome"
       label: "Welcome to vector.<br>Select a collection to start editing"
     ]
+
+  users:
+    label: "Users"
+    collectionFields: [
+      type: "listUsers"
+      label: "Manage users"
+    ]
+
   pages:
     label: "Pages"
     collectionFields: [

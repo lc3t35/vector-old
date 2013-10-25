@@ -12,3 +12,14 @@
 <template name="welcome">
   <h1>{{{field.label}}}</h1>
 </template>
+
+<template name="listUsers">
+  <h1>{{field.label}}</h1>
+  <ul class="list-unstyled vectorList">
+  {{#each data}}
+    <li>
+      <p>{{_id}}</p>
+    </li>
+  {{/each}}
+  </ul>
+</template>

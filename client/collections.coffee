@@ -1,6 +1,11 @@
 
 Meteor.vectorCollections = {}
 for i,collection of Meteor.vectorResources
-  Meteor.vectorCollections[i] = new Meteor.Collection i
+  if i isnt 'users'
+    Meteor.vectorCollections[i] = new Meteor.Collection i
+  else
+    Meteor.vectorCollections['users'] = Meteor.users
+
+
 
   # Meteor.vectorCollections.pages.insert {title:'ciao2'}
