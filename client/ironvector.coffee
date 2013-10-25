@@ -30,6 +30,8 @@ Router.map ->
 
   @route 'collection',
     path: '/:collectionName'
+    before: ->
+      Meteor.subscribe @params.collectionName
     data: ->
       model = Meteor.vectorResources[@params.collectionName]
       collectionName = @params.collectionName
@@ -44,6 +46,7 @@ Router.map ->
     before: ->
       _id = @params._id
       collectionName = @params.collectionName
+      Meteor.subscribe collectionName
       unless Meteor.vectorCollections[collectionName].findOne({_id:_id})
         @redirect "/#{collectionName}"
     data: ->

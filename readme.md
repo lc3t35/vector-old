@@ -1,10 +1,9 @@
 # Vector
 Vector allow the developer to create and extend administration panels for end users in minutes.
-Version 0.02
 
 ## Core principles
 
-### Separation beteen setup and content management
+#### Separation beteen setup and content management
 Developers maintain the full control over the administration configuration    
 End users capabilities are limited to content management only
 
@@ -12,7 +11,7 @@ End users capabilities are limited to content management only
 Listing, displaying and editing documents is fully customizable with components  
 Each component is a plain Meteor template with helpers and events
 
-### Reactivity
+#### Reactivity
 Reactivity is fully suported on all components  
 
 ## Status
@@ -30,7 +29,7 @@ Early alpha. Not usable
 
 ## Changelog
 
-### 10.24.2013
+#### 10.24.2013
 
 0.0.1
 - Helper for rendering custom templates with context  
@@ -40,7 +39,7 @@ Early alpha. Not usable
 - Some style
 - Improved routes
 
-### 10.25.2013
+#### 10.25.2013
 
 0.0.3
 - Detete and create document options

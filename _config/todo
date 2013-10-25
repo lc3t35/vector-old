@@ -13,6 +13,7 @@ Additional parameters
 Controllers
 - use extended controlled with shared login
 - shared login check
+- use multiple render for sidebard and so on
 
 Localization
 - i18n integration for labels and other texts
