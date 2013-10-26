@@ -3,7 +3,6 @@ Cleaner urls
 - router, module loop: insert collectionName as property of document (transform? orm?)
 - use iron router helpers for urls, need _id and collectionName inside context
 - use a global root setting instead of hardocoded urls
-- inside route redirect, use native helpers
 <li><a href="{{pathFor 'article' _id=this._id }}">{{title}}</a></li>
 
 Additional parameters

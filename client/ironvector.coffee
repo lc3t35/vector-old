@@ -10,7 +10,6 @@ Handlebars.registerHelper 'plainValue', () ->
   if @field and @field.key and @data
     @data[@field.key]
 
-
 Router.configure
   layoutTemplate: 'layout'
 
@@ -30,7 +29,7 @@ Router.map ->
 
   @route 'collection',
     path: '/:collectionName'
-    before: ->
+    waitOn: ->
       Meteor.subscribe @params.collectionName
     data: ->
       model = Meteor.vectorResources[@params.collectionName]
@@ -43,12 +42,13 @@ Router.map ->
 
   @route 'edit',
     path: '/:collectionName/:_id'
+    waitOn: ->
+      Meteor.subscribe @params.collectionName
     before: ->
       _id = @params._id
       collectionName = @params.collectionName
-      Meteor.subscribe collectionName
       unless Meteor.vectorCollections[collectionName].findOne({_id:_id})
-        @redirect "/#{collectionName}"
+        Router.go Router.path('collection',{collectionName:collectionName})
     data: ->
       _id = @params._id
       model = Meteor.vectorResources[@params.collectionName]
