@@ -7,48 +7,50 @@
 <body>
  </body>
 
-<template name="layout">
+<template name="vectorLayout">
   <div class="container-fluid">
     {{yield}}
   </div>
 </template>
 
-<template name="vectorDashboard">
+<template name="vectorEdit">
   {{> vectorNav}}
-  <div id="contentWrap">
-    <h1>Dashboard</h1>
+  <div class="row">
+    <div id="vectorCollection" class="col-md-6">
+      <div class="actionsWrap">
+        {{#each collectionActions}}
+          <div class="collectionAction">{{renderField this ../collection ../collectionName}}</div>
+        {{/each}}
+      </div>
+      <div class="fieldsWrap">
+        {{#each collectionFields}}
+          <div class="collectionField">{{renderField this ../collection ../collectionName}}</div>
+        {{/each}}
+      </div>
+    </div>
+    <div id="vectorDocument" class="col-md-6">
+      {{#if document}}
+        <div class="actionsWrap">
+          {{#each documentActions}}
+            <div class="collectionAction">{{renderField this ../document ../collectionName}}</div>
+          {{/each}}
+        </div>
+        <div class="fieldsWrap">
+          <h1>Edit document</h1>
+          {{#each documentFields}}
+            <div class="documentField">{{renderField this ../document ../collectionName}}</div>
+          {{/each}}
+        </div>
+      {{else}}
+        <div class="fieldsWrap">
+          <h1>No document selected</h1>
+        </div>
+      {{/if}}
+    </div>
   </div>
 </template>
 
-<template name="vectorCollection">
-  {{> vectorNav}}
-  <div id="actionsWrap">
-    {{#each collectionActions}}
-      <div class="collectionAction">{{renderField this ../collection ../collectionName}}</div>
-    {{/each}}
-  </div>
-  <div id="fieldsWrap">
-    {{#each collectionFields}}
-      <div class="collectionField">{{renderField this ../collection ../collectionName}}</div>
-    {{/each}}
-  </div>
-</template>
 
-<template name="vectorDocument">
-  {{> vectorNav}}
-  <div id="actionsWrap">
-    {{#each documentActions}}
-      <div class="collectionAction">{{renderField this ../document ../collectionName}}</div>
-    {{/each}}
-  </div>
-  <div id="fieldsWrap">
-    <h1>Edit document</h1>
-    {{#each documentFields}}
-      <div class="documentField">{{renderField this ../document ../collectionName}}</div>
-    {{/each}}
-  </div>
-
-</template>
 
 <template name="vectorNav">
   <ul id="vectorNavMain" class="list-unstyled">

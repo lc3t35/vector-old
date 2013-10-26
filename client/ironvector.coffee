@@ -11,7 +11,7 @@ Handlebars.registerHelper 'plainValue', () ->
     @data[@field.key]
 
 Router.configure
-  layoutTemplate: 'layout'
+  layoutTemplate: 'vectorLayout'
 
 # VectorController = RouteController.extend
 #   before: ->
@@ -38,7 +38,7 @@ Router.map ->
       collectionActions: if model.collectionActions then model.collectionActions else []
       collection: Meteor.vectorCollections[collectionName].find().fetch()
       collectionName: collectionName
-    template: 'vectorCollection'
+    template: 'vectorEdit'
 
   @route 'edit',
     path: '/:collectionName/:_id'
@@ -53,11 +53,14 @@ Router.map ->
       _id = @params._id
       model = Meteor.vectorResources[@params.collectionName]
       collectionName = @params.collectionName
+      collectionFields: if model.collectionFields then model.collectionFields else []
+      collectionActions: if model.collectionActions then model.collectionActions else []
+      collection: Meteor.vectorCollections[collectionName].find().fetch()
       documentFields: if model.documentFields then model.documentFields else []
       documentActions: if model.documentActions then model.documentActions else []
       document: Meteor.vectorCollections[collectionName].findOne({_id:_id})
       collectionName: collectionName
-    template: 'vectorDocument'
+    template: 'vectorEdit'
 
 Template.vectorNav.helpers
   navMain: ->
