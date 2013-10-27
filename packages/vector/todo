@@ -20,6 +20,7 @@ Localization
 
 UI
 - avoid page refresh, smooth animations instead
+- use sessions for UI settings?
 
 Docs
 - installazione
@@ -27,5 +28,7 @@ Docs
 - uso
 
 Notifications
-  - with css slide
   - with links to other pages
+
+Relations
+  - use route: :collectionName/:id/:childrenCollectionName/

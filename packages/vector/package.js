@@ -20,6 +20,7 @@ Package.on_use(function (api, where){
   api.add_files([
     'templates.html',
     'collections.coffee',
-    'helpers.coffee'], 'client');
+    'helpers.coffee',
+    'controllers.coffee'], 'client');
 
 });

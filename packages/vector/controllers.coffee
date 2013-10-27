@@ -1,6 +1,3 @@
-
-
-
 # VectorController = RouteController.extend
 #   before: ->
 #     unless Meteor.user()
