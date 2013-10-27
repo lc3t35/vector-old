@@ -7,7 +7,7 @@ Vector allow the developer to create and extend administration panels for end us
 Developers maintain the full control over the administration configuration    
 End users capabilities are limited to content management only
 
-### Full modularity
+#### Full modularity
 Listing, displaying and editing documents is fully customizable with components  
 Each component is a plain Meteor template with helpers and events
 
@@ -23,11 +23,14 @@ Early alpha. Just demo functionalities
 - iron router
 - preserve-inputs
 - accounts-password
-- roles
 - coffeescript
 - stylus
 
 ## Changelog
+
+0.0.5 10.27.2013
+- basic UI
+- the app is now inside a separate package
 
 0.0.4 10.26.2013
 - Duplicate action
