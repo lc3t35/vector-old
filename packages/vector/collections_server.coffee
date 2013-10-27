@@ -7,6 +7,7 @@ for i,collection of Vector.resources
   else
     Vector.collections['users'] = Meteor.users
     Meteor.publish 'users', ->
+      console.log Meteor.users.find().fetch()
       Meteor.users.find()
 
 Meteor.startup ->

@@ -10,8 +10,13 @@
   users:
     label: "Users"
     collectionFields: [
-      type: "listUsers"
+      type: "accountList"
       label: "Manage users"
+    ]
+    documentFields: [
+      type: 'accountEmails'
+      label: 'Email'
+      key: 'emails'
     ]
 
   pages:

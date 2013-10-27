@@ -13,12 +13,12 @@
   <h1>{{{field.label}}}</h1>
 </template>
 
-<template name="listUsers">
+<template name="accountList">
   <h1>{{field.label}}</h1>
   <ul class="list-unstyled vectorList">
   {{#each data}}
     <li>
-      <p>{{_id}}</p>
+        <a href="/{{../collectionName}}/{{_id}}">{{_id}}</a>
     </li>
   {{/each}}
   </ul>

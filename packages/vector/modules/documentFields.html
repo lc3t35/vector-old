@@ -7,3 +7,8 @@
   <label>{{field.label}}</label>
   <textarea id="collectionField_{{field.key}}">{{plainValue}}</textarea>
 </template>
+
+<template name="accountEmails">
+  <label>{{field.label}}</label>
+  {{plainValue.[0].address}}
+</template>
