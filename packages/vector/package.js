@@ -22,6 +22,16 @@ Package.on_use(function (api, where){
     'templates.html',
     'collections.coffee',
     'helpers.coffee',
-    'controllers.coffee'], 'client');
+    'controllers.coffee',
+    'themes/basic.styl'], 'client');
+
+  api.add_files([
+    'modules/collectionActions.html',
+    'modules/collectionFields.html',
+    'modules/documentActions.html',
+    'modules/documentFields.html',
+    'modules/collectionActions.coffee',
+    'modules/documentActions.coffee',
+    'modules/documentFields.coffee',], 'client');
 
 });
