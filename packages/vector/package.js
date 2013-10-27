@@ -12,6 +12,7 @@ Package.on_use(function (api, where){
   api.export('Vector');
 
   api.add_files([
+    'resources.coffee',
     'core.coffee',], ['client','server']);
 
   api.add_files([
