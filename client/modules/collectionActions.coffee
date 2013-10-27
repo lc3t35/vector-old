@@ -1,6 +1,6 @@
 Template.create.events
   'click': ->
-    Meteor.vectorCollections[@collectionName].insert {title: Meteor.vectorConfig.defaultDocumentTitle}
+    Vector.collections[@collectionName].insert {title: Meteor.vectorConfig.defaultDocumentTitle}
 
 Template.duplicate.events
   'click': ->
@@ -11,5 +11,5 @@ Template.duplicate.events
     for i,field of model
       query[field.key] = @data[field.key]
     query[titleKey] = "(copy) #{query[titleKey]}"
-    id = Meteor.vectorCollections[@collectionName].insert query
+    id = Vector.collections[@collectionName].insert query
     Router.go('edit',{collectionName:collectionName,_id:id})

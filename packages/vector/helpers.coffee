@@ -1,7 +1,4 @@
 
-
-Vector = 'ok'
-
 Handlebars.registerHelper 'renderField', (field,data,collectionName) ->
     context =
       data: data

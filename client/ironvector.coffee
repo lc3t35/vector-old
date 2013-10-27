@@ -24,7 +24,7 @@ Router.map ->
       collectionName = @params.collectionName
       collectionFields: if model.collectionFields then model.collectionFields else []
       collectionActions: if model.collectionActions then model.collectionActions else []
-      collection: Meteor.vectorCollections[collectionName].find().fetch()
+      collection: Vector.collections[collectionName].find().fetch()
       collectionName: collectionName
     template: 'vectorEdit'
 
@@ -35,7 +35,7 @@ Router.map ->
     before: ->
       _id = @params._id
       collectionName = @params.collectionName
-      unless Meteor.vectorCollections[collectionName].findOne({_id:_id})
+      unless Vector.collections[collectionName].findOne({_id:_id})
         Router.go Router.path('collection',{collectionName:collectionName})
     data: ->
       _id = @params._id
@@ -43,16 +43,15 @@ Router.map ->
       collectionName = @params.collectionName
       collectionFields: if model.collectionFields then model.collectionFields else []
       collectionActions: if model.collectionActions then model.collectionActions else []
-      collection: Meteor.vectorCollections[collectionName].find().fetch()
+      collection: Vector.collections[collectionName].find().fetch()
       documentFields: if model.documentFields then model.documentFields else []
       documentActions: if model.documentActions then model.documentActions else []
-      document: Meteor.vectorCollections[collectionName].findOne({_id:_id})
+      document: Vector.collections[collectionName].findOne({_id:_id})
       collectionName: collectionName
     template: 'vectorEdit'
 
 Template.vectorNav.helpers
   navMain: ->
-    Meteor.vectorCollections
     nav = []
     collectionName = Router.getData().collectionName
     for i, resource of Meteor.vectorResources
