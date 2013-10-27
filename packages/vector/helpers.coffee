@@ -10,6 +10,19 @@ Handlebars.registerHelper 'plainValue', () ->
   if @field and @field.key and @data
     @data[@field.key]
 
+Handlebars.registerHelper 'activeDocumentIs', (_id) ->
+  if Router.getData() and Router.getData().document
+    Router.getData().document._id is _id
+  else
+    false
+
+Handlebars.registerHelper 'activeCollectionIs', (collectionName) ->
+  if Router.getData() and Router.getData().collectionName
+    Router.getData().collectionName is collectionName
+  else
+    false
+
+
 Router.configure
   layoutTemplate: 'vectorLayout'
 
@@ -21,7 +34,7 @@ Template.vectorNav.helpers
       nav.push
         label: resource.label
         url: "/#{i}"
-        active: i is collectionName
+        name: i
     nav
 
 Template.vectorNav.events

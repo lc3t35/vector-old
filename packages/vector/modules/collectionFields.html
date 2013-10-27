@@ -2,7 +2,7 @@
   <h1>{{field.label}}</h1>
   <ul class="list-unstyled vectorList">
   {{#each data}}
-    <li>
+    <li{{#if activeDocumentIs _id}} class="active"{{/if}}>
         <a href="/{{../collectionName}}/{{_id}}">{{title}}</a>
     </li>
   {{/each}}

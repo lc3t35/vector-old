@@ -7,7 +7,7 @@
 
 <template name="vectorEdit">
   {{> vectorNav}}
-  <div class="row">
+  <div class="row" id="vectorEdit">
     <div id="vectorCollection" class="col-md-6">
       <div class="actionsWrap">
         {{#each collectionActions}}
@@ -45,7 +45,7 @@
 <template name="vectorNav">
   <ul id="vectorNavMain" class="list-unstyled">
     {{#each navMain}}
-      <li{{#if active}} class="active" {{/if}}><a href="{{url}}">{{label}}</a></li>
+      <li{{#if activeCollectionIs name}} class="active"{{/if}}><a href="{{url}}">{{label}}</a></li>
     {{/each}}
   </ul>
   <ul id="vectorNavSide" class="list-unstyled">
