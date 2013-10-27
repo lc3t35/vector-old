@@ -9,7 +9,10 @@ Package.on_use(function (api, where){
   api.use('accounts-password', 'server');
   api.use(['templating','stylus','handlebars','iron-router'], 'client');
 
-  api.export('test');
+  api.export('Vector');
 
-  api.add_files('file_name.coffee', 'client');
+  api.add_files([
+    'collections.coffee',
+    'helpers.coffee',
+    'templates.html'], 'client');
 });
