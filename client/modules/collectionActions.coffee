@@ -1,11 +1,13 @@
 Template.create.events
   'click': ->
-    Vector.collections[@collectionName].insert {title: Meteor.vectorConfig.defaultDocumentTitle}
+    query = {}
+    query[Vector.settings.defaultDocumentTitleKey] = Vector.settings.defaultDocumentTitle
+    Vector.collections[@collectionName].insert query
 
 Template.duplicate.events
   'click': ->
     model = Vector.resources[@collectionName].documentFields
-    titleKey = Meteor.vectorConfig.defaultDocumentTitleKey
+    titleKey = Vector.settings.defaultDocumentTitleKey
     collectionName = @collectionName
     query = {}
     for i,field of model

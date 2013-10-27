@@ -2,6 +2,11 @@ Vector =
 
   collections: {}
 
+  settings:
+    defaultDocumentTitleKey: 'title'
+    defaultDocumentTitle: "New document"
+    defaultCollectionRoles: ["admin"]
+
   resources:
 
     dashboard:
