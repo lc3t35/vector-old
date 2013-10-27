@@ -11,7 +11,7 @@ Router.map ->
   @route 'index',
     path: '/'
     before: ->
-      for i,m of Meteor.vectorResources
+      for i,m of Vector.resources
         Router.go Router.path('collection',{collectionName:i})
         break
 
@@ -20,7 +20,7 @@ Router.map ->
     waitOn: ->
       Meteor.subscribe @params.collectionName
     data: ->
-      model = Meteor.vectorResources[@params.collectionName]
+      model = Vector.resources[@params.collectionName]
       collectionName = @params.collectionName
       collectionFields: if model.collectionFields then model.collectionFields else []
       collectionActions: if model.collectionActions then model.collectionActions else []
@@ -39,7 +39,7 @@ Router.map ->
         Router.go Router.path('collection',{collectionName:collectionName})
     data: ->
       _id = @params._id
-      model = Meteor.vectorResources[@params.collectionName]
+      model = Vector.resources[@params.collectionName]
       collectionName = @params.collectionName
       collectionFields: if model.collectionFields then model.collectionFields else []
       collectionActions: if model.collectionActions then model.collectionActions else []
@@ -49,18 +49,3 @@ Router.map ->
       document: Vector.collections[collectionName].findOne({_id:_id})
       collectionName: collectionName
     template: 'vectorEdit'
-
-Template.vectorNav.helpers
-  navMain: ->
-    nav = []
-    collectionName = Router.getData().collectionName
-    for i, resource of Meteor.vectorResources
-      nav.push
-        label: resource.label
-        url: "/#{i}"
-        active: i is collectionName
-    nav
-
-Template.vectorNav.events
-  'click #vectorNavSide_login': ->
-    alert 'login is not yet implemented'

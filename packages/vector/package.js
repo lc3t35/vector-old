@@ -12,8 +12,14 @@ Package.on_use(function (api, where){
   api.export('Vector');
 
   api.add_files([
-    'core.coffee',
-    'helpers.coffee',
+    'core.coffee',], ['client','server']);
+
+  api.add_files([
+    'collections_server.coffee',], 'server');
+
+  api.add_files([
+    'templates.html',
     'collections.coffee',
-    'templates.html'], 'client');
+    'helpers.coffee'], 'client');
+
 });

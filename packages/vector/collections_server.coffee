@@ -1,15 +1,13 @@
-
 Meteor.vectorCollections = {}
-for i,collection of Meteor.vectorResources
+for i,collection of Vector.resources
   if i isnt 'users'
-    Meteor.vectorCollections[i] = new Meteor.Collection i
+    Vector.collections[i] = new Meteor.Collection i
     Meteor.publish i, ->
-      Meteor.vectorCollections[i].find()
+      Vector.collections[i].find()
   else
-    Meteor.vectorCollections['users'] = Meteor.users
+    Vector.collections['users'] = Meteor.users
     Meteor.publish 'users', ->
       Meteor.users.find()
-
 
 Meteor.startup ->
   users = Meteor.users.find()

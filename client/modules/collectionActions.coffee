@@ -4,7 +4,7 @@ Template.create.events
 
 Template.duplicate.events
   'click': ->
-    model = Meteor.vectorResources[@collectionName].documentFields
+    model = Vector.resources[@collectionName].documentFields
     titleKey = Meteor.vectorConfig.defaultDocumentTitleKey
     collectionName = @collectionName
     query = {}
