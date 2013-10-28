@@ -4,7 +4,10 @@ Handlebars.registerHelper 'renderField', (field,data,collectionName) ->
       data: data
       field: field
       collectionName: collectionName
-    new Handlebars.SafeString(Template[field.type](context))
+    if Template[field.type]
+      new Handlebars.SafeString(Template[field.type](context))
+    else
+      "#{Vector.settings.defaultNoTemplateWarning}: #{field.type}"
 
 Handlebars.registerHelper 'plainValue', () ->
   if @field and @field.key and @data

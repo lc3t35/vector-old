@@ -38,6 +38,10 @@
       key: 'description'
       label: "Description"
       type: "textarea"
+    , 
+      key: 'users'
+      label: 'Related users'
+      type: 'parents'
     ]
     documentActions: [
       type: "delete"

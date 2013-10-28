@@ -9,5 +9,6 @@ Vector =
     defaultDocumentTitle: "New document"
     defaultCollectionRoles: ["admin"]
     defaultDeleteWarning: 'Click again to delete forever'
+    defaultNoTemplateWarning: 'Template not found'
 
   collections: {}
