@@ -41,6 +41,10 @@ Early alpha. Just demo functionalities
 
 ## Changelog
 
+0.0.7 10.28.2013
+- basic authentication
+- basic forms API
+
 0.0.6 10.28.2013
 - notifications package
 - template logic improvements
