@@ -26,6 +26,7 @@ Package.on_use(function (api, where){
     'themes/basic.styl'], 'client');
 
   api.add_files([
+    'modules/forms.html',
     'modules/pageFields.html',
     'modules/collectionActions.html',
     'modules/collectionFields.html',

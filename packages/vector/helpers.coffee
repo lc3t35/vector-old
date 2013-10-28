@@ -34,6 +34,15 @@ Handlebars.registerHelper 'navMain', () ->
       name: i
   nav  
 
+Handlebars.registerHelper 'renderForm', (collection,doc,collectionName) ->
+  data = Router.getData()
+  if data.form 
+    if Template[data.form]
+      new Handlebars.SafeString(Template[context](context))
+    else
+      "#{Vector.settings.defaultNoTemplateWarning}: #{context}"
+
+
 Template.vectorNav.events
   'click #vectorNavSide_login': ->
     alert 'login is not yet implemented'
