@@ -7,16 +7,29 @@ Vector allow the developer to create and extend administration panels for end us
 Developers maintain the full control over the administration configuration    
 End users capabilities are limited to content management only
 
+#### Fast development
+The project goal is allowing to build a complete administration panel within 10 minutes of work
+
 #### Full modularity
 Listing, displaying and editing documents is fully customizable with components  
 Each component is a plain Meteor template with helpers and events
 
-#### Reactivity
-Reactivity is fully suported on all components  
 
 ## Status
 
 Early alpha. Just demo functionalities
+
+## Roadmap
+
+- 0.1 A basic administration some input modules
+- 0.2 Authentication and roles
+- 0.3 Gallery and dashboard modules
+- 0.4 Forms API
+- 0.5 Easy relationships between collections
+- 0.6 Collection sort and pagination options
+- 0.7 Documentation
+- 0.8 Official user interface
+- 0.9 -> 1.0 Getting ready for production
 
 ## Dependecies
 
@@ -27,6 +40,10 @@ Early alpha. Just demo functionalities
 - stylus
 
 ## Changelog
+
+0.0.6 10.28.2013
+- notifications package
+- template logic improvements
 
 0.0.5 10.27.2013
 - basic UI
