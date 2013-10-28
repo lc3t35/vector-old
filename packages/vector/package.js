@@ -16,7 +16,8 @@ Package.on_use(function (api, where){
     'core.coffee',], ['client','server']);
 
   api.add_files([
-    'collections_server.coffee',], 'server');
+    'collections_server.coffee',
+    'methods.coffee'], 'server');
 
   api.add_files([
     'templates.html',
@@ -32,6 +33,7 @@ Package.on_use(function (api, where){
     'modules/collectionFields.html',
     'modules/documentActions.html',
     'modules/documentFields.html',
+    'modules/forms.coffee',
     'modules/collectionActions.coffee',
     'modules/documentActions.coffee',
     'modules/documentFields.coffee',], 'client');

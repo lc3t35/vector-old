@@ -36,11 +36,11 @@ Handlebars.registerHelper 'navMain', () ->
 
 Handlebars.registerHelper 'renderForm', (collection,doc,collectionName) ->
   data = Router.getData()
-  if data.form 
-    if Template[data.form.type]
-      new Handlebars.SafeString(Template[context](context))
-    else
-      "#{Vector.settings.defaultNoTemplateWarning}: #{context}"
+  if data.forms
+    # if Template[data.forms.type]
+    new Handlebars.SafeString(Template[data.forms]())
+    # else
+    #   "#{Vector.settings.defaultNoTemplateWarning}: #{context}"
 
 
 Template.vectorNav.events

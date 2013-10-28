@@ -2,6 +2,7 @@
 dark = #222
 medium = #999
 light = #fafafa
+overlay = rgba(0,0,0,.8)
 
 html,body
   height 100%
@@ -22,6 +23,16 @@ ul
   margin-bottom 0!important
   padding-bottom 0
 
+label
+  font-weight 700
+  display block
+
+input[type="text"], textarea, input[type="password"]
+  width 100%
+  padding 10px 15px
+  font-size 1.5em
+  border solid 1px medium
+
 .vectorList
   li
     border-bottom solid 1px medium
@@ -39,16 +50,6 @@ ul
 
 .documentField, .collectionField
   padding-bottom 30px
-
-  label
-    font-weight 700
-    display block
-
-  input[type="text"], textarea, input[type="password"]
-    width 100%
-    padding 10px 15px
-    font-size 1.5em
-    border solid 1px medium
 
 #vectorCollection
   border-right 1px solid medium
@@ -75,8 +76,19 @@ ul
 
 
 #vectorForms
- position absolute
- z-index 19
+  position absolute
+  z-index 19
+  background overlay
+  width 100%
+  height 100%
+  top 0
+  left 0
+
+  form
+    position absolute
+    background light
+    padding 30px
+    top 10%
 
 // Main Nav
 
