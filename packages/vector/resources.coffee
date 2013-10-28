@@ -21,6 +21,7 @@
 
   pages:
     label: "Pages"
+    roles: ['administrator','editor']
     collectionFields: [
       label: "Manage pages"
       type: "list"

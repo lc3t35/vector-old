@@ -19,9 +19,11 @@ Router.map ->
     data: ->
       model = Vector.resources[@params.collectionName]
       collectionName = @params.collectionName
-      collectionFields: if model.collectionFields then model.collectionFields else []
-      collectionActions: if model.collectionActions then model.collectionActions else []
+      collectionFields: if model.collectionFields then model.collectionFields else null
+      collectionActions: if model.collectionActions then model.collectionActions else null
       collection: Vector.collections[collectionName].find().fetch()
+      documentFields: if model.documentFields then model.documentFields else null
+      documentActions: if model.documentActions then model.documentActions else null
       collectionName: collectionName
     template: 'vectorEdit'
 
@@ -38,11 +40,11 @@ Router.map ->
       _id = @params._id
       model = Vector.resources[@params.collectionName]
       collectionName = @params.collectionName
-      collectionFields: if model.collectionFields then model.collectionFields else []
-      collectionActions: if model.collectionActions then model.collectionActions else []
+      collectionFields: if model.collectionFields then model.collectionFields else null 
+      collectionActions: if model.collectionActions then model.collectionActions else null
       collection: Vector.collections[collectionName].find().fetch()
-      documentFields: if model.documentFields then model.documentFields else []
-      documentActions: if model.documentActions then model.documentActions else []
+      documentFields: if model.documentFields then model.documentFields else null
+      documentActions: if model.documentActions then model.documentActions else null
       document: Vector.collections[collectionName].findOne({_id:_id})
       collectionName: collectionName
     template: 'vectorEdit'

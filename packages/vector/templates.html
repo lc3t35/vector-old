@@ -8,37 +8,45 @@
 <template name="vectorEdit">
   {{> vectorNav}}
   <div class="row" id="vectorEdit">
-    <div id="vectorCollection" class="col-md-6">
-      <div class="actionsWrap">
-        {{#each collectionActions}}
-          <div class="collectionAction">{{renderField this ../collection ../collectionName}}</div>
-        {{/each}}
-      </div>
-      <div class="fieldsWrap">
-        {{#each collectionFields}}
-          <div class="collectionField">{{renderField this ../collection ../collectionName}}</div>
-        {{/each}}
-      </div>
-    </div>
-    <div id="vectorDocument" class="col-md-6">
-      {{#if document}}
+
+    {{#if collectionFields}}
+      <div id="vectorCollection" class="col-md-6">
         <div class="actionsWrap">
-          {{#each documentActions}}
-            <div class="collectionAction">{{renderField this ../document ../collectionName}}</div>
+          {{#each collectionActions}}
+            <div class="collectionAction">{{renderField this ../collection ../collectionName}}</div>
           {{/each}}
         </div>
         <div class="fieldsWrap">
-          <h1>Edit document</h1>
-          {{#each documentFields}}
-            <div class="documentField">{{renderField this ../document ../collectionName}}</div>
+          {{#each collectionFields}}
+            <div class="collectionField">{{renderField this ../collection ../collectionName}}</div>
           {{/each}}
         </div>
-      {{else}}
-        <div class="fieldsWrap">
-          <h1>No document selected</h1>
-        </div>
-      {{/if}}
-    </div>
+      </div>
+    {{/if}}
+
+    {{#if documentFields}}
+      <div id="vectorDocument" class="col-md-6">
+        {{#if document}}
+          <div class="actionsWrap">
+            {{#each documentActions}}
+              <div class="collectionAction">{{renderField this ../document ../collectionName}}</div>
+            {{/each}}
+          </div>
+          <div class="fieldsWrap">
+            <h1>Edit document</h1>
+            {{#each documentFields}}
+              <div class="documentField">{{renderField this ../document ../collectionName}}</div>
+            {{/each}}
+          </div>
+        {{else}}
+          <div class="fieldsWrap">
+            <h1>No document selected</h1>
+          </div>
+        {{/if}}
+      </div>
+    {{/if}}
+
+
   </div>
 </template>
 
