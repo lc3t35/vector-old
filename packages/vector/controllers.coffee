@@ -1,7 +1,6 @@
-# VectorController = RouteController.extend
-#   before: ->
-#     unless Meteor.user()
-#       Router.go Router.path('login')
+
+Router.configure
+  layoutTemplate: 'vectorLayout'
 
 Router.map ->
 

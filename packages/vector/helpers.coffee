@@ -25,20 +25,14 @@ Handlebars.registerHelper 'activeCollectionIs', (collectionName) ->
   else
     false
 
-
-Router.configure
-  layoutTemplate: 'vectorLayout'
-
-Template.vectorNav.helpers
-  navMain: ->
-    nav = []
-    collectionName = Router.getData().collectionName
-    for i, resource of Vector.resources
-      nav.push
-        label: resource.label
-        url: "/#{i}"
-        name: i
-    nav
+Handlebars.registerHelper 'navMain', () ->
+  nav = []
+  for i, resource of Vector.resources
+    nav.push
+      label: resource.label
+      url: "/#{i}"
+      name: i
+  nav  
 
 Template.vectorNav.events
   'click #vectorNavSide_login': ->
