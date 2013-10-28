@@ -10,5 +10,7 @@ Vector =
     defaultCollectionRoles: ["admin"]
     defaultDeleteWarning: 'Click again to delete forever'
     defaultNoTemplateWarning: 'Template not found'
+    defaultLoginErrorWarning: 'Login error'
+    defaultLoginSuccess: 'Welcome'
 
   collections: {}

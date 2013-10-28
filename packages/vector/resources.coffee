@@ -4,7 +4,10 @@
     label: "Dashboard"
     pageFields: [
       type: "welcome"
-      label: "Welcome to vector.<br>Select a collection to start editing"
+      label: "Welcome to Vector."
+      options: 
+        logged: 'Select a collection to start editing'
+        unlogged: 'Login to start editing'
     ]
 
   users:

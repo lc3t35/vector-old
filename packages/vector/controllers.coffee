@@ -25,7 +25,6 @@ Router.map ->
       documentFields: if model.documentFields then model.documentFields else null
       documentActions: if model.documentActions then model.documentActions else null
       collectionName: collectionName
-      forms: 'vectorLogin'
     template: 'vectorEdit'
 
   @route 'edit',

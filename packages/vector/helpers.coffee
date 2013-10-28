@@ -25,15 +25,6 @@ Handlebars.registerHelper 'activeCollectionIs', (collectionName) ->
   else
     false
 
-Handlebars.registerHelper 'navMain', () ->
-  nav = []
-  for i, resource of Vector.resources
-    nav.push
-      label: resource.label
-      url: "/#{i}"
-      name: i
-  nav  
-
 Handlebars.registerHelper 'renderForm', (collection,doc,collectionName) ->
   data = Router.getData()
   if data.forms
@@ -42,6 +33,16 @@ Handlebars.registerHelper 'renderForm', (collection,doc,collectionName) ->
     # else
     #   "#{Vector.settings.defaultNoTemplateWarning}: #{context}"
 
+
+Template.vectorNav.helpers
+  navMain: () ->
+    nav = []
+    for i, resource of Vector.resources
+      nav.push
+        label: resource.label
+        url: "/#{i}"
+        name: i
+    nav  
 
 Template.vectorNav.events
   'click #vectorNavSide_login': ->

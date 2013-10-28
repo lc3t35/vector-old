@@ -34,6 +34,7 @@ Package.on_use(function (api, where){
     'modules/documentActions.html',
     'modules/documentFields.html',
     'modules/forms.coffee',
+    'modules/pageFields.coffee',
     'modules/collectionActions.coffee',
     'modules/documentActions.coffee',
     'modules/documentFields.coffee',], 'client');
