@@ -1,8 +1,11 @@
 Template.create.events
   'click': ->
     query = {}
+    collectionName = @collectionName
     query[Vector.settings.defaultDocumentTitleKey] = Vector.settings.defaultDocumentTitle
-    Vector.collections[@collectionName].insert query
+    id = Vector.collections[collectionName].insert query
+    Router.go('edit',{collectionName:collectionName,_id:id})
+
 
 Template.duplicate.events
   'click': ->
