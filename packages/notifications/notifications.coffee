@@ -1,15 +1,21 @@
-Meteor.notifications = 
-  send: (message,type)->
+Notifications = 
+  timeout: null
+  send: (message,type) ->
     _type = type or 'alert'
+    if Notifications.timeout then Meteor.clearTimeout Notifications.timeout
     Session.set 'notifications', {type:type,message:message,status:"inactive"}
-    Meteor.setTimeout (->
+    Notifications.timeout = Meteor.setTimeout (->
       Session.set 'notifications', {type:type,message:message,status:"active"}    
     ), 1
+    Notifications.timeout = Meteor.setTimeout (->
+      Notifications.reset()   
+    ), 1300
   reset: ->
     notifications = Session.get 'notifications'
-    notifications.status = 'inactive'
+    if Notifications.timeout then Meteor.clearTimeout Notifications.timeout
+    if notifications then notifications.status = 'inactive'
     Session.set 'notifications', notifications
-    Meteor.setTimeout ( ->
+    Notifications.timeout = Meteor.setTimeout ( ->
       Session.set 'notifications',null ), 300
 
 Template.notifications.helpers
@@ -18,6 +24,6 @@ Template.notifications.helpers
 
 Template.notifications.events
   'click li': ->
-    Meteor.notifications.reset()
+    Notifications.reset()
 
 Template.notifications.preserve ["li"]

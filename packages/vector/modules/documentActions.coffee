@@ -4,3 +4,4 @@ Template.delete.events
     Vector.collections[@collectionName].remove {_id:id}
   'click': (e,t)->
     $(t.find("button")).addClass 'active'
+    Notifications.send @field.options or Vector.settings.defaultDeleteWarning
