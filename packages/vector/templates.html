@@ -67,6 +67,8 @@
     {{/each}}
   </ul>
   <ul id="vectorNavSide" class="list-unstyled">
-    <li id="vectorNavSide_login"><a href="#">Login</a></li>
+    {{#if currentUser}}
+      <li id="vectorNavSide_logout"><p>Logout</p></li>
+    {{/if}}
   </ul>
 </template>

@@ -4,6 +4,8 @@ Cleaner urls
 - use a global root setting instead of hardocoded urls
 <li><a href="{{pathFor 'article' _id=this._id }}">{{title}}</a></li>????
 
+Better login logic
+
 Namespaced stream names!
 
 Additional parameters

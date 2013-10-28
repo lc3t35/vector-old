@@ -45,5 +45,9 @@ Template.vectorNav.helpers
     nav  
 
 Template.vectorNav.events
-  'click #vectorNavSide_login': ->
-    alert 'login is not yet implemented'
+  'click #vectorNavSide_logout': ->
+    Meteor.logout()
+    Router.go '/'
+
+
+
