@@ -21,7 +21,7 @@ Early alpha. Just demo functionalities
 
 ## Roadmap
 
-- 0.1 A basic administration some input modules
+- 0.1 A basic administration with some input modules
 - 0.2 Authentication and roles
 - 0.3 Gallery and dashboard modules
 - 0.4 Forms API
