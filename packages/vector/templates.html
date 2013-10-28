@@ -8,9 +8,14 @@
 <template name="vectorEdit">
   {{> vectorNav}}
   <div class="row" id="vectorEdit">
-
     {{#if pageFields}}
-      todo: list of pages fields
+      <div id="vectorPage" class="col-md-12">
+        <div class="fieldsWrap">
+          {{#each pageFields}}
+            <div class="collectionField">{{renderField this ../collection ../collectionName}}</div>
+          {{/each}}
+        </div>
+      </div>
     {{/if}}
 
     {{#if collectionFields}}

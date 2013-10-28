@@ -2,7 +2,7 @@
 
   dashboard:
     label: "Dashboard"
-    collectionFields: [
+    pageFields: [
       type: "welcome"
       label: "Welcome to vector.<br>Select a collection to start editing"
     ]

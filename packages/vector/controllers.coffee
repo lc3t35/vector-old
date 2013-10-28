@@ -19,6 +19,7 @@ Router.map ->
     data: ->
       model = Vector.resources[@params.collectionName]
       collectionName = @params.collectionName
+      pageFields: if model.pageFields then model.pageFields else null
       collectionFields: if model.collectionFields then model.collectionFields else null
       collectionActions: if model.collectionActions then model.collectionActions else null
       collection: Vector.collections[collectionName].find().fetch()
@@ -40,6 +41,7 @@ Router.map ->
       _id = @params._id
       model = Vector.resources[@params.collectionName]
       collectionName = @params.collectionName
+      pageFields: if model.pageFields then model.pageFields else null
       collectionFields: if model.collectionFields then model.collectionFields else null 
       collectionActions: if model.collectionActions then model.collectionActions else null
       collection: Vector.collections[collectionName].find().fetch()
