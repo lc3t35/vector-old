@@ -1,21 +1,7 @@
 {
   "meteor": {},
   "dependencies": {
-    "basePackages": {
-      "iron-router": {},
-      "roles": {}
-    },
-    "packages": {
-      "iron-router": {
-        "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.6.0",
-        "commit": "c63e92d24c8210e2304ff5fed1b5c463394aeaf6"
-      },
-      "roles": {
-        "git": "https://github.com/alanning/meteor-roles.git",
-        "tag": "v1.0.6",
-        "commit": "f81cbf7c765a4ed7e16a580c288db6f10a90856b"
-      }
-    }
+    "basePackages": {},
+    "packages": {}
   }
 }
