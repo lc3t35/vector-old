@@ -14,15 +14,15 @@ Template.textarea.events
     Vector.collections[@collectionName].update {_id:id},{$set:query}
 
 Template.gallery.helpers
-  filteredContent: ->
-    c = Vector.settings.cloudinary.cloud
+  images: ->
+    cloud = Vector.settings.cloudinary.cloud
     images = []
-    for i,image of this.content
+    for i,image of @data[@field.key]
       images.push
         image: image
         label: this.label
         index: this.index
-        cloud: c
+        cloud: cloud
     images
 
 Template.gallery.events
@@ -39,21 +39,20 @@ Template.gallery.events
     key = @field.key
     max = e.srcElement.files.length
     collection = Vector.collections[@collectionName]
-    c = 0
-    console.log 'start editing'
+    count = 0
+    Notifications.hold 'Loading..'
     _.each(e.srcElement.files, (file) ->
         query = {}
         reader = new FileReader()
         reader.onload = (e) ->
-            console.log 'loaded'
             data = e.target.result
             Meteor.call "upload",data, (error,result) ->
                 query[key] = result
                 collection.update {_id:doc._id},{$push: query}
-                c = c + 1
-                if c is max then console.log 'finish'
+                count++
+                if count is max then  Notifications.send 'Finish'
         reader.onerror = (d) ->
-            c = c + 1
-            if c is max then Meteor.Message.release()
+            count++
+            if count is max then Meteor.Message.release()
         reader.readAsDataURL(file)
     )
