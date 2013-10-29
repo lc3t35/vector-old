@@ -3,17 +3,9 @@ Vector allow the developer to create and extend administration panels for end us
 
 ## Core principles
 
-#### Separation beteen setup and content management
-Developers maintain the full control over the administration configuration    
-End users capabilities are limited to content management only
-
-#### Fast development
-The project goal is allowing to build a complete administration panel within 10 minutes of work
-
-#### Full modularity
-Listing, displaying and editing documents is fully customizable with components  
-Each component is a plain Meteor template with helpers and events
-
+- Separation between setup and conten management: end users are limited to what the developer has setup
+- Super fast development
+- DRY: listing, displaying and editing documents is fully customizable with components  
 
 ## Status
 
@@ -37,14 +29,6 @@ Early alpha. Just demo functionalities
 - easy setup of resources
 - better/pluggable permission policies
 - better software architecture
-
-## Dependecies
-
-- iron router
-- preserve-inputs
-- accounts-password
-- coffeescript
-- stylus
 
 ## Changelog
 

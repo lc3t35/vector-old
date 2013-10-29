@@ -25,16 +25,18 @@ Handlebars.registerHelper 'activeCollectionIs', (collectionName) ->
   else
     false
 
-Handlebars.registerHelper 'collectionList', () ->
+Handlebars.registerHelper 'collectionList', ->
   list = []
   for i, resource of Vector.resources
     if Vector.checkPermissions(Meteor.user(),i)
       list.push
         label: resource.label
-        url: "/#{i}"
+        url: "#{Vector.settings.adminRoot}/#{i}"
         name: i
   list  
 
+Handlebars.registerHelper 'settings', ->
+  Vector.settings
 
 Handlebars.registerHelper 'renderForm', (collection,doc,collectionName) ->
   data = Router.getData()
@@ -47,7 +49,7 @@ Handlebars.registerHelper 'renderForm', (collection,doc,collectionName) ->
 Template.vectorNav.events
   'click #vectorNavSide_logout': ->
     Meteor.logout()
-    Router.go '/'
+    Router.go '#{Vector.settings.adminRoot}/'
 
 
 

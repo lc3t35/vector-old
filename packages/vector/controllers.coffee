@@ -1,18 +1,17 @@
-
-Router.configure
-  layoutTemplate: 'vectorLayout'
+adminRoot = Vector.settings.adminRoot
 
 Router.map ->
 
-  @route 'index',
-    path: '/'
+  @route 'vectorIndex',
+    path: "#{adminRoot}"
     before: ->
       for i,m of Vector.resources
-        Router.go Router.path('collection',{collectionName:i})
+        Router.go Router.path('vectorCollection',{collectionName:i})
         break
 
-  @route 'collection',
-    path: '/:collectionName'
+  @route 'vectorCollection',
+    path: "#{adminRoot}/:collectionName"
+    layoutTemplate: 'vectorLayout'
     waitOn: ->
       Meteor.subscribe "vector_" + @params.collectionName
     data: ->
@@ -27,15 +26,16 @@ Router.map ->
       collectionName: collectionName
     template: 'vectorEdit'
 
-  @route 'edit',
-    path: '/:collectionName/:_id'
+  @route 'vectorEdit',
+    path: "#{adminRoot}/:collectionName/:_id"
+    layoutTemplate: 'vectorLayout'
     waitOn: ->
       Meteor.subscribe "vector_" + @params.collectionName
     before: ->
       _id = @params._id
       collectionName = @params.collectionName
       unless Vector.collections[collectionName].findOne({_id:_id})
-        Router.go Router.path('collection',{collectionName:collectionName})
+        Router.go Router.path('vectorCollection',{collectionName:collectionName})
     data: ->
       _id = @params._id
       model = Vector.resources[@params.collectionName]

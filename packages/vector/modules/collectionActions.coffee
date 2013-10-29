@@ -4,7 +4,7 @@ Template.create.events
     collectionName = @collectionName
     query[Vector.settings.defaultDocumentTitleKey] = Vector.settings.defaultDocumentTitle
     id = Vector.collections[collectionName].insert query
-    Router.go('edit',{collectionName:collectionName,_id:id})
+    Router.go('vectorEdit',{collectionName:collectionName,_id:id})
 
 
 Template.duplicate.events
@@ -17,4 +17,4 @@ Template.duplicate.events
       query[field.key] = @data[field.key]
     query[titleKey] = "(copy) #{query[titleKey]}"
     id = Vector.collections[@collectionName].insert query
-    Router.go('edit',{collectionName:collectionName,_id:id})
+    Router.go('vectorEdit',{collectionName:collectionName,_id:id})

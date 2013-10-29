@@ -3,7 +3,7 @@
   <ul class="list-unstyled vectorList">
   {{#each data}}
     <li{{#if activeDocumentIs _id}} class="active"{{/if}}>
-        <a href="/{{../collectionName}}/{{_id}}">{{title}}</a>
+        <a href="{{settings.adminRoot}}/{{../collectionName}}/{{_id}}">{{title}}</a>
     </li>
   {{/each}}
   </ul>
@@ -14,7 +14,7 @@
   <ul class="list-unstyled vectorList">
   {{#each data}}
     <li>
-        <a href="/{{../collectionName}}/{{_id}}">{{_id}}</a>
+        <a href="{{settings.adminRoot}}/{{../collectionName}}/{{_id}}">{{_id}}</a>
     </li>
   {{/each}}
   </ul>

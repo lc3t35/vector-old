@@ -1,12 +1,11 @@
 <template name="vectorLayout">
-  <div class="container-fluid">
-    {{> notifications}}
-    {{renderForm}}
-    {{yield}}
-  </div>
+  {{yield}}
 </template>
 
 <template name="vectorEdit">
+<div class="container-fluid">
+  {{> notifications}}
+  {{renderForm}}
   {{> vectorNav}}
   <div class="row" id="vectorEdit">
 
@@ -56,8 +55,8 @@
         {{/if}}
       </div>
     {{/if}}
-
   </div>
+</div>
 </template>
 
 <template name="vectorNav">

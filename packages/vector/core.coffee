@@ -5,6 +5,7 @@ Vector =
   resources: resources
 
   settings:
+    adminRoot: '/admin'
     defaultDocumentTitleKey: 'title'
     defaultDocumentTitle: "New document"
     defaultCollectionRoles: ["administrator"]
