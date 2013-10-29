@@ -19,7 +19,7 @@ Each component is a plain Meteor template with helpers and events
 
 Early alpha. Just demo functionalities
 
-## Roadmap
+## Roadmap: preview edition
 
 - 0.1 A basic administration with some input modules
 - 0.2 Authentication and roles
@@ -29,7 +29,14 @@ Early alpha. Just demo functionalities
 - 0.6 Collection sort and pagination options
 - 0.7 Documentation
 - 0.8 Official user interface
-- 0.9 -> 1.0 Getting ready for production
+- 0.9 -> 1.0 General fixes
+
+## Roadmap: production edition
+
+- stronger decoupling between modules
+- easy setup of resources
+- better/pluggable permission policies
+- better software architecture
 
 ## Dependecies
 
@@ -40,6 +47,10 @@ Early alpha. Just demo functionalities
 - stylus
 
 ## Changelog
+
+0.1
+- authentication roles
+- main menu improved
 
 0.0.7 10.28.2013
 - basic authentication
