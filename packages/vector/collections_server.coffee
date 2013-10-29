@@ -30,9 +30,10 @@ for i,collection of Vector.resources
       remove: (userId) ->
         Meteor.users.findOne({_id:userId}).profile.level >= t.permissions.view
 
-Meteor.startup ->
-  users = Meteor.users.find()
-  if users is 0
-    Accounts.createUser
-      email: "super@user.com"
-      password: "super"
+_users = Meteor.users.find().count()
+if _users is 0
+  Accounts.createUser
+    email: "super@user.com"
+    password: "super"
+    profile:
+      role: 'administrator'
