@@ -1,3 +1,4 @@
+@test = 1
 @privateSettings =
   cloudinary:
     key: "243285154614425"

@@ -1,5 +1,5 @@
 resources = @resources
-settings: @settings
+settings = @settings
 
 Vector =
   resources: resources
@@ -16,4 +16,5 @@ Vector =
     collectionRoles.indexOf(userRole) >= 0
 
 if Meteor.isServer
-  Vector.privateSettings = @privateSettings
+  privateSettings = @privateSettings
+  Vector.privateSettings = privateSettings
