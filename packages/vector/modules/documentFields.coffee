@@ -12,4 +12,3 @@ Template.textarea.events
     query = {}
     query[@field.key] = e.target.value
     Vector.collections[@collectionName].update {_id:id},{$set:query}
-

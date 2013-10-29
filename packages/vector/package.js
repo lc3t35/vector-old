@@ -12,10 +12,12 @@ Package.on_use(function (api, where){
   api.export('Vector');
 
   api.add_files([
+    'settings.coffee',
     'resources.coffee',
     'core.coffee',], ['client','server']);
 
   api.add_files([
+    'settings_server.coffee',
     'collections_server.coffee',
     'methods.coffee'], 'server');
 

@@ -1,19 +1,9 @@
 resources = @resources
+settings: @settings
 
 Vector =
-
   resources: resources
-
-  settings:
-    adminRoot: '/admin'
-    defaultDocumentTitleKey: 'title'
-    defaultDocumentTitle: "New document"
-    defaultCollectionRoles: ["administrator"]
-    defaultDeleteWarning: 'Click again to delete forever'
-    defaultNoTemplateWarning: 'Template not found'
-    defaultLoginErrorWarning: 'Login error'
-    defaultLoginSuccess: 'Welcome'
-
+  settings: settings
   collections: {}
 
   checkPermissions: (userId,collectionName)->
@@ -24,3 +14,6 @@ Vector =
     userRole = if user and user.profile and user.profile.role then user.profile.role else 'guest'
     collectionRoles = roles = Vector.resources[collectionName].roles or Vector.settings.defaultCollectionRoles
     collectionRoles.indexOf(userRole) >= 0
+
+if Meteor.isServer
+  Vector.privateSettings = @privateSettings
