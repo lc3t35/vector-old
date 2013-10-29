@@ -14,7 +14,7 @@ Router.map ->
   @route 'collection',
     path: '/:collectionName'
     waitOn: ->
-      Meteor.subscribe @params.collectionName
+      Meteor.subscribe "vector_" + @params.collectionName
     data: ->
       model = Vector.resources[@params.collectionName]
       collectionName = @params.collectionName
@@ -30,7 +30,7 @@ Router.map ->
   @route 'edit',
     path: '/:collectionName/:_id'
     waitOn: ->
-      Meteor.subscribe @params.collectionName
+      Meteor.subscribe "vector_" + @params.collectionName
     before: ->
       _id = @params._id
       collectionName = @params.collectionName
