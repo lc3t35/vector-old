@@ -6,6 +6,7 @@ Cleaner urls
 
 
 Enable dot notation inside resource setup
+Choose between router data or collectionName inside template helpers/events for updating collections
 
 Additional parameters
 - pagination

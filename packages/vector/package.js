@@ -3,6 +3,8 @@ Package.describe({
   environments: ['client', 'server'] // optional. Supposedly specifies environments to load package, but i did not find any package that specifies this key.
 });
 
+Npm.depends({cloudinary: "1.0.5"});
+
 Package.on_use(function (api, where){
 
   api.use('coffeescript', ['client','server']);
@@ -19,7 +21,7 @@ Package.on_use(function (api, where){
   api.add_files([
     'settings_server.coffee',
     'collections_server.coffee',
-    'methods.coffee'], 'server');
+    'modules/methods.coffee'], 'server');
 
   api.add_files([
     'templates.html',

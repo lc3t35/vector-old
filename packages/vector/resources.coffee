@@ -43,9 +43,9 @@
       label: "Description"
       type: "textarea"
     , 
-      key: 'users'
-      label: 'Related users'
-      type: 'parents'
+      key: 'gallery'
+      label: 'Gallery'
+      type: 'gallery'
     ]
     documentActions: [
       type: "delete"

@@ -7,3 +7,5 @@
   defaultNoTemplateWarning: 'Template not found'
   defaultLoginErrorWarning: 'Login error'
   defaultLoginSuccess: 'Welcome'
+  cloudinary:
+    cloud: "handmade"
