@@ -49,7 +49,7 @@ Handlebars.registerHelper 'renderForm', (collection,doc,collectionName) ->
 Template.vectorNav.events
   'click #vectorNavSide_logout': ->
     Meteor.logout()
-    Router.go '#{Vector.settings.adminRoot}/'
+    Router.go "#{Vector.settings.adminRoot}/"
 
 
 
