@@ -35,13 +35,14 @@ Handlebars.registerHelper 'renderForm', (collection,doc,collectionName) ->
 
 
 Template.vectorNav.helpers
-  navMain: () ->
+  navMain: ->
     nav = []
     for i, resource of Vector.resources
-      nav.push
-        label: resource.label
-        url: "/#{i}"
-        name: i
+      if Vector.checkPermissions(Meteor.user(),i)
+        nav.push
+          label: resource.label
+          url: "/#{i}"
+          name: i
     nav  
 
 Template.vectorNav.events
