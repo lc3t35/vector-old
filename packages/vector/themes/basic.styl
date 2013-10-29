@@ -32,7 +32,7 @@ input[type="text"], textarea, input[type="password"]
   padding 10px 15px
   font-size 1.5em
   border solid 1px medium
-  margin-bottom 30px
+  margin-bottom 30px!important
   border-radius 4px
 
 .vectorList
@@ -45,12 +45,40 @@ input[type="text"], textarea, input[type="password"]
     &.active a
       color dark
 
+
+.galleryInput
+  opacity 0
+  height 100%
+  width 100%
+  cursor pointer
+  position absolute
+  width 0
+  height 0
+
 .vectorGallery
-  li a
-    display block
-    height 120px
-    background-size cover
-    background-position center
+  margin-bottom 30px
+  margin-top 5px
+
+  li
+    margin-bottom 15px
+
+    .galleryItem
+      border solid 5px white
+      box-shadow 0 0 10px rgba(0,0,0,.6)
+      height 130px
+      cursor pointer
+      position relative
+
+      button
+        position absolute
+        bottom 5px
+        left 5px
+
+      a
+        display block
+        height 120px
+        background-size cover
+        background-position center
 
 #vectorEdit
   height 100%
@@ -67,6 +95,9 @@ input[type="text"], textarea, input[type="password"]
   height 100%
   overflow-y auto
 
+.documentField
+  position relative
+
 .actionsWrap
   position absolute
   right 15px
@@ -76,6 +107,11 @@ input[type="text"], textarea, input[type="password"]
   .collectionAction
     display inline-block
     margin-left 13px
+
+.fieldActionsWrap
+  position absolute
+  right 0
+  top 0
 
 
 #vectorForms

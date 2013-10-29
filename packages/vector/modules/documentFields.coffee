@@ -20,20 +20,24 @@ Template.gallery.helpers
     for i,image of @data[@field.key]
       images.push
         image: image
-        label: this.label
-        index: this.index
+        key: @field.key
         cloud: cloud
     images
 
 Template.gallery.events
-  # 'click .galleryImage': (e,t) ->
-  #   doc = Meteor.State.get 'document'
-  #   label = this.index
-  #   name = this.image
-  #   query = {}
-  #   query[label] = name
-  #   doc.update {$pull:query}
-  #   Meteor.call 'remove', name.public_id
+  'click .galleryImage': (e,t) ->
+    collectionName = Router.getData().collectionName
+    doc = Router.getData().document
+    key = @key
+    name = this.image
+    query = {}
+    query[key] = name
+    Vector.collections[collectionName].update({_id:doc._id},{$pull:query})
+    Meteor.call 'remove', name.public_id
+  'click .galleryFakeInput': (e) ->
+    button = $(e.target)
+    input = button.siblings("input")
+    input.trigger("click")
   'change .galleryInput': (e) ->
     doc = @data
     key = @field.key
