@@ -7,14 +7,9 @@ Vector allow the developer to create and extend administration panels for end us
 - Super fast development
 - DRY: listing, displaying and editing documents is fully customizable with components  
 
-## Status
-
-Early alpha. Just demo functionalities
 
 ## Roadmap: preview edition
 
-- 0.1 A basic administration with some input modules
-- 0.2 Authentication and roles
 - 0.3 Gallery and dashboard modules
 - 0.4 Forms API
 - 0.5 Easy relationships between collections
@@ -32,9 +27,10 @@ Early alpha. Just demo functionalities
 
 ## Changelog
 
-0.1
+0.2 10.29.2013
 - authentication roles
 - main menu improved
+- route and layout namespacing
 
 0.0.7 10.28.2013
 - basic authentication
