@@ -3,18 +3,11 @@ for i,collection of Vector.resources
   if i isnt 'users'
     Vector.collections[i] = new Meteor.Collection i
     Meteor.publish ('vector_' + i), ->
-      publish = false
-      roles = Vector.resources[i].roles
-      if @userId
-        if roles    
-          user = Meteor.users.findOne({_id:this.userId})
-          role = if user.profile and user.profile.role then user.profile.role else null
-          if roles.indexOf(role) >= 0
-            publish = true
-        else
-          publish = true
-      if publish is true
-        Vector.collections[i].find()
+      user = Meteor.users.findOne({_id:this.userId})
+      userRole = if user and user.profile and user.profile.role then user.profile.role else 'guest'
+      collectionRoles = roles = Vector.resources[i].roles or Vector.settings.defaultCollectionRoles
+      if collectionRoles.indexOf(userRole) >= 0
+        Vector.collections[i].find()        
 
     Vector.collections[i].allow
       insert: (userId) ->
@@ -29,19 +22,12 @@ for i,collection of Vector.resources
     Vector.collections['users'] = Meteor.users
     Meteor.publish 'users', ->
       fields = {username:1,profile:1,emails:1}
-      publish = false
-      roles = Vector.resources['users'].roles
-      if @userId
-        if roles    
-          user = Meteor.users.findOne({_id:this.userId})
-          role = if user.profile and user.profile.role then user.profile.role else []
-          if roles.indexOf(role) >= 0
-            publish = true
-        else
-          publish = true
-      if publish is true
+      user = Meteor.users.findOne({_id:this.userId})
+      userRole = if user and user.profile and user.profile.role then user.profile.role else 'guest'
+      collectionRoles = roles = Vector.resources['users'].roles or Vector.settings.defaultCollectionRoles
+      if collectionRoles.indexOf(userRole) >= 0
         Meteor.users.find({},fields)
-      else
+      else if user
         Meteor.users.find({_id:this.userId},fields)
 
     Meteor.users.allow

@@ -2,6 +2,7 @@
 
   dashboard:
     label: "Dashboard"
+    roles: ['guest']
     pageFields: [
       type: "welcome"
       label: "Welcome to Vector."
