@@ -25,6 +25,17 @@ Handlebars.registerHelper 'activeCollectionIs', (collectionName) ->
   else
     false
 
+Handlebars.registerHelper 'collectionList', () ->
+  list = []
+  for i, resource of Vector.resources
+    if Vector.checkPermissions(Meteor.user(),i)
+      list.push
+        label: resource.label
+        url: "/#{i}"
+        name: i
+  list  
+
+
 Handlebars.registerHelper 'renderForm', (collection,doc,collectionName) ->
   data = Router.getData()
   if data.forms
@@ -32,18 +43,6 @@ Handlebars.registerHelper 'renderForm', (collection,doc,collectionName) ->
     new Handlebars.SafeString(Template[data.forms]())
     # else
     #   "#{Vector.settings.defaultNoTemplateWarning}: #{context}"
-
-
-Template.vectorNav.helpers
-  navMain: ->
-    nav = []
-    for i, resource of Vector.resources
-      if Vector.checkPermissions(Meteor.user(),i)
-        nav.push
-          label: resource.label
-          url: "/#{i}"
-          name: i
-    nav  
 
 Template.vectorNav.events
   'click #vectorNavSide_logout': ->

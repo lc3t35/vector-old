@@ -8,7 +8,6 @@ stylus
 coffeescript
 iron-router
 accounts-password
-roles
 preserve-inputs
 vector
 notifications
