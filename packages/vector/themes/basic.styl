@@ -5,159 +5,167 @@ light = #fafafa
 overlay = rgba(0,0,0,.8)
 
 html,body
+  min-height 100%
+
+#vectorBackground
+  position fixed
+  z-index 1
+  left 0
+  top 0
+  width 100%
   height 100%
+  background light
 
-body
-  background light!important
-
-.container-fluid
+#vector.container-fluid
   position relative
   height 100%
   overflow hidden
+  z-index 2
 
-h1
-  font-weight 100!important
-  padding-bottom 15px
+  h1
+    font-weight 100!important
+    padding-bottom 15px
 
-ul
-  margin-bottom 0!important
-  padding-bottom 0
+  ul
+    margin-bottom 0!important
+    padding-bottom 0
 
-label
-  font-weight 700
-  display block
+  label
+    font-weight 700
+    display block
 
-input[type="text"], textarea, input[type="password"]
-  width 100%
-  padding 10px 15px
-  font-size 1.5em
-  border solid 1px medium
-  margin-bottom 30px!important
-  border-radius 4px
+  input[type="text"], textarea, input[type="password"]
+    width 100%
+    padding 10px 15px
+    font-size 1.5em
+    border solid 1px medium
+    margin-bottom 30px!important
+    border-radius 4px
 
-.vectorList
-  li
-    border-bottom solid 1px medium
-    a,p
-      padding 15px 0
-      display block
+  .vectorList
+    li
+      border-bottom solid 1px medium
+      a,p
+        padding 15px 0
+        display block
 
-    &.active a
-      color dark
+      &.active a
+        color dark
 
 
-.galleryInput
-  opacity 0
-  height 100%
-  width 100%
-  cursor pointer
-  position absolute
-  width 0
-  height 0
+  .galleryInput
+    opacity 0
+    height 100%
+    width 100%
+    cursor pointer
+    position absolute
+    width 0
+    height 0
 
-.vectorGallery
-  margin-bottom 30px
-  margin-top 5px
+  .vectorGallery
+    margin-bottom 30px
+    margin-top 5px
 
-  li
-    margin-bottom 15px
+    li
+      margin-bottom 15px
 
-    .galleryItem
-      border solid 5px white
-      box-shadow 0 0 10px rgba(0,0,0,.6)
-      height 130px
-      cursor pointer
-      position relative
+      .galleryItem
+        border solid 5px white
+        box-shadow 0 0 10px rgba(0,0,0,.6)
+        height 130px
+        cursor pointer
+        position relative
 
-      button
-        position absolute
-        bottom 5px
-        left 5px
+        button
+          position absolute
+          bottom 5px
+          left 5px
+
+        a
+          display block
+          height 120px
+          background-size cover
+          background-position center
+
+  #vectorEdit
+    height 100%
+    overflow hidden
+    padding 0 30px
+
+  #vectorCollection
+    border-right 1px solid medium
+    height 100%
+    overflow-y auto
+
+  #vectorDocument
+    border-right 1px solid white
+    height 100%
+    overflow-y auto
+
+  .documentField
+    position relative
+
+  .actionsWrap
+    position absolute
+    right 15px
+    top 20px
+    text-align right
+
+    .collectionAction
+      display inline-block
+      margin-left 13px
+
+  .fieldActionsWrap
+    position absolute
+    right 0
+    top 0
+    overflow hidden
+
+
+  #vectorForms
+    position absolute
+    z-index 19
+    background overlay
+    width 100%
+    height 100%
+    top 0
+    left 0
+
+    form
+      position absolute
+      background light
+      padding 30px
+      top 10%
+
+  // Main Nav
+
+  #vectorNavMain
+    background dark
+    padding 0 30px
+    font-size 1.5em
+    font-weight 100
+
+    li
+      display inline
 
       a
-        display block
-        height 120px
-        background-size cover
-        background-position center
+        color white
+        display inline-block
+        padding 10px 30px 10px 0
 
-#vectorEdit
-  height 100%
-  overflow hidden
-  padding 0 30px
+      &.active a
+        color medium
 
-#vectorCollection
-  border-right 1px solid medium
-  height 100%
-  overflow-y auto
-
-#vectorDocument
-  border-right 1px solid white
-  height 100%
-  overflow-y auto
-
-.documentField
-  position relative
-
-.actionsWrap
-  position absolute
-  right 15px
-  top 20px
-  text-align right
-
-  .collectionAction
-    display inline-block
-    margin-left 13px
-
-.fieldActionsWrap
-  position absolute
-  right 0
-  top 0
-
-
-#vectorForms
-  position absolute
-  z-index 19
-  background overlay
-  width 100%
-  height 100%
-  top 0
-  left 0
-
-  form
+  #vectorNavSide
     position absolute
-    background light
-    padding 30px
-    top 10%
+    right 30px
+    top 0
 
-// Main Nav
+    li
+      display inline
 
-#vectorNavMain
-  background dark
-  padding 0 30px
-  font-size 1.5em
-  font-weight 100
-
-  li
-    display inline
-
-    a
-      color white
-      display inline-block
-      padding 10px 30px 10px 0
-
-    &.active a
-      color medium
-
-#vectorNavSide
-  position absolute
-  right 30px
-  top 0
-
-  li
-    display inline
-
-    a,p
-      color medium
-      padding 15px 0 10px 30px
-      display inline-block
-      cursor pointer
+      a,p
+        color medium
+        padding 15px 0 10px 30px
+        display inline-block
+        cursor pointer
