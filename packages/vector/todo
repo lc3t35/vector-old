@@ -4,7 +4,7 @@ Cleaner urls
 - use a global root setting instead of hardocoded urls
 <li><a href="{{pathFor 'article' _id=this._id }}">{{title}}</a></li>????
 
-
+Images with their own collection
 Enable dot notation inside resource setup
 Choose between router data or collectionName inside template helpers/events for updating collections
 

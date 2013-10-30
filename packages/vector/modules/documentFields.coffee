@@ -25,7 +25,7 @@ Template.gallery.helpers
     images
 
 Template.gallery.events
-  'click .galleryImage': (e,t) ->
+  'click .galleryDelete': (e,t) ->
     collectionName = Router.getData().collectionName
     doc = Router.getData().document
     key = @key
@@ -44,7 +44,7 @@ Template.gallery.events
     max = e.srcElement.files.length
     collection = Vector.collections[@collectionName]
     count = 0
-    Notifications.hold 'Loading..'
+    Meteor.setTimeout (-> Notifications.hold 'Loading..'), 300
     _.each(e.srcElement.files, (file) ->
         query = {}
         reader = new FileReader()

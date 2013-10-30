@@ -10,13 +10,11 @@ Vector allow the developer to create and extend administration panels for end us
 
 ## Roadmap: preview edition
 
-- 0.3 Gallery management
-- 0.4 Forms API
-- 0.5 Easy relationships between collections
-- 0.6 Collection sort and pagination options
-- 0.7 Documentation
-- 0.8 Official user interface
-- 0.9 -> 1.0 General fixes
+- 0.3 Gallery and forms
+- 0.4 Easy relationships between collections
+- 0.5 Collection sort and pagination options
+- 0.6 Official user interface
+- 0.7 Media management
 
 ## Roadmap: production edition
 
@@ -24,6 +22,7 @@ Vector allow the developer to create and extend administration panels for end us
 - easy setup of resources
 - better/pluggable permission policies
 - better software architecture
+- tests
 
 ## License
 
