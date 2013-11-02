@@ -32,16 +32,6 @@
         <p>Vector promotes the <strong>separation between content management and setup</strong>. End users should only be able to edit the content, while the developer should be the only one capable of 'messing up' with the application settings.</p>
         <p>The system is modular: additional fields can be developed. Since <strong>a module is a plain Meteor template</strong>, just basic Meteor skills are required.</p>
         <h2 name="introduction">Documentation</h2>
-        <h3>Summary</h3>
-        <ul>
-          <li>Dependecies</li>
-          <li>Installation</li>
-          <li>Basic configuration</li>
-          <li>Using the admin panel</li>
-          <li>Integrating with your website</li> <!-- hooks -->
-          <li>Building custom modules</li> <!-- hooks -->
-          <li>Helpers and hooks cheatsheet</li>
-        </ul>
         <h3>Dependencies</h3>
         <ul>
           <li>Iron router, coffeescript and stylys packages are required by the package itself</li>
@@ -184,6 +174,7 @@
     ]
         </pre>
         <h3>Using the admin panel</h3>
+        <p>The panel is available at <code>/admin</code></p>
         <p>The admin panel will display only the fields specificed within the configuration; furthermore, a collection will be available to the user only if there is a matching role. Collections marked with <code>guest</code> will be readable to non logged users.</p>
         <h3>Integrating with your website</h3>
         <p>Vector is designed to minimize the impact on exshisting websites. Currently, the only visible contraint is the automatic inclusion of the Bootstrap 3 css and the use of iron routes.<br>
