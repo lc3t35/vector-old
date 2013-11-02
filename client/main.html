@@ -27,11 +27,13 @@
     </div>
     <div class="row">
       <div class="col-md-8">
-        <h2 name="introduction">Introduction</h2>
-        <p>Vector is an administration panel package for <a href="www.meteor.com">Meteor</a>. Vector allow to build (and expand) usable administration panels for end users in minutes.</p>
-        <p>Vector promotes the <strong>separation between content management and setup</strong>. End users should only be able to edit the content, while the developer should be the only one capable of 'messing up' with the application settings.</p>
-        <p>The system is modular: additional fields can be developed. Since <strong>a module is a plain Meteor template</strong>, just basic Meteor skills are required.</p>
-        <h2 name="introduction">Documentation</h2>
+        <!-- example of dynamic content with route data -->
+        {{#each pages}}
+          <h2>{{title}}</h2>
+          {{{description}}}
+        {{/each}}
+        <!-- end example -->
+        <h2 id="docs">Documentation</h2>
         <h3>Dependencies</h3>
         <ul>
           <li>Iron router, coffeescript and stylys packages are required by the package itself</li>
@@ -177,7 +179,12 @@
         <p>The panel is available at <code>/admin</code></p>
         <p>The admin panel will display only the fields specificed within the configuration; furthermore, a collection will be available to the user only if there is a matching role. Collections marked with <code>guest</code> will be readable to non logged users.</p>
         <h3>Integrating with your website</h3>
-        <p>Vector is designed to minimize the impact on exshisting websites. Currently, the only visible contraint is the automatic inclusion of the Bootstrap 3 css and the use of iron routes.<br>
+        <p>Vector is designed to minimize the impact on exshisting websites. Currently, the only effective contraints are 
+        <ul>
+          <li>The automatic inclusion of the Bootstrap 3</li>
+          <li>The use of ironrouter</li>
+          <li>Collection objects are already created and accessibile with the <code>Vector.collections</code> array</li>
+        </ul>
         You can use this website, included whithin the repository, as a starting point to integate a website with vector. </p>
         <h3>Building custom modules</h3>
         <p>A module is a plain Meteor template. Each time a collection or a document is displayed, the system call the corresponding templates and assign them a data context.<br>
@@ -245,7 +252,7 @@
           </tbody>
         </table>
 
-        <h2>Modules documentation</h2>
+        <h2 id="modules">Modules documentation</h2>
         <h3>Document level</h3>
         <table class="table table-striped">
           <thead>
