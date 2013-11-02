@@ -1,7 +1,6 @@
 @resources =
 
   dashboard:
-    label: "Dashboard"
     roles: ['guest',"administrator"]
     pageFields: [
       type: "welcome"
@@ -12,7 +11,6 @@
     ]
 
   users:
-    label: "Users"
     collectionFields: [
       type: "accountList"
       label: "Manage users"
@@ -24,7 +22,6 @@
     ]
 
   pages:
-    label: "Pages"
     roles: ['administrator','editor']
     collectionFields: [
       label: "Manage pages"
