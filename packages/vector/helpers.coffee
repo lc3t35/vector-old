@@ -30,7 +30,7 @@ Handlebars.registerHelper 'collectionList', ->
   for i, resource of Vector.resources
     if Vector.checkPermissions(Meteor.user(),i)
       list.push
-        label: resource.label
+        label: resource.label or i
         url: "#{Vector.settings.adminRoot}/#{i}"
         name: i
   list  
