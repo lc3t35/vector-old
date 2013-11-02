@@ -34,15 +34,25 @@
         {{/each}}
         <!-- end example -->
         <h2 id="docs">Documentation</h2>
-        <h3>Dependencies</h3>
+        <h3>Summary</h3>
+        <ul>
+          <li><a href="#docDeps">Dependencies</a></li>
+          <li><a href="#docInstallation">Installation</a></li>
+          <li><a href="#docConfig">Basic configuration</a></li>
+          <li><a href="#docUse">Using the admin panel</a></li>
+          <li><a href="#docSite">Integrating with your website</a></li>
+          <li><a href="#docCustom">Building custom modules</a></li>
+          <li><a href="#docHooks">Helpers and hooks cheatsheet</a></li>
+        </ul>
+        <h3 id="docDeps">Dependencies</h3>
         <ul>
           <li>Iron router, coffeescript and stylys packages are required by the package itself</li>
           <li>The Notifications package included into the repo</li>
           <li>The package includes Bootstrap 3 into your html</li>
         </ul>
-        <h3>Installation</h3>
+        <h3 id="docInstallation">Installation</h3>
         <p>This package is not currently avaible throug Meteorite. To use it, download the repository and copy Vector and Notifications inside your project. <strong><br>Since this entire website is included into the repository, you can use the repo as a living example of integration within a project.</strong></p>
-        <h3>Basic configuration</h3>
+        <h3 id="docConfig">Basic configuration</h3>
         <p>Your main configuration file will be vector/resources.coffee.<br>Here you will setup which collections and which fields will be available to the end user.</p>
         <p>This is an examle of an empty resource definition:</p>
         <pre>
@@ -175,7 +185,7 @@
         unlogged: 'Login to start editing'
     ]
         </pre>
-        <h3>Using the admin panel</h3>
+        <h3 id="docUse">Using the admin panel</h3>
         <p>The panel is available at <code>/admin</code></p>
         <p>The admin panel will display only the fields specificed within the configuration; furthermore, a collection will be available to the user only if there is a matching role. Collections marked with <code>guest</code> will be readable to non logged users.</p>
         <h3>Integrating with your website</h3>
@@ -186,7 +196,7 @@
           <li>Collection objects are already created and accessibile with the <code>Vector.collections</code> array</li>
         </ul>
         You can use this website, included whithin the repository, as a starting point to integate a website with vector. </p>
-        <h3>Building custom modules</h3>
+        <h3 id="docCustom">Building custom modules</h3>
         <p>A module is a plain Meteor template. Each time a collection or a document is displayed, the system call the corresponding templates and assign them a data context.<br>
         The context is available on both helpers and events methods and includes:</p>
         <ul>
@@ -194,7 +204,7 @@
           <li><code>field</code>: contains the label, the field type and the key (if present)</li>
           <li><code>collectionName</code>: to be used with <code>Vector.collections[collectionName]</code> to retrieve the current collection</li>
         </ul>
-        <h3>Helpers and hooks cheatsheet</h3>
+        <h3 id="docHooks">Helpers and hooks cheatsheet</h3>
         <table class="table table-striped">
           <thead>
             <tr>
