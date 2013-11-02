@@ -9,11 +9,11 @@ for i,collection of Vector.resources
 
     Vector.collections[i].allow
       insert: (userId) ->
-        Vector.checkPermissions(userId,i)
+        Vector.checkPermissions(userId,i,true)
       update:(userId) ->
-        Vector.checkPermissions(userId,i)
+        Vector.checkPermissions(userId,i,true)
       remove:(userId) ->
-        Vector.checkPermissions(userId,i)
+        Vector.checkPermissions(userId,i,true)
 
   else
     Vector.collections['users'] = Meteor.users
