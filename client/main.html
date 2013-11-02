@@ -14,11 +14,11 @@
 <template name="index">
   <div class="container" id="site">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12" id="header">
         <h1>This is Vector<br>An administration tool for Meteor</h1>
         <ul id="siteNavMain" class="list-unstyled text-right">
-          <li><a href="#introduction">Introduction</a></li>
           <li><a href="#docs">Docs</a></li>
+          <li><a href="#modules">Modules</a></li>
           <li><a href="#demo">Demo</a></li>
           <li><a href="https://github.com/handmadeadv/vector">Github</a></li>
         </ul>
@@ -27,10 +27,10 @@
     </div>
     <div class="row">
       <div class="col-md-8">
-        <h2 name="introduction">What is this</h2>
-        <p>Vector is an administration panel package for Meteorjs. Vector allow to build (and expand) usable administration panels for and users in minutes.</p>
-        <p>Vector promotes the separation between content management and setup. End users should only be able to edit the content, while the developer should be the only one capable of 'messing up' with the application settings.</p>
-        <p>The system is modular: additional fields can be developed. Since a module is a plain Meteor template, just basic Meteor skills are required.</p>
+        <h2 name="introduction">Introduction</h2>
+        <p>Vector is an administration panel package for <a href="www.meteor.com">Meteor</a>. Vector allow to build (and expand) usable administration panels for end users in minutes.</p>
+        <p>Vector promotes the <strong>separation between content management and setup</strong>. End users should only be able to edit the content, while the developer should be the only one capable of 'messing up' with the application settings.</p>
+        <p>The system is modular: additional fields can be developed. Since <strong>a module is a plain Meteor template</strong>, just basic Meteor skills are required.</p>
         <h2 name="introduction">Documentation</h2>
         <h3>Summary</h3>
         <ul>
@@ -42,8 +42,288 @@
           <li>Building custom modules</li> <!-- hooks -->
           <li>Helpers and hooks cheatsheet</li>
         </ul>
-        <h2 name="introduction">Demo</h2>
-        <iframe src="/admin" style="width:100%;height:500px;"></iframe>
+        <h3>Dependencies</h3>
+        <ul>
+          <li>Iron router, coffeescript and stylys packages are required by the package itself</li>
+          <li>The Notifications package included into the repo</li>
+          <li>The package includes Bootstrap 3 into your html</li>
+        </ul>
+        <h3>Installation</h3>
+        <p>This package is not currently avaible throug Meteorite. To use it, download the repository and copy Vector and Notifications inside your project. <strong><br>Since this entire website is included into the repository, you can use the repo as a living example of integration within a project.</strong></p>
+        <h3>Basic configuration</h3>
+        <p>Your main configuration file will be vector/resources.coffee.<br>Here you will setup which collections and which fields will be available to the end user.</p>
+        <p>This is an examle of an empty resource definition:</p>
+        <pre>
+@resources =
+  pages:
+    label: "Pages"
+    roles: []
+    collectionFields: []
+    collectionActions: []
+    documentFields: []
+    documentActions: []
+  articles:
+    ...
+        </pre>
+        <p>Every property is optional. This would be a legal declaration, although the result would be an empty page:</p>
+        <pre>
+@resources =
+  pages: {}
+        </pre>
+        <p>The label will be displayed withn the main menu:</p>
+        <pre>
+@resources =
+  pages:
+    label: "Pages"
+        </pre>
+        <p>The role property is an array of strings.
+        <br><code>guest</code> will make the collection available (read only) to anyone
+        <br><code>administrator</code> is the default role.</p>
+        <pre>
+@resources =
+  pages:
+    label: "Pages"
+    roles: ['guest','administrator']
+        </pre>
+        <p><code>collectionFields</code> registers what has to be displayed on the collection area of the page. Usually, a list of documents.<br>
+        <code>type</code> refers to the module exact name.
+        </p>
+        <pre>
+@resources =
+  pages:
+    label: "Pages"
+    roles: ['guest','administrator']
+    collectionFields: [
+      type: "accountList"
+      label: "Manage users"
+    ]
+        </pre>
+        <p><code>collectionActions</code> adds element to the actions list. Usually, collection level operations such create new documents.</p>
+        <pre>
+@resources =
+  pages:
+    label: "Pages"
+    roles: ['guest','administrator']
+    collectionFields: [
+      type: "accountList"
+      label: "Manage users"
+    ]
+    collectionActions: [
+      label: 'Create new'
+      type: 'create'
+    ]
+        </pre>
+        <p><code>documentFields</code> regsters the editable fields on the document area. An additional <code>key</code> property is required and refers to the mongo document key.<br>
+        <strong>Look carefully at the position of the comma inside the <code>documentFields</code> array; this is the way coffeescript deals with arrays of object. You can also use the standard javascript syntax.</strong></p>
+        <pre>
+@resources =
+  pages:
+    label: "Pages"
+    roles: ['guest','administrator']
+    collectionFields: [
+      type: "accountList"
+      label: "Manage users"
+    ]
+    collectionActions: [
+      label: 'Create new'
+      type: 'create'
+    ]
+    documentFields: [
+      key: 'title'
+      label: "Title"
+      type: "text"
+    ,
+      key: 'description'
+      label: "Description"
+      type: "textarea"
+    ] 
+        </pre>
+        <p><code>documentActions</code> registers document level actions. Usually duplicate or delete.</p>
+        <pre>
+@resources =
+  pages:
+    label: "Pages"
+    roles: ['guest','administrator']
+    collectionFields: [
+      type: "accountList"
+      label: "Manage users"
+    ]
+    collectionActions: [
+      label: 'Create new'
+      type: 'create'
+    ]
+    documentFields: [
+      key: 'title'
+      label: "Title"
+      type: "text"
+    ,
+      key: 'description'
+      label: "Description"
+      type: "textarea"
+    ] 
+    documentActions: [
+      type: "delete"
+      label: "Delete document"
+    ,
+      type: 'duplicate'
+      label: 'Create a copy'
+    ]
+        </pre>
+        <p>The <code>pageFields</code> property is suitable for page level modules, such dashboards.<br>
+        The <code>options</code> property is managed by the module itself and can be assigned to any value a module could need.</p>
+        <pre>
+  dashboard:
+    label: "Dashboard"
+    roles: ['guest',"administrator"]
+    pageFields: [
+      type: "welcome"
+      label: "Welcome to Vector."
+      options: 
+        logged: 'Select a collection to start editing'
+        unlogged: 'Login to start editing'
+    ]
+        </pre>
+        <h3>Using the admin panel</h3>
+        <p>The admin panel will display only the fields specificed within the configuration; furthermore, a collection will be available to the user only if there is a matching role. Collections marked with <code>guest</code> will be readable to non logged users.</p>
+        <h3>Integrating with your website</h3>
+        <p>Vector is designed to minimize the impact on exshisting websites. Currently, the only visible contraint is the automatic inclusion of the Bootstrap 3 css and the use of iron routes.<br>
+        You can use this website, included whithin the repository, as a starting point to integate a website with vector. </p>
+        <h3>Building custom modules</h3>
+        <p>A module is a plain Meteor template. Each time a collection or a document is displayed, the system call the corresponding templates and assign them a data context.<br>
+        The context is available on both helpers and events methods and includes:</p>
+        <ul>
+          <li><code>data</code>: the document data or the collection cursor, depending on where the module is called</li>
+          <li><code>field</code>: contains the label, the field type and the key (if present)</li>
+          <li><code>collectionName</code>: to be used with <code>Vector.collections[collectionName]</code> to retrieve the current collection</li>
+        </ul>
+        <h3>Helpers and hooks cheatsheet</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Hook</th>
+              <th>Where</th>
+              <th>Notes</th>
+            </tr>            
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>this</code></td>
+              <td>Javascript templates</td>
+              <td>Contains the context of the template</td>
+            </tr>
+            <tr>
+              <td><code>Vector.collections</code></td>
+              <td>Javascript</td>
+              <td>Array of declared collections</td>
+            </tr>            
+            <tr>
+              <td><code>Vector.settings</code></td>
+              <td>Javascript(client)</td>
+              <td>Usable inside templates.<br>General settings on vector/settings.coffee</td>
+            </tr>         
+            <tr>
+              <td><code>Vector.privateSettings</code></td>
+              <td>Javascript(server)</td>
+              <td>Usable inside templates.<br>Server only settings on vector/settings_server.coffee</td>
+            </tr>         
+            <tr>
+              <td><code>Router.getData</code></td>
+              <td>Javascript</td>
+              <td>Usable inside templates.<br>Contains useful data expressed within ironrouter controllers</td>
+            </tr>         
+            <tr>
+              <td><code>plainValue</code></td>
+              <td>HTML</td>
+              <td>Handlebars helper.<br>Renders the plain value of a property; useful inside document fields</td>
+            </tr>         
+            <tr>
+              <td><code>activeDocumentIs</code></td>
+              <td>HTML</td>
+              <td>Handlebars helper.<br>Requires an _id parameter; return true or false</td>
+            </tr>         
+            <tr>
+              <td><code>activeCollectionIs</code></td>
+              <td>HTML</td>
+              <td>Handlebars helper.<br>Requires an _id parameter; return true or false</td>
+            </tr>         
+            <tr>
+              <td><code>settings</code></td>
+              <td>HTML</td>
+              <td>Handlebars helper.<br>General settings on vector/settings.coffee</td>
+            </tr>         
+          </tbody>
+        </table>
+
+        <h2>Modules documentation</h2>
+        <h3>Document level</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Module</th>
+              <th>Type</th>
+              <th>Notes</th>
+            </tr>            
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>text</code></td>
+              <td>Document field</td>
+              <td>Input; text type</td>
+            </tr>            
+            <tr>
+              <td><code>textarea</code></td>
+              <td>Document field</td>
+              <td>Textarea</td>
+            </tr>         
+            <tr>
+              <td><code>gallery</code></td>
+              <td>Document field</td>
+              <td>Displays a simple image list and an upload input; <br><strong>this module is integrated with Cloudinary; the files settings.coffee and settings_server.coffee must contain your Cloudinary API credentials</strong></td>
+            </tr>
+            <tr>
+              <td><code>accountEmails</code></td>
+              <td>Document field</td>
+              <td>Displays the first email of a Meteor account</strong></td>
+            </tr>
+            <tr>
+              <td><code>duplicate</code></td>
+              <td>Document action</td>
+              <td>Duplicates the current document according to the resource definition</strong></td>
+            </tr>   
+            <tr>
+              <td><code>delete</code></td>
+              <td>Document action</td>
+              <td>Removes the document from the database</strong></td>
+            </tr>               
+          </tbody>
+        </table>
+        <h3>Collection level</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Module</th>
+              <th>Type</th>
+              <th>Notes</th>
+            </tr>            
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>list</code></td>
+              <td>Collection body</td>
+              <td>List the collection documents</td>
+            </tr>            
+            <tr>
+              <td><code>accountList</code></td>
+              <td>Collection body</td>
+              <td>List the collection documents; to use with the Meteor.users collection</td>
+            </tr>         
+            <tr>
+              <td><code>create</code></td>
+              <td>Collection action</td>
+              <td>Creates a new document</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

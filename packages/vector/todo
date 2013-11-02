@@ -1,4 +1,8 @@
 
+Important
+- label property optional
+- guest role doesn't create/delete/update anyway
+
 Cleaner urls
 - router, module loop: insert collectionName as property of document (transform? orm?)
 - use a global root setting instead of hardocoded urls
