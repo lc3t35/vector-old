@@ -11,3 +11,4 @@ accounts-password
 preserve-inputs
 vector
 notifications
+mocha-web

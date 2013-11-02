@@ -1,8 +1,4 @@
 
-Important
-- label property optional
-- guest role doesn't create/delete/update anyway
-
 Cleaner urls
 - router, module loop: insert collectionName as property of document (transform? orm?)
 - use a global root setting instead of hardocoded urls
@@ -29,13 +25,5 @@ UI
 - avoid page refresh, smooth animations instead
 - use sessions for UI settings?
 
-Docs
-- installazione
-- setup
-- uso
-
-Notifications
-  - with links to other pages
-
-Relations
+Relationships
   - use route: :collectionName/:id/:childrenCollectionName/
