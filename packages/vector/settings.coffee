@@ -7,5 +7,7 @@
   defaultNoTemplateWarning: 'Template not found'
   defaultLoginErrorWarning: 'Login error'
   defaultLoginSuccess: 'Welcome'
+  sendVerificationEmail: false
+  forbidClientAccountCreation: true
   cloudinary:
     cloud: "handmade"

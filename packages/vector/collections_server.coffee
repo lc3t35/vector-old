@@ -39,6 +39,11 @@ for i,collection of Vector.resources
         if Vector.checkPermissions(userId,'user') then true
         else if userId then doc._id is userId
 
+
+Accounts.config
+  sendVerificationEmail: Vector.settings.sendVerificationEmail
+  forbidClientAccountCreation: Vector.settings.forbidClientAccountCreation
+
 _users = Meteor.users.find().count()
 if _users is 0
   Accounts.createUser
