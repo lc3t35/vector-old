@@ -6,7 +6,7 @@ Router.map ->
     path: "/"
     layout: "layout"
     waitOn: ->
-      Meteor.subscribe 'vector_pages'
+      Meteor.subscribe 'pages'
     data: ->
       console.log Vector.collections['pages'].find().count()
       pages: Vector.collections['pages'].find().fetch()
@@ -21,4 +21,4 @@ Router.map ->
           scrollTop: position
         },500);
 
-          
+        
