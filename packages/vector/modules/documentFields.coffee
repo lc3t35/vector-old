@@ -26,8 +26,7 @@ Template.gallery.helpers
 
 Template.accountPassword.events
     'click .accountPassword_change': ->
-        Session.set 'forms', 'testform'
-        # Accounts.changePassword(oldPassword, newPassword, [callback])
+        Session.set 'forms', 'vectorFormPasswordChange'
 
 Template.gallery.events
   'click .galleryDelete': (e,t) ->
