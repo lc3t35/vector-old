@@ -1,13 +1,13 @@
 @resources =
 
   dashboard:
-    roles: ['guest',"administrator"]
+    roles: ['guest',"administrator",'editor']
     pageFields: [
       type: "welcome"
       label: "Welcome to Vector."
       options: 
         logged: 'Select a collection to start editing'
-        unlogged: 'Login to start editing'
+        unlogged: "User: editor@editor.com, pass: editor"
     ]
 
   users:
@@ -22,7 +22,7 @@
     ]
 
   pages:
-    roles: ['administrator','editor']
+    roles: ['administrator']
     collectionFields: [
       label: "Manage pages"
       type: "list"
@@ -43,6 +43,33 @@
       key: 'gallery'
       label: 'Gallery'
       type: 'gallery'
+    ]
+    documentActions: [
+      type: "delete"
+      label: "Delete document"
+    ,
+      type: 'duplicate'
+      label: 'Create a copy'
+    ]
+
+  articles:
+    roles: ['administrator','editor']
+    collectionFields: [
+      label: "Manage pages"
+      type: "list"
+    ]
+    collectionActions: [
+      label: 'Create new'
+      type: 'create'
+    ]
+    documentFields: [
+      key: 'title'
+      label: "Title"
+      type: "text"
+    ,
+      key: 'description'
+      label: "Description"
+      type: "textarea"
     ]
     documentActions: [
       type: "delete"
