@@ -1,19 +1,22 @@
 
+_publish = (i) ->
+  Vector.collections[i] = new Meteor.Collection i
+  Meteor.publish ('vector_' + i), ->
+    if Vector.checkPermissions(this.userId,i)
+      Vector.collections[i].find()        
+
+  Vector.collections[i].allow
+    insert: (userId) ->
+      Vector.checkPermissions(userId,i,true)
+    update:(userId) ->
+      Vector.checkPermissions(userId,i,true)
+    remove:(userId) ->
+      Vector.checkPermissions(userId,i,true)
+
 
 for i,collection of Vector.resources
   if i isnt 'users'
-    Vector.collections[i] = new Meteor.Collection i
-    Meteor.publish ('vector_' + i), ->
-      if Vector.checkPermissions(this.userId,i)
-        Vector.collections[i].find()        
-
-    Vector.collections[i].allow
-      insert: (userId) ->
-        Vector.checkPermissions(userId,i,true)
-      update:(userId) ->
-        Vector.checkPermissions(userId,i,true)
-      remove:(userId) ->
-        Vector.checkPermissions(userId,i,true)
+    _publish i
 
   else
     Vector.collections['users'] = Meteor.users
