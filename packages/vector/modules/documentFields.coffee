@@ -24,6 +24,11 @@ Template.gallery.helpers
         cloud: cloud
     images
 
+Template.accountPassword.events
+    'click .accountPassword_change': ->
+        Session.set 'forms', 'testform'
+        # Accounts.changePassword(oldPassword, newPassword, [callback])
+
 Template.gallery.events
   'click .galleryDelete': (e,t) ->
     collectionName = Router.getData().collectionName
