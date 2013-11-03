@@ -1,7 +1,7 @@
 @resources =
 
   dashboard:
-    roles: ['guest',"administrator",'editor']
+    roles: ["guest","administrator","editor"]
     pageFields: [
       type: "welcome"
       label: "Welcome to Vector."

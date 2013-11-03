@@ -8,6 +8,7 @@ Router.map ->
     waitOn: ->
       Meteor.subscribe 'vector_pages'
     data: ->
+      console.log Vector.collections['pages'].find().count()
       pages: Vector.collections['pages'].find().fetch()
 
   Template.index.events
