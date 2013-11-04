@@ -20,6 +20,7 @@
           <li><a href="#docs">Docs</a></li>
           <li><a href="#modules">Modules</a></li>
           <li><a href="/admin">Demo</a></li>
+          <li><a href="#contribute">Contributing</a></li>
           <li><a href="https://github.com/handmadeadv/vector">Github</a></li>
         </ul>
         <hr>
@@ -205,7 +206,7 @@
         <p>Currently, users must be created manually, while the role system is already functional; you can create ad assign arbitrary roles to users.</p>
         <p>The default role for the new user is <code>administrator</code></p>
         <h3>Integrating with your website</h3>
-        <p>Vector is designed to minimize the impact on exshisting websites. Currently, the only effective contraints are 
+        <p>Vector is designed to minimize the impact on existing websites. Currently, the only effective contraints are 
         <ul>
           <li>The automatic inclusion of the Bootstrap 3</li>
           <li>The use of ironrouter</li>
@@ -466,6 +467,33 @@
             </tr>            
           </tbody>
         </table>
+        <h2 id="contribute">Contributing</h2>
+        <p>Vector is an open project released under MIT licence. It is free for both personal and commercial use.<br>
+        Contribution is the best way to show appreciation for the project ;)<br>
+        The main repository can be found at <a href="https://github.com/handmadeadv/vector">https://github.com/handmadeadv/vector</a></p>
+        <h3>What is needed</h3>
+        <ul>
+          <li>Spell checking</li>
+          <li>Additional modules</li>
+          <li>Idaes for a better core design</li>
+          <li>Tests</li>
+        </ul>
+        <h3>Contributing with modules</h3>
+        <p>Modules are plain Meteor templates; they can be created and distributed as independent packages.</p>
+        <p>We propose the syntax vector-packagename to standardize the package naming.</p>
+        <p>Of coure, you can also improve existing modules or propose additions to the core.</p>
+        <h3>Contributing to the core</h3>
+        <p>The core of Vector is really thin. Here is how is works under the hood:</p>
+        <ul>
+          <li>Ironrouter is responsible for reading the route parameters and filling the global context with data</li>
+          <li>The context is typically made of collection cursors, document data and fields data</li>
+          <li>The main template hase three main loops: page, collection and document</li>
+          <li>Each of these loops accept an array of fields (modules) which are Meteor templates</li>
+          <li>Each fields receive the right context; i.e. a cursor for a collection field and a document for a document field</li>
+          <li>The looping and the context assignation is made by Handlebars helpers</li>
+          <li>Additional sessions can be used to store volatile UI operations, such modals</li>
+        </ul>
+        <h3></h3>
       </div>
     </div>
   </div>
