@@ -64,3 +64,10 @@ Template.gallery.events
             if count is max then Meteor.Message.release()
         reader.readAsDataURL(file)
     )
+
+Template.children.helpers
+    childrenData: ->
+        key = @collectionName + "_id"
+        query = {}
+        query[key] = @data._id
+        Vector.collections['articles'].find().fetch()

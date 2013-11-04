@@ -2,8 +2,13 @@
 _publish = (i) ->
   Vector.collections[i] = new Meteor.Collection i
   Meteor.publish ('vector_' + i), ->
+    collections = []
     if Vector.checkPermissions(this.userId,i)
-      Vector.collections[i].find()        
+      collections.push Vector.collections[i].find()      
+    for ii,collectionName of Vector.resources[i].children
+      if Vector.checkPermissions(this.userId,i)
+        collections.push Vector.collections['articles'].find()
+    collections
 
   Vector.collections[i].allow
     insert: (userId) ->

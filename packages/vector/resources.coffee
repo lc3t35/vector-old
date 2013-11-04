@@ -32,6 +32,7 @@
 
   pages:
     roles: ['administrator']
+    children: ['articles']
     collectionFields: [
       label: "Manage pages"
       type: "list"
@@ -45,13 +46,9 @@
       label: "Title"
       type: "text"
     ,
-      key: 'description'
-      label: "Description"
-      type: "textarea"
-    , 
-      key: 'gallery'
-      label: 'Gallery'
-      type: 'gallery'
+      key: 'articles'
+      label: 'Children articles'
+      type: 'children'
     ]
     documentActions: [
       type: "delete"
