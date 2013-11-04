@@ -8,7 +8,7 @@ Vector allow the developer to create and extend administration panels for end us
 - Roles based security
 - Separation between setup and content management; end users are limited to what the developer has setup
 
-## Roadmap:
+## Roadmap
 
 - 0.4 Easy relationships between collections
 - 0.5 Collection sort and pagination options
