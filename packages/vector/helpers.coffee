@@ -46,9 +46,6 @@ Template.vectorNav.events
   'click #vectorNavSide_logout': ->
     Meteor.logout()
     Router.go "#{Vector.settings.adminRoot}/"
-  # 'click #vectorNavSide_logoin': ->
-  #   Router.setData({forms:'ciao'})
-
 
 Template.currentForm.helpers
   form: ->
