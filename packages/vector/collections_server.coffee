@@ -1,15 +1,17 @@
 
 _publish = (i) ->
   Vector.collections[i] = new Meteor.Collection i
-  Meteor.publish ('vector_' + i), ->
+  Meteor.publish "vector_#{i}", (docId) ->
     collections = []
-    if Vector.checkPermissions(this.userId,i)
-      collections.push Vector.collections[i].find()      
-    for ii,collectionName of Vector.resources[i].children
-      if Vector.checkPermissions(this.userId,i)
-        query = {}
-        query["#{i}_id"] = this.userId
-        collections.push Vector.collections['articles'].find(query)
+    userId = this.userId
+    if Vector.checkPermissions(userId,i)
+      collections.push Vector.collections[i].find()   
+    if docId
+      for ii,collectionName of Vector.resources[i].children
+        if Vector.checkPermissions(userId,i)
+          query = {}
+          query["#{i}_id"] = docId
+          collections.push Vector.collections['articles'].find(query)
     collections
 
   Vector.collections[i].allow

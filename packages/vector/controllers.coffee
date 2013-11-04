@@ -30,7 +30,7 @@ Router.map ->
     path: "#{adminRoot}/:collectionName/:_id"
     layoutTemplate: 'vectorLayout'
     waitOn: ->
-      Meteor.subscribe "vector_" + @params.collectionName
+      Meteor.subscribe "vector_" + @params.collectionName, @params._id
     before: ->
       _id = @params._id
       collectionName = @params.collectionName
