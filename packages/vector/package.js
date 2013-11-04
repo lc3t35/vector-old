@@ -31,6 +31,7 @@ Package.on_use(function (api, where){
     'collections.coffee',
     'helpers.coffee',
     'controllers.coffee',
+    'initializers.coffee',
     'themes/basic.styl'], 'client');
 
   api.add_files([
