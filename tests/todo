@@ -1,4 +1,6 @@
 
+API for form validation
+
 Cleaner urls
 - router, module loop: insert collectionName as property of document (transform? orm?)
 - use a global root setting instead of hardocoded urls
@@ -20,6 +22,7 @@ Controllers
 Localization
 - i18n integration for labels and other texts
 - all text should be dynamic and localizable
+- check text in modules
 
 UI
 - avoid page refresh, smooth animations instead

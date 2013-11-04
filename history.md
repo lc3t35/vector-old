@@ -1,5 +1,10 @@
 # History
 
+0.3 11.04.2013
+- modals API
+- gallery module
+- change password module
+
 0.2 10.29.2013
 - authentication roles
 - main menu improved

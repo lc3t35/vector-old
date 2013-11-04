@@ -19,6 +19,10 @@
       type: 'accountEmails'
       label: 'Email'
       key: 'emails'
+    ,
+      type: 'accountPassword'
+      label: 'Password'
+      key: 'password'
     ]
 
   pages:

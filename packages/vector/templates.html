@@ -11,7 +11,7 @@
 <div id="vectorBackground"></div>
 <div class="container-fluid" id="vector">
   {{> notifications}}
-  {{renderForm}}
+  {{> currentForm}}
   {{> vectorNav}}
   <div class="row" id="vectorEdit">
 
@@ -76,4 +76,12 @@
       <li id="vectorNavSide_logout"><p>Logout</p></li>
     {{/if}}
   </ul>
+</template>
+
+<template name="currentForm">
+  {{#if form}}
+    <div id="vectorForms">
+      {{form}}
+    </div>
+  {{/if}}
 </template>

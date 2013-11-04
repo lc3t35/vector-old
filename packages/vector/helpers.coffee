@@ -38,18 +38,28 @@ Handlebars.registerHelper 'collectionList', ->
 Handlebars.registerHelper 'settings', ->
   Vector.settings
 
-Handlebars.registerHelper 'renderForm', (collection,doc,collectionName) ->
-  data = Router.getData()
-  if data.forms
-    # if Template[data.forms.type]
-    new Handlebars.SafeString(Template[data.forms]())
-    # else
-    #   "#{Vector.settings.defaultNoTemplateWarning}: #{context}"
+
+Meteor.startup ->
+  Session.set 'forms', null
 
 Template.vectorNav.events
   'click #vectorNavSide_logout': ->
     Meteor.logout()
     Router.go "#{Vector.settings.adminRoot}/"
+  # 'click #vectorNavSide_logoin': ->
+  #   Router.setData({forms:'ciao'})
+
+
+Template.currentForm.helpers
+  form: ->
+    data = Session.get 'forms'
+    if data
+      new Handlebars.SafeString(Template[data]())
+
+Template.currentForm.events
+  'click .vectorFormCancel': (e) ->
+    e.preventDefault()
+    Session.set 'forms', null
 
 
 

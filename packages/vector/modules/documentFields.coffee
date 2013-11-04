@@ -24,6 +24,10 @@ Template.gallery.helpers
         cloud: cloud
     images
 
+Template.accountPassword.events
+    'click .accountPassword_change': ->
+        Session.set 'forms', 'vectorFormPasswordChange'
+
 Template.gallery.events
   'click .galleryDelete': (e,t) ->
     collectionName = Router.getData().collectionName
