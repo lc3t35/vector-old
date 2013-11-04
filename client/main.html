@@ -213,10 +213,15 @@
         </ul>
         <h3 id="docForms">Modals API</h3>
         <p>You can easily use modals inside your modules. Modals are plain Meteor templates, therefore they can have custom helpers and events.</p>
-        <p>Vector use the session <code>forms</code> to display a modal. Use <code>Session.set("forms",yourformname)</code> to display a form and <code>Session.set("forms",null)</code> to clear the modals.<br>
-        If you place a button with id <code>vectorFormCancel</code>, this button will clear the modal session for you.</p>
+        <p>Vector use the session <code>forms</code> to display or clear a modal. You can use the session in two ways:</p>
+        <ul>
+          <li>Simple: use <code>Session.set("forms",yourformname)</code> to display a form</li>
+          <li>Wih context: use <code>Session.set("forms",{type:yourformname,context:yourcontentobject})</code></li>
+          <li>To clear a modal: <code>Session.set("forms",null)</code></li>
+        </ul>
+        <p>The context property is useful to pass the field data to a modal, including the document key.</p>
         <p>You can get the current global data context using <code>Router.getData</code>.</p>
-:</p>
+        <p>Since vector has some CSS classes for modals, we suggest to use the template below as a starting point.<br>The class <code>vectorFormCancel</code> will clear the session for you.</p>
         <pre>
 &lt;template name=&quot;vectorFormPasswordChange&quot;&gt;
   &lt;div class=&quot;row&quot;&gt;
@@ -289,6 +294,11 @@
               <td>HTML</td>
               <td>Handlebars helper.<br>General settings on vector/settings.coffee</td>
             </tr>         
+            <tr>
+              <td><code>.vectorFormCancel</code></td>
+              <td>HTML modals</td>
+              <td>A button with this class will close the modal and clear the <code>forms</code> session for you</td>
+            </tr>
           </tbody>
         </table>
 

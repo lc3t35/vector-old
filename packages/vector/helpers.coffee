@@ -55,7 +55,7 @@ Template.currentForm.helpers
     data = Session.get 'forms'
     if data
       if data.type
-        new Handlebars.SafeString(Template[data.type](data.field))
+        new Handlebars.SafeString(Template[data.type](data.context))
       else  
         new Handlebars.SafeString(Template[data]())
 
