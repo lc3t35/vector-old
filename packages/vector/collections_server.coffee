@@ -8,7 +8,7 @@ _publish = (i) ->
       collections.push Vector.collections[i].find()   
     if docId
       for ii,collectionName of Vector.resources[i].children
-        if Vector.checkPermissions(userId,i)
+        if Vector.checkPermissions(userId,collectionName)
           query = {}
           query["#{i}_id"] = docId
           collections.push Vector.collections['articles'].find(query)
