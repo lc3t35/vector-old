@@ -7,7 +7,9 @@ _publish = (i) ->
       collections.push Vector.collections[i].find()      
     for ii,collectionName of Vector.resources[i].children
       if Vector.checkPermissions(this.userId,i)
-        collections.push Vector.collections['articles'].find()
+        query = {}
+        query["#{i}_id"] = this.userId
+        collections.push Vector.collections['articles'].find(query)
     collections
 
   Vector.collections[i].allow
