@@ -1,5 +1,9 @@
 # History
 
+0.4 4.11.2013
+- relatioship API
+- relationships document fields
+
 0.3 11.04.2013
 - modals API
 - gallery module
