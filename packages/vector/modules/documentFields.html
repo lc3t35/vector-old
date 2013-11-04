@@ -44,16 +44,21 @@
 </template>
 
 <template name="children">
+  <label>{{field.label}}</label>
+  <ul class="list-unstyled">
   {{#each childrenData}}
-    title
+    <li><a href="{{settings.adminRoot}}/{{../field.key}}/{{_id}}">{{title}}</a></li>
   {{/each}}
+  </ul>
 </template>
 
 <template name="parents">
-  parents
+  <label>{{field.label}}</label>
+  <ul class="list-unstyled">
   {{#each parentsData}}
-    title
+    <li><a href="{{settings.adminRoot}}/{{../field.key}}/{{_id}}">{{title}}</a></li>
   {{/each}}
+  </ul>
 </template>
 
 
