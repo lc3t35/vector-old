@@ -18,3 +18,9 @@ Template.duplicate.events
     query[titleKey] = "(copy) #{query[titleKey]}"
     id = Vector.collections[@collectionName].insert query
     Router.go('vectorEdit',{collectionName:collectionName,_id:id})
+
+
+Template.accountCreate.events
+    'click': ->
+        context = @
+        Session.set 'forms', {type: 'vectorFormAccountCreate', context: @}

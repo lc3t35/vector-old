@@ -15,6 +15,11 @@
       type: "accountList"
       label: "Manage users"
     ]
+    collectionActions: [
+      type: 'accountCreate'
+      label: 'Create accouunt'
+      options: ['administrator','editor']
+    ]
     documentFields: [
       type: 'accountEmails'
       label: 'Email'

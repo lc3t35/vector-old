@@ -13,3 +13,13 @@ Template.vectorFormPasswordChange.events
     else
       Notifications.send 'Please fill all the fields'
 
+
+Template.vectorFormAccountCreate.events
+  'submit form': (e,t) ->
+    e.preventDefault()
+    email = t.find("#vectorFormAccountCreate_email").value
+    password = t.find("#vectorFormAccountCreate_password").value
+    # options = @.field.options
+    # profile = {role: options}
+    if email and password
+      Meteor.call 'vectorCreateUser', email,password
