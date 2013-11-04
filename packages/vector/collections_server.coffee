@@ -1,3 +1,4 @@
+console.log Vector
 
 _publish = (i) ->
   Vector.collections[i] = new Meteor.Collection i
@@ -20,10 +21,10 @@ for i,collection of Vector.resources
 
   else
     Vector.collections['users'] = Meteor.users
-    Meteor.publish 'users', ->
+    Meteor.publish null, ->
       fields = {username:1,profile:1,emails:1}
       user = Meteor.users.findOne({_id:this.userId})
-      if Vector.checkPermissions(userId,'users')
+      if Vector.checkPermissions(user._id,'users')
         Meteor.users.find({},fields)
       else if user
         Meteor.users.find({_id:this.userId},fields)

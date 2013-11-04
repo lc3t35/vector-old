@@ -6,7 +6,7 @@ Vector =
   settings: settings
   collections: {}
 
-  checkPermissions: (userId,collectionName,writePermission)->
+  checkPermissions: (userId,collectionName,writePermission) ->
     if typeof userId is 'string'
       user = Meteor.users.findOne({_id:userId})
     else
