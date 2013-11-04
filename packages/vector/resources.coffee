@@ -17,7 +17,7 @@
     ]
     collectionActions: [
       type: 'accountCreate'
-      label: 'Create accouunt'
+      label: 'Create account'
       options: ['administrator','editor']
     ]
     documentFields: [

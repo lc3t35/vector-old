@@ -19,9 +19,8 @@ Meteor.methods
       api_secret: Vector.privateSettings.cloudinary.secret
     cloudinary.uploader.destroy id, (r) ->
       v = r
-  vectorCreateUser: (email,password) ->
+  vectorCreateUser: (email,password,profile) ->
     Accounts.createUser
       email: email
       password: password
-      profile:
-        role: 'administrator'
+      profile: profile

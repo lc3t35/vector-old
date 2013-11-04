@@ -19,7 +19,8 @@ Template.vectorFormAccountCreate.events
     e.preventDefault()
     email = t.find("#vectorFormAccountCreate_email").value
     password = t.find("#vectorFormAccountCreate_password").value
-    # options = @.field.options
-    # profile = {role: options}
+    role = t.find("#vectorFormAccountCreate_role").value
+    profile = {role:role}
     if email and password
-      Meteor.call 'vectorCreateUser', email,password
+      Meteor.call 'vectorCreateUser', email,password,profile
+      Session.set 'forms'. null
