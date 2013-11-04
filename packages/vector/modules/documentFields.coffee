@@ -67,7 +67,15 @@ Template.gallery.events
 
 Template.children.helpers
     childrenData: ->
-        key = @collectionName + "_id"
         query = {}
-        query[key] = @data._id
-        Vector.collections['articles'].find().fetch()
+        query[@collectionName + "_id"] = @data._id
+        Vector.collections[@field.key].find(query).fetch()
+
+Template.parents.helpers
+    parentsData: ->
+        ids = @data[@field.key+"_id"]
+        if (typeof ids isnt 'array' and typeof ids isnt 'undefined') then ids = [ids]
+        if ids
+            query = {}
+            query["_id"] = {$in:ids}
+            Vector.collections[@field.key].find(query).fetch()

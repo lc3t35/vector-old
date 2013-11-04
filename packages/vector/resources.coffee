@@ -60,6 +60,7 @@
 
   articles:
     roles: ['administrator','editor']
+    parents: ['pages']
     collectionFields: [
       label: "Manage pages"
       type: "list"
@@ -73,9 +74,9 @@
       label: "Title"
       type: "text"
     ,
-      key: 'description'
-      label: "Description"
-      type: "textarea"
+      key: 'pages'
+      label: "Pages"
+      type: "parents"
     ]
     documentActions: [
       type: "delete"

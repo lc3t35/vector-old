@@ -11,7 +11,11 @@ _publish = (i) ->
         if Vector.checkPermissions(userId,collectionName)
           query = {}
           query["#{i}_id"] = docId
-          collections.push Vector.collections['articles'].find(query)
+          collections.push Vector.collections[collectionName].find(query)
+      for ii,collectionName of Vector.resources[i].parents
+        if Vector.checkPermissions(userId,collectionName)
+          ids = Vector.collections[i].findOne(_id:docId)["#{collectionName}_id"]
+          collections.push Vector.collections[collectionName].find({_id:$in:{ids}})
     collections
 
   Vector.collections[i].allow
