@@ -44,6 +44,12 @@
 </template>
 
 <template name="children">
+  <ul class="fieldActionsWrap text-right list-unstyled">
+    <li>
+      <button class="btn btn-xs btn-primary childrenAdd">Add</button>
+      <button class="btn btn-xs btn-warning childrenRemove">Remove</button>
+    </li>
+  </ul>
   <label>{{field.label}}</label>
   <ul class="list-unstyled">
   {{#each childrenData}}
@@ -53,6 +59,12 @@
 </template>
 
 <template name="parents">
+  <ul class="fieldActionsWrap text-right list-unstyled">
+    <li>
+      <button class="btn btn-xs btn-primary parentsAdd">Add</button>
+      <button class="btn btn-xs btn-warning parentsRemove">Remove</button>
+    </li>
+  </ul>
   <label>{{field.label}}</label>
   <ul class="list-unstyled">
   {{#each parentsData}}
