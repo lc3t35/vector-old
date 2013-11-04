@@ -45,6 +45,7 @@
           <li><a href="#docCustom">Building custom modules</a></li>
           <li><a href="#docForms">Modals API</a></li>
           <li><a href="#docHooks">Helpers and hooks cheatsheet</a></li>
+          <li><a href="#modules">Modules documentation</a></li>
         </ul>
         <h3 id="docDeps">Dependencies</h3>
         <ul>
@@ -303,6 +304,7 @@
         </table>
 
         <h2 id="modules">Modules documentation</h2>
+        <p>This documentation refers to the core package modules; third parties or additional modules may have their own documentation.</p>
         <h3>Document level</h3>
         <table class="table table-striped">
           <thead>
@@ -391,6 +393,25 @@
               <td><code>dashboard</code></td>
               <td>Entire page</td>
               <td>Display a welcome message if logged, or a login form if unlogged. Requires <code>guest</code> role to work with unlogged users</td>
+            </tr>            
+          </tbody>
+        </table>
+        <h3>Modal level</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Module</th>
+              <th>Notes</th>
+            </tr>            
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>vectorFormPasswordChange</code></td>
+              <td>Called by the <code>accountPassword</code> document field</td>
+            </tr>
+            <tr>
+              <td><code>vectorFormAccountCreate</code></td>
+              <td>Called by <code>accountCreate</code> collection action</td>
             </tr>            
           </tbody>
         </table>
