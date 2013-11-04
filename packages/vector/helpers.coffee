@@ -54,7 +54,10 @@ Template.currentForm.helpers
   form: ->
     data = Session.get 'forms'
     if data
-      new Handlebars.SafeString(Template[data]())
+      if data.type
+        new Handlebars.SafeString(Template[data.type](data.field))
+      else  
+        new Handlebars.SafeString(Template[data]())
 
 Template.currentForm.events
   'click .vectorFormCancel': (e) ->
