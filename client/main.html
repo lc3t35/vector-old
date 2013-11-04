@@ -43,6 +43,7 @@
           <li><a href="#docRoles">Managing users and roles</a></li>
           <li><a href="#docSite">Integrating with your website</a></li>
           <li><a href="#docCustom">Building custom modules</a></li>
+          <li><a href="#docForms">Modals API</a></li>
           <li><a href="#docHooks">Helpers and hooks cheatsheet</a></li>
         </ul>
         <h3 id="docDeps">Dependencies</h3>
@@ -210,6 +211,29 @@
           <li><code>field</code>: contains the label, the field type and the key (if present)</li>
           <li><code>collectionName</code>: to be used with <code>Vector.collections[collectionName]</code> to retrieve the current collection</li>
         </ul>
+        <h3 id="docForms">Modals API</h3>
+        <p>You can easily use modals inside your modules. Modals are plain Meteor templates, therefore they can have custom helpers and events.</p>
+        <p>Vector use the session <code>forms</code> to display a modal. Use <code>Session.set("forms",yourformname)</code> to display a form and <code>Session.set("forms",null)</code> to clear the modals.<br>
+        If you place a button with id <code>vectorFormCancel</code>, this button will clear the modal session for you.</p>
+        <p>You can get the current global data context using <code>Router.getData</code>.</p>
+:</p>
+        <pre>
+&lt;template name=&quot;vectorFormPasswordChange&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;form class=&quot;col-md-4 col-md-offset-4&quot;&gt;
+      &lt;div class=&quot;vectorFormBody&quot;&gt;
+        &lt;label&gt;Old password&lt;/label&gt;
+        &lt;input type=&quot;password&quot; id=&quot;vectorFormPasswordChange_old&quot;&gt; 
+        &lt;label&gt;New password&lt;/label&gt;
+        &lt;input type=&quot;password&quot; id=&quot;vectorFormPasswordChange_new&quot;&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;vectorFormActions text-right&quot;&gt;
+        &lt;button class=&quot;btn btn-warning vectorFormCancel&quot;&gt;Cancel&lt;/button&gt;
+        &lt;button class=&quot;btn btn-primary&quot; type=&quot;submit&quot;&gt;Confirm&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/template&gt;        </pre>     
         <h3 id="docHooks">Helpers and hooks cheatsheet</h3>
         <table class="table table-striped">
           <thead>
