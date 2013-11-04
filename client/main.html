@@ -41,6 +41,7 @@
           <li><a href="#docConfig">Basic configuration</a></li>
           <li><a href="#docUse">Using the admin panel</a></li>
           <li><a href="#docRoles">Managing users and roles</a></li>
+          <li><a href="#docRel">Relationships between collections</a></li>
           <li><a href="#docSite">Integrating with your website</a></li>
           <li><a href="#docCustom">Building custom modules</a></li>
           <li><a href="#docForms">Modals API</a></li>
@@ -204,6 +205,34 @@
           <li>Collection objects are already created and accessibile with the <code>Vector.collections</code> array</li>
         </ul>
         You can use this website, included whithin the repository, as a starting point to integate a website with vector. </p>
+        <h3 id="docRel">Relationships between documents</h3>
+        <p>Vector has a simple, yet effective relationship system. Like other Vector features, relationships are very easy to implement.</p>
+        <p>The workflow is:</p>
+        <ul>
+          <li>Declaring relationship on the resource level</li>
+          <li>Use a document field to display and/or manage relationships</li>
+        </ul>
+        <p>Relationships are checked when the route has a document id, which is here defined as the current document.</p>
+        <p>The <code>children</code> property will automatically publish children documents. Children documents must have a reference to the current document. The reference is expressed as the collection name plus "_id".</p>
+        <p>This code will search for documents of the <code>articles</code> collection with a <code>pages_id</code> reference and publish it on the stream (Meteor will take care of merging other published documentsof the same collection, if you have them).</p>
+        <pre>
+@resources =
+  pages:
+    children: ['articles']
+    collectionFields:
+      ...
+        </pre>
+        <p>The <code>parents</code> property works in a similar way, this time taking an array of reference ids which is stored on the current document:</p>
+        <pre>
+@resources =
+  articles:
+    parents: ['pages']
+    collectionFields:
+      ...
+        </pre>
+        <p>Vector currently offers a couple modules to manage the relationships between dcocuments: the <code>children</code> and <code>parents</code> document fields.</p>
+        <p><strong>Since these relationships aren't part of a formal model, you don't need to specify both parents and children. They are used only to publish documents when you need it.</strong></p>
+        <p><strong>Relatiobships aren't yet implemented for the users collection.</strong></p>
         <h3 id="docCustom">Building custom modules</h3>
         <p>A module is a plain Meteor template. Each time a collection or a document is displayed, the system call the corresponding templates and assign them a data context.<br>
         The context is available on both helpers and events methods and includes:</p>
@@ -339,6 +368,16 @@
               <td><code>accountPassword</code></td>
               <td>Document field</td>
               <td>Allows to update the password through a modal</td>
+            </tr>
+            <tr>
+              <td><code>children</code></td>
+              <td>Document field</td>
+              <td>Displays a list of children documents with links. To use with the <code>children</code> resource propery</td>
+            </tr>
+            <tr>
+              <td><code>parents</code></td>
+              <td>Document field</td>
+              <td>Displays a list of parent documents with links. To use with the <code>parents</code> resource propery</td>
             </tr>
             <tr>
               <td><code>duplicate</code></td>
