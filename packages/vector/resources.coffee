@@ -7,7 +7,7 @@
       label: "Welcome to Vector."
       options: 
         logged: 'Select a collection to start editing'
-        unlogged: "User: editor@editor.com, pass: editor"
+        unlogged: "Please login to start editing"
     ]
 
   users:
