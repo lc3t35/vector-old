@@ -10,4 +10,4 @@
   sendVerificationEmail: false
   forbidClientAccountCreation: true
   cloudinary:
-    cloud: "handmade"
+    cloud: "cloudName"
