@@ -69,7 +69,25 @@ Template.children.helpers
     childrenData: ->
         query = {}
         query[@collectionName + "_id"] = @data._id
-        Vector.collections[@field.key].find(query).fetch()
+        Vector.collections[@field.key].find(query).count()
+
+Template.children.events
+    'click .childrenAdd': ->
+        data = @
+        query = {}
+        query[@collectionName + "_id"] = @data._id
+        # documents = Vector.collections[@field.key].find(query).fetch()
+        documents = ["a","b"]
+        context =
+            data: data.data
+            field: data.field
+            collectionName: data.collectionName
+            related: documents
+        Session.set("forms",{type:'vectorFormRelations',context:context})
+    'click .childrenRemove': ->
+        alert 'remove'
+
+
 
 Template.parents.helpers
     parentsData: ->

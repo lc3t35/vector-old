@@ -46,16 +46,12 @@
 <template name="children">
   <ul class="fieldActionsWrap text-right list-unstyled">
     <li>
+      <a href="#" class="btn btn-xs btn-default childrenView">View</a>
       <button class="btn btn-xs btn-primary childrenAdd">Add</button>
       <button class="btn btn-xs btn-warning childrenRemove">Remove</button>
     </li>
   </ul>
-  <label>{{field.label}}</label>
-  <ul class="list-unstyled">
-  {{#each childrenData}}
-    <li><a href="{{settings.adminRoot}}/{{../field.key}}/{{_id}}">{{title}}</a></li>
-  {{/each}}
-  </ul>
+  <label>{{field.label}}: {{childrenData}}</label>
 </template>
 
 <template name="parents">
