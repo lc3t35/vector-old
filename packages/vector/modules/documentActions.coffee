@@ -13,3 +13,16 @@ Template.delete.events
     else
       Notifications.send @field.options or Vector.settings.defaultDeleteWarning
       $(t.find("button")).addClass 'active'
+
+Template.duplicate.events
+  'click': ->
+    model = Vector.resources[@collectionName].documentFields
+    titleKey = Vector.settings.defaultDocumentTitleKey
+    collectionName = @collectionName
+    query = {}
+    for i,field of model
+      query[field.key] = @data[field.key]
+    query[titleKey] = "(copy) #{query[titleKey]}"
+    query['created_at'] = Date.now()
+    id = Vector.collections[@collectionName].insert query
+    Router.go('vectorEdit',{collectionName:collectionName,_id:id})
