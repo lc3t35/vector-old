@@ -25,8 +25,8 @@ Template.gallery.helpers
     images
 
 Template.accountPassword.events
-    'click .accountPassword_change': ->
-        Session.set 'forms', 'vectorFormPasswordChange'
+  'click .accountPassword_change': ->
+    Session.set 'forms', 'vectorFormPasswordChange'
 
 Template.gallery.events
   'click .galleryDelete': (e,t) ->
@@ -50,50 +50,54 @@ Template.gallery.events
     count = 0
     Meteor.setTimeout (-> Notifications.hold 'Loading..'), 300
     _.each(e.srcElement.files, (file) ->
-        query = {}
-        reader = new FileReader()
-        reader.onload = (e) ->
-            data = e.target.result
-            Meteor.call "upload",data, (error,result) ->
-                query[key] = result
-                collection.update {_id:doc._id},{$push: query}
-                count++
-                if count is max then  Notifications.send 'Finish'
-        reader.onerror = (d) ->
-            count++
-            if count is max then Meteor.Message.release()
-        reader.readAsDataURL(file)
+      query = {}
+      reader = new FileReader()
+      reader.onload = (e) ->
+        data = e.target.result
+        Meteor.call "upload",data, (error,result) ->
+          query[key] = result
+          collection.update {_id:doc._id},{$push: query}
+          count++
+          if count is max then  Notifications.send 'Finish'
+      reader.onerror = (d) ->
+        count++
+        if count is max then Meteor.Message.release()
+      reader.readAsDataURL(file)
     )
 
 Template.children.helpers
-    childrenData: ->
-        query = {}
-        query[@collectionName + "_id"] = @data._id
-        Vector.collections[@field.key].find(query).count()
+  childrenData: ->
+    query = {}
+    query[@collectionName + "_id"] = @data._id
+    Vector.collections[@field.key].find(query).count()
 
 Template.children.events
-    'click .childrenAdd': ->
-        data = @
-        query = {}
-        query[@collectionName + "_id"] = @data._id
-        # documents = Vector.collections[@field.key].find(query).fetch()
-        documents = ["a","b"]
+  'click .childrenAdd': ->
+    documents = []
+    data = @
+    Meteor.call 'getDocuments', @field.key, {title:1,_id:1}, (e,r) ->
+      if r
+        documents = r
         context =
-            data: data.data
-            field: data.field
-            collectionName: data.collectionName
-            related: documents
+          data: data.data
+          field: data.field
+          collectionName: data.collectionName
+          related: documents
+          relation: 'children'
+          action: 'add'
         Session.set("forms",{type:'vectorFormRelations',context:context})
     'click .childrenRemove': ->
-        alert 'remove'
-
+      alert 'remove'
 
 
 Template.parents.helpers
-    parentsData: ->
-        ids = @data[@field.key+"_id"]
-        if (typeof ids isnt 'array' and typeof ids isnt 'undefined') then ids = [ids]
-        if ids
-            query = {}
-            query["_id"] = {$in:ids}
-            Vector.collections[@field.key].find(query).fetch()
+  parentsData: ->
+    ids = @data[@field.key+"_id"]
+    if (typeof ids isnt 'array' and typeof ids isnt 'undefined') then ids = [ids]
+    if ids
+      query = {}
+      query["_id"] = {$in:ids}
+      Vector.collections[@field.key].find(query).fetch()
+
+# query = {}
+# query[@collectionName + "_id"] = @data._id

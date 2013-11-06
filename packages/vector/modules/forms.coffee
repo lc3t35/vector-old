@@ -24,3 +24,8 @@ Template.vectorFormAccountCreate.events
     if email and password
       Meteor.call 'vectorCreateUser', email,password,profile
       Session.set 'forms'. null
+
+Template.vectorFormRelations.events
+  'submit form': (e) ->
+    e.preventDefault()
+    console.log @

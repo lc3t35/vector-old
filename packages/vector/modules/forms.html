@@ -47,7 +47,7 @@
         <label>Test relations</label>
         <select class="form-control" multiple>
           {{#each related}}
-            <option>{{this}}</option>
+            <option data-id="{{_id}}">{{title}}</option>
           {{/each}}
         </select>
       </div>

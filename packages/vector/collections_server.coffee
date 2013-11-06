@@ -8,7 +8,6 @@ _publish = (i) ->
       collections.push Vector.collections[i].find()   
     if docId
       for ii,collectionName of Vector.resources[i].children
-        console.log collectionName
         if userId and Vector.checkPermissions(userId,collectionName)
           query = {}
           query["#{i}_id"] = docId
