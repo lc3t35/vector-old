@@ -102,7 +102,6 @@ Template.children.events
     'click .childrenRemove': ->
       alert 'remove'
 
-
 Template.parents.helpers
   parentsData: ->
     ids = @data[@field.key+"_id"]
