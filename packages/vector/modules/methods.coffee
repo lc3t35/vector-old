@@ -33,13 +33,18 @@ Meteor.methods
 
   # get documents
   # used to get data not published (i.e. a list of document to add as a relationship)    
-  getUnrelated: (childrenCollectionName,parentCollectionName,parentId,fields) ->
-    query = {}
-    query["#{parentCollectionName}_id"] = {$ne:parentId}
-    Vector.collections[childrenCollectionName].find(query,fields:fields).fetch()
+  getUnrelated: (childrenCollectionName,parentCollectionName,parentId,fields,relation) ->
+    if relation is 'children'
+      query = {}
+      query["#{parentCollectionName}_id"] = {$ne:parentId}
+      Vector.collections[childrenCollectionName].find(query,fields:fields).fetch()
 
-  addRelations: (childrenCollectionName,parentCollectionName,childrenIds,parentId) ->
-    console.log childrenCollectionName,parentCollectionName
+  addChildren: (childrenCollectionName,parentCollectionName,childrenIds,parentId) ->
     query = {}
     query["#{parentCollectionName}_id"] = parentId
-    Vector.collections[childrenCollectionName].update({_id: {$in:childrenIds}},{$set:query},{multi:true});
+    Vector.collections[childrenCollectionName].update({_id: {$in:childrenIds}},{$push:query},{multi:true});
+
+  removeChildren: (childrenCollectionName,parentCollectionName,childrenIds,parentId) ->
+    query = {}
+    query["#{parentCollectionName}_id"] = parentId
+    Vector.collections[childrenCollectionName].update({_id: {$in:childrenIds}},{$pull:query},{multi:true})

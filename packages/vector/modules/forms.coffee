@@ -13,7 +13,6 @@ Template.vectorFormPasswordChange.events
     else
       Notifications.send 'Please fill all the fields'
 
-
 Template.vectorFormAccountCreate.events
   'submit form': (e,t) ->
     e.preventDefault()
@@ -35,6 +34,11 @@ Template.vectorFormRelations.events
       do (o)->
         if o.selected
           childrenIds.push o.getAttribute 'data-id'
-    if childrenIds.length > 0
-      Meteor.call 'addRelations', @field.key, @collectionName, childrenIds, parentId
-      Session.set 'forms', null
+    if @action is 'add' and @relation is 'children'
+      if childrenIds.length > 0
+        Meteor.call 'addChildren', @field.key, @collectionName, childrenIds, parentId
+        Session.set 'forms', null
+    else if @action is 'remove' and @relation is 'children'
+      if childrenIds.length > 0      
+        Meteor.call 'removeChildren', @field.key, @collectionName, childrenIds, parentId
+        Session.set 'forms', null

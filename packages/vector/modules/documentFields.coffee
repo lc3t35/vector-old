@@ -75,7 +75,7 @@ Template.children.events
   'click .childrenAdd': ->
     documents = []
     data = @
-    Meteor.call 'getUnrelated', @field.key, data.collectionName, data.data._id, {title:1,_id:1}, (e,r) ->
+    Meteor.call 'getUnrelated', @field.key, data.collectionName, data.data._id, {title:1,_id:1}, 'children', (e,r) ->
       if r
         documents = r
         context =
@@ -86,6 +86,19 @@ Template.children.events
           relation: 'children'
           action: 'add'
         Session.set("forms",{type:'vectorFormRelations',context:context})
+    'click .childrenRemove': ->
+      alert 'remove'
+  'click .childrenRemove': ->
+    documents = Vector.collections[@field.key].find().fetch()
+    data = @
+    context =
+      data: data.data
+      field: data.field
+      collectionName: data.collectionName
+      related: documents
+      relation: 'children'
+      action: 'remove'
+    Session.set("forms",{type:'vectorFormRelations',context:context})
     'click .childrenRemove': ->
       alert 'remove'
 
