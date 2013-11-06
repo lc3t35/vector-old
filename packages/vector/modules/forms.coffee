@@ -26,6 +26,15 @@ Template.vectorFormAccountCreate.events
       Session.set 'forms'. null
 
 Template.vectorFormRelations.events
-  'submit form': (e) ->
+  'submit form': (e,t) ->
     e.preventDefault()
-    console.log @
+    options = t.find("select").options
+    childrenIds = []
+    parentId = @data._id
+    for i,o of options
+      do (o)->
+        if o.selected
+          childrenIds.push o.getAttribute 'data-id'
+    if childrenIds.length > 0
+      Meteor.call 'addRelations', @field.key, @collectionName, childrenIds, parentId
+      Session.set 'forms', null

@@ -75,7 +75,7 @@ Template.children.events
   'click .childrenAdd': ->
     documents = []
     data = @
-    Meteor.call 'getDocuments', @field.key, {title:1,_id:1}, (e,r) ->
+    Meteor.call 'getUnrelated', @field.key, data.collectionName, data.data._id, {title:1,_id:1}, (e,r) ->
       if r
         documents = r
         context =
