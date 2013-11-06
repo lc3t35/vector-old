@@ -83,9 +83,7 @@ Template.children.events
           related: documents
           relation: 'children'
           action: 'add'
-        Session.set("forms",{type:'vectorFormRelations',context:context})
-    'click .childrenRemove': ->
-      alert 'remove'
+        Session.set("forms",{type:'vectorFormChildren',context:context})
   'click .childrenRemove': ->
     documents = Vector.collections[@field.key].find().fetch()
     data = @
@@ -96,10 +94,36 @@ Template.children.events
       related: documents
       relation: 'children'
       action: 'remove'
-    Session.set("forms",{type:'vectorFormRelations',context:context})
+    Session.set("forms",{type:'vectorFormChildren',context:context})
     'click .childrenRemove': ->
       alert 'remove'
 
 Template.parents.helpers
   parentsData: ->
     Vector.collections[@field.key].find().count()
+
+Template.parents.events
+  'click .parentsAdd': ->
+    documents = []
+    data = @
+    ids = data.data["#{@field.key}_id"] or []
+    Meteor.call 'getUnrelated', @field.key, data.collectionName, ids, {title:1,_id:1}, 'parents', (e,r) ->
+      if r
+        documents = r
+        context =
+          data: data.data
+          field: data.field
+          collectionName: data.collectionName
+          related: documents
+          action: 'add'
+        Session.set("forms",{type:'vectorFormParents',context:context})
+  'click .parentsRemove': ->
+    documents = Vector.collections[@field.key].find().fetch()
+    data = @
+    context =
+      data: data.data
+      field: data.field
+      collectionName: data.collectionName
+      related: documents
+      action: 'remove'
+    Session.set("forms",{type:'vectorFormParents',context:context})

@@ -24,7 +24,7 @@ Template.vectorFormAccountCreate.events
       Meteor.call 'vectorCreateUser', email,password,profile
       Session.set 'forms'. null
 
-Template.vectorFormRelations.events
+Template.vectorFormChildren.events
   'submit form': (e,t) ->
     e.preventDefault()
     options = t.find("select").options
@@ -34,11 +34,30 @@ Template.vectorFormRelations.events
       do (o)->
         if o.selected
           childrenIds.push o.getAttribute 'data-id'
-    if @action is 'add' and @relation is 'children'
+    if @action is 'add'
       if childrenIds.length > 0
-        Meteor.call 'addChildren', @field.key, @collectionName, childrenIds, parentId
-        Session.set 'forms', null
-    else if @action is 'remove' and @relation is 'children'
+        Meteor.call 'addChildren', @field.key, @collectionName, childrenIds, parentId, ->
+          Session.set 'forms', null
+    else if @action is 'remove'
       if childrenIds.length > 0      
-        Meteor.call 'removeChildren', @field.key, @collectionName, childrenIds, parentId
-        Session.set 'forms', null
+        Meteor.call 'removeChildren', @field.key, @collectionName, childrenIds, parentId, ->
+          Session.set 'forms', null
+
+Template.vectorFormParents.events
+  'submit form': (e,t) ->
+    e.preventDefault()
+    options = t.find("select").options
+    parentIds = []
+    childrenId = @data._id
+    for i,o of options
+      do (o)->
+        if o.selected
+          parentIds.push o.getAttribute 'data-id'
+    if @action is 'add'
+      if parentIds.length > 0
+        Meteor.call 'addParents', @collectionName, @field.key, childrenId, parentIds, ->
+          Session.set 'forms', null
+    else if @action is 'remove'
+      if parentIds.length > 0   
+        Meteor.call 'removeParents', @collectionName, @field.key, childrenId, parentIds, ->
+          Session.set 'forms', null
