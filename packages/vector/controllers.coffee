@@ -20,7 +20,7 @@ Router.map ->
       pageFields: if model.pageFields then model.pageFields else null
       collectionFields: if model.collectionFields then model.collectionFields else null
       collectionActions: if model.collectionActions then model.collectionActions else null
-      collection: Vector.collections[collectionName].find().fetch()
+      collection: Vector.collections[collectionName].find({},sort: {created_at: -1}).fetch()
       documentFields: if model.documentFields then model.documentFields else null
       documentActions: if model.documentActions then model.documentActions else null
       collectionName: collectionName
@@ -43,7 +43,7 @@ Router.map ->
       pageFields: if model.pageFields then model.pageFields else null
       collectionFields: if model.collectionFields then model.collectionFields else null 
       collectionActions: if model.collectionActions then model.collectionActions else null
-      collection: Vector.collections[collectionName].find().fetch()
+      collection: Vector.collections[collectionName].find({},sort: {created_at: -1}).fetch()
       documentFields: if model.documentFields then model.documentFields else null
       documentActions: if model.documentActions then model.documentActions else null
       document: Vector.collections[collectionName].findOne({_id:_id})

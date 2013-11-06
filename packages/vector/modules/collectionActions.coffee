@@ -3,6 +3,7 @@ Template.create.events
     query = {}
     collectionName = @collectionName
     query[Vector.settings.defaultDocumentTitleKey] = Vector.settings.defaultDocumentTitle
+    query['created_at'] = Date.now()
     id = Vector.collections[collectionName].insert query
     Router.go('vectorEdit',{collectionName:collectionName,_id:id})
 
