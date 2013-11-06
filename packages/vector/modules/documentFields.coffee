@@ -67,9 +67,7 @@ Template.gallery.events
 
 Template.children.helpers
   childrenData: ->
-    query = {}
-    query[@collectionName + "_id"] = @data._id
-    Vector.collections[@field.key].find(query).count()
+    Vector.collections[@field.key].find().count()
 
 Template.children.events
   'click .childrenAdd': ->
@@ -104,12 +102,4 @@ Template.children.events
 
 Template.parents.helpers
   parentsData: ->
-    ids = @data[@field.key+"_id"]
-    if (typeof ids isnt 'array' and typeof ids isnt 'undefined') then ids = [ids]
-    if ids
-      query = {}
-      query["_id"] = {$in:ids}
-      Vector.collections[@field.key].find(query).fetch()
-
-# query = {}
-# query[@collectionName + "_id"] = @data._id
+    Vector.collections[@field.key].find().count()
