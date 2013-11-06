@@ -15,7 +15,7 @@ _publish = (i) ->
       for ii,collectionName of Vector.resources[i].parents
         if userId and Vector.checkPermissions(userId,collectionName)
           ids = Vector.collections[i].findOne(_id:docId)["#{collectionName}_id"]
-          collections.push Vector.collections[collectionName].find({_id:$in:{ids}})
+          collections.push Vector.collections[collectionName].find({_id:{$in:ids}})
     collections
 
   Vector.collections[i].allow
