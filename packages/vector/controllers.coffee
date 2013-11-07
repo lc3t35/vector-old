@@ -32,10 +32,11 @@ Router.map ->
     waitOn: ->
       Meteor.subscribe "vector_" + @params.collectionName, @params._id
     before: ->
-      _id = @params._id
-      collectionName = @params.collectionName
-      unless Vector.collections[collectionName].findOne({_id:_id})
-        Router.go Router.path('vectorCollection',{collectionName:collectionName})
+      if this.ready()
+        _id = @params._id
+        collectionName = @params.collectionName
+        unless Vector.collections[collectionName].findOne({_id:_id})
+          Router.go Router.path('vectorCollection',{collectionName:collectionName})
     data: ->
       _id = @params._id
       model = Vector.resources[@params.collectionName]

@@ -56,8 +56,10 @@ Template.vectorFormParents.events
     if @action is 'add'
       if parentIds.length > 0
         Meteor.call 'addParents', @collectionName, @field.key, childrenId, parentIds, ->
+          Vector.bugs.refreshPublication()
           Session.set 'forms', null
     else if @action is 'remove'
       if parentIds.length > 0   
         Meteor.call 'removeParents', @collectionName, @field.key, childrenId, parentIds, ->
+          Vector.bugs.refreshPublication()
           Session.set 'forms', null

@@ -1,4 +1,3 @@
-
 Meteor.methods
 
   # upload to cloudinary

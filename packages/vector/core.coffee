@@ -18,6 +18,10 @@ Vector =
     else
       collectionRoles.indexOf(userRole) >= 0
 
+  bugs:
+    refreshPublication: ->
+      location.reload()
+
 if Meteor.isServer
   privateSettings = @privateSettings
   Vector.privateSettings = privateSettings
