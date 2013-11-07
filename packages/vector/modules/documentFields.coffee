@@ -99,7 +99,7 @@ Template.children.events
       alert 'remove'
 
 Template.parents.helpers
-  parentsData: ->
+  parentsData: ->    
     Vector.collections[@field.key].find().count()
 
 Template.parents.events
@@ -107,6 +107,7 @@ Template.parents.events
     documents = []
     data = @
     ids = data.data["#{@field.key}_id"] or []
+    cname = @collectionName
     Meteor.call 'getUnrelated', @field.key, data.collectionName, ids, {title:1,_id:1}, 'parents', (e,r) ->
       if r
         documents = r

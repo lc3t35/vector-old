@@ -32,7 +32,7 @@
 
   pages:
     roles: ['administrator']
-    children: ['articles']
+    parents: ['articles']
     collectionFields: [
       label: "Manage pages"
       type: "list"
@@ -52,7 +52,7 @@
     ,
       key: 'articles'
       label: 'Articles'
-      type: 'children'
+      type: 'parents'
     ]
     documentActions: [
       type: "delete"
@@ -64,7 +64,7 @@
 
   articles:
     roles: ['administrator','editor']
-    parents: ['pages']
+    children: ['pages']
     collectionFields: [
       label: "Manage pages"
       type: "list"
@@ -80,7 +80,7 @@
     ,
       key: 'pages'
       label: "Pages"
-      type: "parents"
+      type: "children"
     ]
     documentActions: [
       type: "delete"

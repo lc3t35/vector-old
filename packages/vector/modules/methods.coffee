@@ -1,3 +1,4 @@
+
 Meteor.methods
 
   # upload to cloudinary
@@ -60,5 +61,5 @@ Meteor.methods
 
   removeParents: (childrenCollectionName,parentCollectionName,childrenId,parentIds) -> 
     query = {}
-    query["pages_id"] = parentIds
+    query["#{parentCollectionName}_id"] = parentIds
     Vector.collections[childrenCollectionName].update(childrenId,{$pullAll:query})
