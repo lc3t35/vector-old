@@ -32,7 +32,7 @@
 
   pages:
     roles: ['administrator']
-    parents: ['articles']
+    parents: ['users']
     collectionFields: [
       label: "Manage pages"
       type: "list"
@@ -50,8 +50,8 @@
       label: "Description"
       type: "textarea"
     ,
-      key: 'articles'
-      label: 'Articles'
+      key: 'users'
+      label: 'Users'
       type: 'parents'
     ]
     documentActions: [
@@ -64,7 +64,7 @@
 
   articles:
     roles: ['administrator','editor']
-    children: ['pages']
+    children: ['users']
     collectionFields: [
       label: "Manage pages"
       type: "list"
@@ -78,8 +78,8 @@
       label: "Title"
       type: "text"
     ,
-      key: 'pages'
-      label: "Pages"
+      key: 'users'
+      label: "Users"
       type: "children"
     ]
     documentActions: [
