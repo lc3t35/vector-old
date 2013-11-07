@@ -50,3 +50,27 @@ Router.map ->
       document: Vector.collections[collectionName].findOne({_id:_id})
       collectionName: collectionName
     template: 'vectorEdit'
+
+  @route 'vectorCollectionRelated',
+    path: "#{adminRoot}/:collectionName/:_id/:relatedCollectionName"
+    layoutTemplate: 'vectorLayout'
+    waitOn: ->
+      Vector.subscriptionId = Meteor.subscribe "vector_" + @params.collectionName, @params._id
+    before: ->
+      if this.ready()
+        _id = @params._id
+        collectionName = @params.collectionName
+        unless Vector.collections[collectionName].findOne({_id:_id})
+          Router.go Router.path('vectorCollection',{collectionName:collectionName})
+    data: ->
+      _id = @params._id
+      model = Vector.resources[@params.collectionName]
+      collectionName = @params.relatedCollectionName
+      pageFields: if model.pageFields then model.pageFields else null
+      collectionFields: if model.collectionFields then model.collectionFields else null 
+      collectionActions: if model.collectionActions then model.collectionActions else null
+      collection: Vector.collections[collectionName].find({},sort: {created_at: -1}).fetch()
+      documentFields: if model.documentFields then model.documentFields else null
+      documentActions: if model.documentActions then model.documentActions else null
+      collectionName: collectionName
+    template: 'vectorEdit'
