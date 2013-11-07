@@ -49,17 +49,28 @@ Template.vectorFormParents.events
     options = t.find("select").options
     parentIds = []
     childrenId = @data._id
+    collectionName = @collectionName
     for i,o of options
       do (o)->
         if o.selected
           parentIds.push o.getAttribute 'data-id'
     if @action is 'add'
       if parentIds.length > 0
-        Meteor.call 'addParents', @collectionName, @field.key, childrenId, parentIds, ->
-          Vector.bugs.refreshPublication()
+        Meteor.call 'addParents', @collectionName, @field.key, childrenId, parentIds, (er,r) ->
+          newDoc = Vector.collections[collectionName].findOne({_id:childrenId})
+          oldData = Router.getData()
+          oldData.data = newDoc
+          Router.setData oldData
+          Vector.subscriptionId.stop()
+          Vector.subscriptionId = Meteor.subscribe "#{collectionName}_id", childrenId
           Session.set 'forms', null
     else if @action is 'remove'
       if parentIds.length > 0   
         Meteor.call 'removeParents', @collectionName, @field.key, childrenId, parentIds, ->
-          Vector.bugs.refreshPublication()
+          newDoc = Vector.collections[collectionName].findOne({_id:childrenId})
+          oldData = Router.getData()
+          oldData.data = newDoc
+          Router.setData oldData
+          Vector.subscriptionId.stop()
+          Vector.subscriptionId = Meteor.subscribe "#{collectionName}_id", childrenId
           Session.set 'forms', null

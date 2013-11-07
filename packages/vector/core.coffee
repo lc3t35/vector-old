@@ -5,6 +5,7 @@ Vector =
   resources: resources
   settings: settings
   collections: {}
+  subscriptionId: null
 
   checkPermissions: (userId,collectionName,writePermission) ->
     if typeof userId is 'string'
