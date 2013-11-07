@@ -46,7 +46,7 @@
 <template name="children">
   <ul class="fieldActionsWrap text-right list-unstyled">
     <li>
-      <a href="#" class="btn btn-xs btn-default childrenView">View</a>
+      <a href="{{settings.adminRoot}}/{{collectionName}}/{{data._id}}/{{field.key}}" class="btn btn-xs btn-default childrenView">View</a>
       <button class="btn btn-xs btn-primary childrenAdd">Add</button>
       <button class="btn btn-xs btn-warning childrenRemove">Remove</button>
     </li>
@@ -57,7 +57,7 @@
 <template name="parents">
   <ul class="fieldActionsWrap text-right list-unstyled">
     <li>
-      <a href="#" class="btn btn-xs btn-default parentsView">View</a>
+      <a href="{{settings.adminRoot}}/{{collectionName}}/{{data._id}}/{{field.key}}" class="btn btn-xs btn-default parentsView">View</a>
       <button class="btn btn-xs btn-primary parentsAdd">Add</button>
       <button class="btn btn-xs btn-warning parentsRemove">Remove</button>
     </li>
