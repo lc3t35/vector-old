@@ -12,3 +12,4 @@ preserve-inputs
 vector
 notifications
 mocha-web
+publish-with-relations
