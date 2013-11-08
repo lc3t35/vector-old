@@ -11,6 +11,7 @@
     ]
 
   accounts:
+    children: ['pages']
     collectionFields: [
       type: "accountList"
       label: "Manage users"
@@ -28,6 +29,10 @@
       type: 'accountPassword'
       label: 'Password'
       key: 'password'
+    ,
+      type: 'children'
+      label: 'Pages'
+      key: 'pages'
     ]
 
   pages:
