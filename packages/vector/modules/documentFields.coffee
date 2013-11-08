@@ -111,7 +111,13 @@ Template.children.events
 
 Template.parents.helpers
   parentsData: (e,t) ->
-    Vector.collections[@field.key].find().count()
+    unless @field.key is 'accounts'
+      Vector.collections[@field.key].find().count()
+    else
+      query = {}
+      parentIds = Vector.collections[@collectionName].findOne(@data._id)["#{@field.key}_id"] or []
+      query["_id"] = {$in:parentIds}
+      Vector.collections[@field.key].find(query).count()
 
 Template.parents.events
   'click .parentsAdd': ->
@@ -131,7 +137,13 @@ Template.parents.events
   'click .parentsRemove': ->
     data = @
     ids = data.data.articles_id or []
-    documents = Vector.collections[@field.key].find().fetch()
+    unless @field.key is 'accounts'
+      documents = Vector.collections[@field.key].find().fetch()
+    else
+      query = {}
+      parentIds = Vector.collections[@collectionName].findOne(@data._id)["#{@field.key}_id"] or []
+      query["_id"] = {$in:parentIds}
+      documents = Vector.collections[@field.key].find(query).fetch()
     context =
       data: data.data
       field: data.field
