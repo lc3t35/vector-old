@@ -8,10 +8,10 @@
       options: 
         logged: 'Select a collection to start editing'
         unlogged: "Please login to start editing"
+        loggingIn: 'Ligging in..'
     ]
 
   accounts:
-    children: ['pages']
     collectionFields: [
       type: "accountList"
       label: "Manage users"
@@ -29,15 +29,10 @@
       type: 'accountPassword'
       label: 'Password'
       key: 'password'
-    ,
-      type: 'children'
-      label: 'Pages'
-      key: 'pages'
     ]
 
   pages:
     roles: ['administrator']
-    parents: ['accounts']
     collectionFields: [
       label: "Manage pages"
       type: "list"
@@ -54,10 +49,6 @@
       key: 'description'
       label: "Description"
       type: "textarea"
-    ,
-      key: 'accounts'
-      label: 'Users'
-      type: 'parents'
     ]
     documentActions: [
       type: "delete"
@@ -83,9 +74,9 @@
       label: "Title"
       type: "text"
     ,
-      key: 'accounts'
+      key: 'description'
       label: "Users"
-      type: "children"
+      type: "textarea"
     ]
     documentActions: [
       type: "delete"
