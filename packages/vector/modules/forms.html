@@ -47,7 +47,13 @@
         <label>Test relations</label>
         <select class="form-control" multiple>
           {{#each related}}
-            <option data-id="{{_id}}">{{title}}</option>
+            <option data-id="{{_id}}">
+            {{#if title}}
+              {{title}}
+            {{else}}
+              {{emails.[0].address}}
+            {{/if}}
+            </option>
           {{/each}}
         </select>
       </div>
@@ -66,7 +72,13 @@
         <label>Test relations</label>
         <select class="form-control" multiple>
           {{#each related}}
-            <option data-id="{{_id}}">{{title}}</option>
+            <option data-id="{{_id}}">
+            {{#if title}}
+              {{title}}
+            {{else}}
+              {{emails.[0].address}}
+            {{/if}}              
+            </option>
           {{/each}}
         </select>
       </div>

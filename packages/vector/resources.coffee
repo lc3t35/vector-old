@@ -10,7 +10,7 @@
         unlogged: "Please login to start editing"
     ]
 
-  users:
+  accounts:
     collectionFields: [
       type: "accountList"
       label: "Manage users"
@@ -32,7 +32,7 @@
 
   pages:
     roles: ['administrator']
-    parents: ['users']
+    parents: ['accounts']
     collectionFields: [
       label: "Manage pages"
       type: "list"
@@ -50,7 +50,7 @@
       label: "Description"
       type: "textarea"
     ,
-      key: 'users'
+      key: 'accounts'
       label: 'Users'
       type: 'parents'
     ]
@@ -64,7 +64,7 @@
 
   articles:
     roles: ['administrator','editor']
-    children: ['users']
+    children: ['accounts']
     collectionFields: [
       label: "Manage pages"
       type: "list"
@@ -78,7 +78,7 @@
       label: "Title"
       type: "text"
     ,
-      key: 'users'
+      key: 'accounts'
       label: "Users"
       type: "children"
     ]

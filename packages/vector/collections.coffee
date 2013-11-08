@@ -1,5 +1,5 @@
 for i,collection of Vector.resources
-  if i isnt 'users'
+  if i isnt 'accounts'
     Vector.collections[i] = new Meteor.Collection i
   else
-    Vector.collections['users'] = Meteor.users
+    Vector.collections['accounts'] = Meteor.users
