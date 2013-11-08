@@ -41,7 +41,7 @@
           <li><a href="#docInstallation">Installation</a></li>
           <li><a href="#docConfig">Basic configuration</a></li>
           <li><a href="#docUse">Using the admin panel</a></li>
-          <li><a href="#docRoles">Managing users and roles</a></li>
+          <li><a href="#docRoles">Managing accounts and roles</a></li>
           <li><a href="#docRel">Relationships between collections</a></li>
           <li><a href="#docSite">Integrating with your website</a></li>
           <li><a href="#docCustom">Building custom modules</a></li>
@@ -203,9 +203,10 @@
         <p>Vector crates a new user with username <code>super@user.com</code> and password <code>super</code></p>
         <p>The admin panel will display only the fields specificed within the configuration; furthermore, a collection will be available to the user only if there is a matching role. Collections marked with <code>guest</code> will be readable to non logged users.</p>
         <h3 id="docRoles">Managing users and roles</h3>
-        <p>At this point, Vector user management is still poor, but more modules will come in a near future.</p>
-        <p>Currently, users must be created manually, while the role system is already functional; you can create ad assign arbitrary roles to users.</p>
-        <p>The default role for the new user is <code>administrator</code></p>
+        <p>Users are managed with the <code>accounts</code> collections. In order to manage users visibility and roles, you will need to include an <code>accounts</code> resource in the resources file.</p>
+        <p>The <code>accounts</code> resource is managed exaclty like the others, but listing and displaying user data will require specific modules. These modules are already available in the core package (see the module documentation).</p>
+        <p>Vector features a permission system based on roles. Roles are declared within the resource file (see example above)</p>
+        <p>The role for the default user is <code>administrator</code></p>
         <h3>Integrating with your website</h3>
         <p>Vector is designed to minimize the impact on existing websites. Currently, the only effective contraints are 
         <ul>

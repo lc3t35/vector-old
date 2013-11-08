@@ -2,20 +2,24 @@
 _publish = (i) ->
   Vector.collections[i] = new Meteor.Collection i
   Meteor.publish "vector_#{i}", (docId) ->
+
     collections = []
     userId = this.userId
+
     if Vector.checkPermissions(userId,i)
       collections.push Vector.collections[i].find()   
-    if docId
-      for ii,collectionName of Vector.resources[i].children
-        if Vector.checkPermissions(userId,collectionName)
-          query = {}
-          query["#{i}_id"] = docId
-          collections.push Vector.collections[collectionName].find(query)
-      for ii,collectionName of Vector.resources[i].parents
-        if Vector.checkPermissions(userId,collectionName)
-          ids = Vector.collections[i].findOne(_id:docId)["#{collectionName}_id"]
-          collections.push Vector.collections[collectionName].find({_id:$in:{ids}})
+      if docId
+        for ii,collectionName of Vector.resources[i].children
+          if userId and Vector.checkPermissions(userId,collectionName)
+            query = {}
+            query["#{i}_id"] = docId
+            collections.push Vector.collections[collectionName].find(query)
+        for ii,collectionName of Vector.resources[i].parents
+          if userId and Vector.checkPermissions(userId,collectionName)
+            ids = Vector.collections[i].findOne(_id:docId)["#{collectionName}_id"]
+            if ids
+              collections.push Vector.collections[collectionName].find({_id:{$in:ids}})
+
     collections
 
   Vector.collections[i].allow
@@ -28,18 +32,37 @@ _publish = (i) ->
 
 
 for i,collection of Vector.resources
-  if i isnt 'users'
+  if i isnt 'accounts'
     _publish i
 
   else
-    Vector.collections['users'] = Meteor.users
-    Meteor.publish null, ->
+    Vector.collections['accounts'] = Meteor.users
+    Meteor.publish 'vector_accounts', ->
       fields = {username:1,profile:1,emails:1}
-      user = Meteor.users.findOne({_id:this.userId})
-      if user and Vector.checkPermissions(user._id,'users')
-        Meteor.users.find({},fields)
-      else if user
-        Meteor.users.find({_id:this.userId},fields)
+      userId = this.userId
+      user = Meteor.users.findOne({_id:userId})
+      collections = []
+
+      if userId and Vector.checkPermissions(user._id,'accounts')
+        collections.push Meteor.users.find({},fields)
+      else if userId
+        console.log 'userId'
+        collections.push Meteor.users.find({_id:this.userId},fields)
+
+      for ii,collectionName of Vector.resources['accounts'].children
+        do ->
+          if Vector.checkPermissions(userId,collectionName)
+            query = {}
+            query["accounts_id"] = userId
+            collections.push Vector.collections[collectionName].find(query)
+      for ii,collectionName of Vector.resources['accounts'].parents
+        do ->
+          if Vector.checkPermissions(userId,collectionName)
+            ids = Vector.collections[i].findOne(_id:docId)["#{collectionName}_id"]
+            if ids
+              collections.push Vector.collections[collectionName].find({_id:{$in:ids}})
+              
+      collections
 
     Meteor.users.allow
       insert: (userId,doc) ->

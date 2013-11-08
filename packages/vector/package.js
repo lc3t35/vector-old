@@ -7,6 +7,7 @@ Npm.depends({cloudinary: "1.0.5"});
 
 Package.on_use(function (api, where){
 
+
   api.use('coffeescript', ['client','server']);
   api.use('accounts-password', 'server');
   api.use(['templating','stylus','handlebars','iron-router'], 'client');

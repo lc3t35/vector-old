@@ -8,9 +8,10 @@
       options: 
         logged: 'Select a collection to start editing'
         unlogged: "Please login to start editing"
+        loggingIn: 'Ligging in..'
     ]
 
-  users:
+  accounts:
     collectionFields: [
       type: "accountList"
       label: "Manage users"
@@ -59,8 +60,9 @@
 
   articles:
     roles: ['administrator','editor']
+    children: ['accounts']
     collectionFields: [
-      label: "Manage pages"
+      label: "Manage articles"
       type: "list"
     ]
     collectionActions: [
