@@ -67,7 +67,12 @@ Template.gallery.events
 
 Template.children.helpers
   childrenData: ->
-    Vector.collections[@field.key].find().count()
+    unless @field.key is 'accounts'
+      Vector.collections[@field.key].find().count()
+    else
+      query = {}
+      query["#{@collectionName}_id"] = @data._id
+      Vector.collections[@field.key].find(query).count()
 
 Template.children.events
   'click .childrenAdd': ->
@@ -85,7 +90,13 @@ Template.children.events
           action: 'add'
         Session.set("forms",{type:'vectorFormChildren',context:context})
   'click .childrenRemove': ->
-    documents = Vector.collections[@field.key].find().fetch()
+    unless @field.key is 'accounts'
+      documents = Vector.collections[@field.key].find().fetch()
+    else
+      query = {}
+      query["#{@collectionName}_id"] = @data._id
+      documents = Vector.collections[@field.key].find(query).fetch()
+      console.log documents
     data = @
     context =
       data: data.data
