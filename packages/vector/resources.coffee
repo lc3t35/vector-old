@@ -62,7 +62,7 @@
     roles: ['administrator','editor']
     children: ['accounts']
     collectionFields: [
-      label: "Manage pages"
+      label: "Manage articles"
       type: "list"
     ]
     collectionActions: [
@@ -75,7 +75,7 @@
       type: "text"
     ,
       key: 'description'
-      label: "Users"
+      label: "Description"
       type: "textarea"
     ]
     documentActions: [
