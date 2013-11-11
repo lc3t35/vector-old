@@ -1,25 +1,64 @@
 
+light2 = #dddddd
+light = #fafafa
+dark = #1d1d1d
+dark2 = #222
+dark3 = #333
+links = #82cbfa
+codes = #e7456e
+
 body
-  background #fafafa!important
+  background url("/use_your_illusion.png") dark2!important
 
 #site
   margin-bottom 40px
 
+  iframe
+    border solid 10px light2
+    border-radius 20px
+
   #header
     position relative
 
+  a
+    color links
+
   h1
     font-weight 100
-    font-size 45px
+    font-size 60px
+    color light2
+    margin 50px 0 50px 0
 
   h2
-    font-size 26px
+    font-size 45px
     margin-top 3em
+    color light2
+    font-weight 100
 
   h3
-    font-size 20px
+    font-size 26px
     margin-top 3em
     margin-bottom .8em
+    color light2
+
+  p, li
+    color light2
+    font-size 16px
+
+  table
+    tr
+      background dark!important
+    th,td
+      color light2
+      border-color dark3
+      background transparent!important
+
+  code
+    background-color dark!important
+    color codes
+
+  strong
+    font-style italic
 
   #siteNavMain
     position absolute
@@ -32,7 +71,9 @@ body
       margin-left 20px
 
       a
-        color black
+        font-weight normal
+
+
 
 
   table td

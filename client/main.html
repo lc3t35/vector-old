@@ -15,7 +15,7 @@
   <div class="container" id="site">
     <div class="row">
       <div class="col-md-12" id="header">
-        <h1>This is Vector<br>An administration tool for Meteor</h1>
+        <h1>This is Vector<br>An administration tool<br>for Meteor</h1>
         <ul id="siteNavMain" class="list-unstyled text-right">
           <li><a href="#docs">Docs</a></li>
           <li><a href="#modules">Modules</a></li>
@@ -214,7 +214,7 @@
           <li>The use of ironrouter</li>
           <li>Collection objects are already created and accessibile with the <code>Vector.collections</code> array</li>
         </ul>
-        You can use this website, included whithin the repository, as a starting point to integate a website with vector. </p>
+        <p>You can use this website, included whithin the repository, as a starting point to integate a website with vector. </p>
         <h3 id="docRel">Relationships between documents</h3>
         <p>Vector has a simple, yet effective relationship system. Like other Vector features, relationships are very easy to implement.</p>
         <p>The workflow is:</p>
@@ -455,18 +455,31 @@
           <thead>
             <tr>
               <th>Module</th>
+              <th>Used in</th>
               <th>Notes</th>
             </tr>            
           </thead>
           <tbody>
             <tr>
               <td><code>vectorFormPasswordChange</code></td>
+              <td>accountPassword</td>
               <td>Called by the <code>accountPassword</code> document field</td>
             </tr>
             <tr>
               <td><code>vectorFormAccountCreate</code></td>
+              <td>accountList</td>
               <td>Called by <code>accountCreate</code> collection action</td>
-            </tr>            
+            </tr> 
+            <tr>
+              <td><code>vectorFormChildren</code></td>
+              <td>children</td>
+              <td>Manage and view children (has_many) documents</td>
+            </tr>
+            <tr>
+              <td><code>vectorFormParents</code></td>
+              <td>parents</td>
+              <td>Manage and view parents (belongs_to_many) documents</td>
+            </tr>
           </tbody>
         </table>
         <h2 id="demo">Demo</h2>
