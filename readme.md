@@ -2,8 +2,8 @@
 Vector allow the developer to create and extend administration panels for end users in minutes.
 
 ## Features
-- Auto generated admin panel
-- Roles based security
+- Auto generated admin panel just using settings.json
+- Roles and accounts management
 - Easy relationships beween collections
 - Largely customizable with components
 - Easy extendable; modules are plain Meteor templates
@@ -11,9 +11,9 @@ Vector allow the developer to create and extend administration panels for end us
 
 ## Roadmap
 
-- 0.5 Collection sort and pagination options
-- 0.6 Official user interface
-- 0.7 Media management
+- 0.6 Collection sort and pagination options
+- 0.7 Official user interface
+- 0.8 More modules
 - future: better software architecture, official tests
 
 ## License

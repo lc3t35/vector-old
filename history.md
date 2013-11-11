@@ -1,5 +1,10 @@
 # History
 
+0.5 12.11.2013
+- better relationships
+- create/update accounts
+- use settings.json
+
 0.4 4.11.2013
 - relatioship API
 - relationships document fields
