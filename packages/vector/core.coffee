@@ -2,8 +2,8 @@ resources = @resources
 settings = @settings
 
 Vector =
-  resources: resources
-  settings: settings
+  resources: Meteor.settings.public.vectorResources
+  settings: Meteor.settings.public.vectorSettings
   collections: {}
   subscriptionId: null
 
@@ -24,5 +24,4 @@ Vector =
       location.reload()
 
 if Meteor.isServer
-  privateSettings = @privateSettings
-  Vector.privateSettings = privateSettings
+  Vector.privateSettings = Meteor.settings.vectorSettings
