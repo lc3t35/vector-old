@@ -1,11 +1,11 @@
 <template name="text">
   <label>{{field.label}}</label>
-  <input type="text" value="{{plainValue}}" id="collectionField_{{field.key}}">
+  <input class="form-control" type="text" value="{{plainValue}}" id="collectionField_{{field.key}}">
 </template>
 
 <template name="textarea">
   <label>{{field.label}}</label>
-  <textarea id="collectionField_{{field.key}}">{{plainValue}}</textarea>
+  <textarea class="form-control" id="collectionField_{{field.key}}">{{plainValue}}</textarea>
 </template>
 
 <template name="gallery">
