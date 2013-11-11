@@ -16,11 +16,6 @@ Package.on_use(function (api, where){
 
 
   api.add_files([
-    'settings_server.coffee',], 'server');
-
-  api.add_files([
-    'settings.coffee',
-    'resources.coffee',
     'core.coffee',], ['client','server']);
 
   api.add_files([
