@@ -32,7 +32,7 @@
             "options": {
               "logged": "Select a collection to start editing",
               "unlogged": "Please login to start editing",
-              "loggingIn": "Ligging in.."
+              "loggingIn": "Logging in.."
             }
           }
         ]

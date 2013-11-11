@@ -45,6 +45,7 @@
           <li><a href="#docRel">Relationships between collections</a></li>
           <li><a href="#docSite">Integrating with your website</a></li>
           <li><a href="#docCustom">Building custom modules</a></li>
+          <li><a href="#docStandard">Convestions and default settings</a></li>
           <li><a href="#docForms">Modals API</a></li>
           <li><a href="#docHooks">Helpers and hooks cheatsheet</a></li>
           <li><a href="#modules">Modules documentation</a></li>
@@ -66,156 +67,220 @@
         </ul>
         <p><strong><br>Since this entire website is included into the repository, you can use the repo as a living example of integration within a project.</strong></p>
         <h3 id="docConfig">Basic configuration</h3>
-        <p>Your main configuration file will be vector/resources.coffee.<br>Here you will setup which collections and which fields will be available to the end user.</p>
+        <p>Your main configuration file will be <code>settings.json</code> inside the <code>vectorResources</code> object.<br>Here you will setup which collections and which fields will be available to the end user.
+        <br>Meteor settings are loaded on server startup using the option <code>--settings settings.json</code></p>
         <p>This is an examle of an empty resource definition:</p>
         <pre>
-@resources =
-  pages:
-    label: "Pages"
-    roles: []
-    collectionFields: []
-    collectionActions: []
-    documentFields: []
-    documentActions: []
-  articles:
-    ...
+{
+  "public":{
+    vectorResources:{
+      "pages": {
+        "label": "Pages",
+        "roles": [],
+        "collectionFields": [],
+        "collectionActions": [],
+        "documentFields": [],
+        "documentActions": []
+      }
+    }
+  }
+}
         </pre>
-        <p>Every property is optional. This would be a legal declaration, although the result would be an empty page:</p>
+        <p>Every property is optional. The below code would be a legal declaration, although the result would be an empty page:</p>
         <pre>
-@resources =
-  pages: {}
+{
+  "public":{
+    vectorResources:{
+      "pages": {}
+    }
+  }
+}
         </pre>
-        <p>The label will be displayed withn the main menu:</p>
+        <p>The <code>label</code> property will be displayed within the main menu:</p>
         <pre>
-@resources =
-  pages:
-    label: "Pages"
+{
+  "public":{
+    vectorResources:{
+      "pages": {
+        "label": "Pages"
+      }
+    }
+  }
+}
         </pre>
-        <p>The role property is an array of strings.
+        <p>The <code>role</code> property is an array of strings.
         <br><code>guest</code> will make the collection available (read only) to anyone
         <br><code>administrator</code> is the default role.</p>
         <pre>
-@resources =
-  pages:
-    label: "Pages"
-    roles: ['guest','administrator']
+{
+  "public":{
+    vectorResources:{
+      "pages": {
+        "label": "Pages"
+        "roles": ["administrator","editor"]
+      }
+    }
+  }
+}
         </pre>
-        <p><code>collectionFields</code> registers what has to be displayed on the collection area of the page. Usually, a list of documents.<br>
+        <p>the <code>collectionFields</code> array registers what has to be displayed on the collection area of the page. Usually, a list of documents.<br>
         <code>type</code> refers to the module exact name.
         </p>
         <pre>
-@resources =
-  pages:
-    label: "Pages"
-    roles: ['guest','administrator']
-    collectionFields: [
-      type: "accountList"
-      label: "Manage users"
-    ]
+{
+  "public":{
+    vectorResources:{
+      "pages": {
+        "label": "Pages"
+        "roles": ["administrator","editor"]
+        "collectionFields": [
+          {
+            "type": "accountList"
+            "label": "Manage users"
+          }
+        ]
+      }
+    }
+  }
+}
         </pre>
         <p><code>collectionActions</code> adds element to the actions list. Usually, collection level operations such create new documents.</p>
         <pre>
-@resources =
-  pages:
-    label: "Pages"
-    roles: ['guest','administrator']
-    collectionFields: [
-      type: "accountList"
-      label: "Manage users"
-    ]
-    collectionActions: [
-      label: 'Create new'
-      type: 'create'
-    ]
+{
+  "public":{
+    vectorResources:{
+      "pages": {
+        "label": "Pages"
+        "roles": ["administrator","editor"]
+        "collectionFields": [
+          {
+            "type": "accountList"
+            "label": "Manage users"
+          }
+        ],
+        "collectionActions": [
+          {
+            "label": "Create new"
+            "type": "create"
+          }
+        ]
+      }
+    }
+  }
+}
         </pre>
-        <p><code>documentFields</code> regsters the editable fields on the document area. An additional <code>key</code> property is required and refers to the mongo document key.<br>
-        <strong>Look carefully at the position of the comma inside the <code>documentFields</code> array; this is the way coffeescript deals with arrays of object. You can also use the standard javascript syntax.</strong></p>
+        <p><code>documentFields</code> regsters the editable fields on the document area. An additional <code>key</code> property is required and refers to the mongo document propery name.<br>
         <pre>
-@resources =
-  pages:
-    label: "Pages"
-    roles: ['guest','administrator']
-    collectionFields: [
-      type: "accountList"
-      label: "Manage users"
-    ]
-    collectionActions: [
-      label: 'Create new'
-      type: 'create'
-    ]
-    documentFields: [
-      key: 'title'
-      label: "Title"
-      type: "text"
-    ,
-      key: 'description'
-      label: "Description"
-      type: "textarea"
-    ] 
-        </pre>
+{
+  "public":{
+    vectorResources:{
+      "pages": {
+        "label": "Pages"
+        "roles": ["administrator","editor"]
+        "collectionFields": [
+          {
+            "type": "accountList"
+            "label": "Manage users"
+          }
+        ],
+        "collectionActions": [
+          {
+            "label": "Create new"
+            "type": "create"
+          }
+        ],
+        "documentFields": [
+          {
+            "key": "title"
+            "label": "Title"
+            "type": "text"
+          }, {
+            "key": "description"
+            "label": "Description"
+            "type": "textarea"
+          }
+        ] 
+      }
+    }
+  }
+}        
+</pre>
         <p><code>documentActions</code> registers document level actions. Usually duplicate or delete.</p>
         <pre>
-@resources =
-  pages:
-    label: "Pages"
-    roles: ['guest','administrator']
-    collectionFields: [
-      type: "accountList"
-      label: "Manage users"
-    ]
-    collectionActions: [
-      label: 'Create new'
-      type: 'create'
-    ]
-    documentFields: [
-      key: 'title'
-      label: "Title"
-      type: "text"
-    ,
-      key: 'description'
-      label: "Description"
-      type: "textarea"
-    ] 
-    documentActions: [
-      type: "delete"
-      label: "Delete document"
-    ,
-      type: 'duplicate'
-      label: 'Create a copy'
-    ]
+
+{
+  "public":{
+    vectorResources:{
+      "pages": {
+        "label": "Pages"
+        "roles": ["administrator","editor"]
+        "collectionFields": [
+          {
+            "type": "accountList"
+            "label": "Manage users"
+          }
+        ],
+        "collectionActions": [
+          {
+            "label": "Create new"
+            "type": "create"
+          }
+        ],
+        "documentFields": [
+          {
+            "key": "title"
+            "label": "Title"
+            "type": "text"
+          }, {
+            "key": "description"
+            "label": "Description"
+            "type": "textarea"
+          }
+        ],
+        "documentActions": 
+        [
+          {
+            "type": "delete"
+            "label": "Delete document"
+          }, {
+            "type": "duplicate"
+            "label": "Create a copy"
+          }
+        ]
+      }
+    }
+  }
+}        
         </pre>
         <p>The <code>pageFields</code> property is suitable for page level modules, such dashboards.<br>
-        The <code>options</code> property is managed by the module itself and can be assigned to any value a module could need.</p>
+        The <code>options</code> property is managed by the module itself and can represent to any value a module could need.</p>
         <pre>
-  dashboard:
-    label: "Dashboard"
-    roles: ['guest',"administrator"]
-    pageFields: [
-      type: "welcome"
-      label: "Welcome to Vector."
-      options: 
-        logged: 'Select a collection to start editing'
-        unlogged: 'Login to start editing'
-    ]
+
+"dashboard": {
+  "roles": ["guest", "administrator", "editor"],
+  "pageFields": [
+    {
+      "type": "welcome",
+      "label": "Welcome to Vector.",
+      "options": {
+        "logged": "Select a collection to start editing",
+        "unlogged": "Please login to start editing",
+        "loggingIn": "Logging in.."
+      }
+    }
+  ]
+}
         </pre>
         <h3 id="docUse">Using the admin panel</h3>
         <p>The panel is available at <code>/admin</code></p>
         <p>Vector crates a new user with username <code>super@user.com</code> and password <code>super</code></p>
         <p>The admin panel will display only the fields specificed within the configuration; furthermore, a collection will be available to the user only if there is a matching role. Collections marked with <code>guest</code> will be readable to non logged users.</p>
         <h3 id="docRoles">Managing users and roles</h3>
-        <p>Users are managed with the <code>accounts</code> collections. In order to manage users visibility and roles, you will need to include an <code>accounts</code> resource in the resources file.</p>
+        <p>Users are managed with the <code>accounts</code> collections. In order to manage users visibility and roles, you will need to include an <code>accounts</code> resource in the settings.json.</p>
         <p>The <code>accounts</code> resource is managed exaclty like the others, but listing and displaying user data will require specific modules. These modules are already available in the core package (see the module documentation).</p>
-        <p>Vector features a permission system based on roles. Roles are declared within the resource file (see example above)</p>
+        <p>Vector features a permission system based on roles. Roles are declared within the resource settings (see example above)</p>
         <p>The role for the default user is <code>administrator</code></p>
-        <h3>Integrating with your website</h3>
-        <p>Vector is designed to minimize the impact on existing websites. Currently, the only effective contraints are 
-        <ul>
-          <li>The automatic inclusion of the Bootstrap 3</li>
-          <li>The use of ironrouter</li>
-          <li>Collection objects are already created and accessibile with the <code>Vector.collections</code> array</li>
-        </ul>
-        <p>You can use this website, included whithin the repository, as a starting point to integate a website with vector. </p>
-        <h3 id="docRel">Relationships between documents</h3>
+        <h3 id="docRel">Relationships between collections</h3>
         <p>Vector has a simple, yet effective relationship system. Like other Vector features, relationships are very easy to implement.</p>
         <p>The workflow is:</p>
         <ul>
@@ -224,25 +289,29 @@
         </ul>
         <p>Relationships are checked when the route has a document id, which is here defined as the current document.</p>
         <p>The <code>children</code> property will automatically publish children documents. Children documents must have a reference to the current document. The reference is expressed as the collection name plus "_id".</p>
-        <p>This code will search for documents of the <code>articles</code> collection with a <code>pages_id</code> reference and publish it on the stream (Meteor will take care of merging other published documentsof the same collection, if you have them).</p>
+        <p>This code will search for documents of the <code>articles</code> collection with a <code>pages_id</code> reference and publish it on the stream (Meteor will take care of merging other published documentsofthe same collection, if you have them).</p>
         <pre>
-@resources =
-  pages:
-    children: ['articles']
-    collectionFields:
-      ...
+"pages": {
+  "roles": ["administrator"],
+  "children": ["articles"]
         </pre>
         <p>The <code>parents</code> property works in a similar way, this time taking an array of reference ids which is stored on the current document:</p>
         <pre>
-@resources =
-  articles:
-    parents: ['pages']
-    collectionFields:
-      ...
+"articles": {
+  "roles": ["administrator"],
+  "parents": ["pages"]
         </pre>
         <p>Vector currently offers a couple modules to manage the relationships between dcocuments: the <code>children</code> and <code>parents</code> document fields.</p>
         <p><strong>Since these relationships aren't part of a formal model, you don't need to specify both parents and children. They are used only to publish documents when you need it.</strong></p>
         <p><strong>Relatiobships aren't yet implemented for the users collection.</strong></p>
+        <h3 id="docSite">Integrating with your website</h3>
+        <p>Vector is designed to minimize the impact on existing websites. Currently, the only effective contraints are 
+        <ul>
+          <li>The automatic inclusion of the Bootstrap 3</li>
+          <li>The use of ironrouter</li>
+          <li>Collection objects are already created and accessibile with the <code>Vector.collections</code> array</li>
+        </ul>
+        <p>You can use this website, included whithin the repository, as a starting point to integate a website with vector. </p>
         <h3 id="docCustom">Building custom modules</h3>
         <p>A module is a plain Meteor template. Each time a collection or a document is displayed, the system call the corresponding templates and assign them a data context.<br>
         The context is available on both helpers and events methods and includes:</p>
@@ -250,6 +319,16 @@
           <li><code>data</code>: the document data or the collection cursor, depending on where the module is called</li>
           <li><code>field</code>: contains the label, the field type and the key (if present)</li>
           <li><code>collectionName</code>: to be used with <code>Vector.collections[collectionName]</code> to retrieve the current collection</li>
+        </ul>
+        <h3 id="docStandard">Conventions and default settings</h3>
+        <p>Vector follows the following conventions:</p>
+        <ul>
+          <li>
+            The resouce name on <code>settings.json</code> determines the name of the collection; names are pluralized
+          </li>
+          <li>A collection is published unader the name <code>vector_collectionName</code>.<br>Example: <code>pages</code> is published under <code>vector_pages</code>.<br>This allow developers to publish other streams with different names</li>
+          <li>Relationships take the name <code>collectionName_id</code>. Example: a <code>pages</code> collections will have its documends referred with foreign keys <code>pages_id</code> inside documents of children collections</li>
+          <li><code>settings.json</code> contain all the default settings</li>
         </ul>
         <h3 id="docForms">Modals API</h3>
         <p>You can easily use modals inside your modules. Modals are plain Meteor templates, therefore they can have custom helpers and events.</p>
