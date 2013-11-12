@@ -13,7 +13,7 @@ Vector allow the developer to create and extend administration panels for end us
 
 ## Full documentation
 
-<a href="vector.meteor.com">vector.meteor.com</a>
+<a href="http://vector.meteor.com">vector.meteor.com</a>
 
 ## Features
 - Auto generated admin panel just using settings.json
