@@ -1,6 +1,20 @@
 # Vector
 Vector allow the developer to create and extend administration panels for end users in minutes.
 
+## Use now
+
+<pre>
+- clone the repo
+- run mrt --settings settings.json
+- go to localhost/3000/admin
+- login with super@user.com / super
+- enjoy
+</pre>
+
+## Full documentation
+
+<a href="vector.meteor.com">vector.meteor.com</a>
+
 ## Features
 - Auto generated admin panel just using settings.json
 - Roles and accounts management
