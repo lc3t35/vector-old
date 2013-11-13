@@ -1,9 +1,38 @@
-resources = @resources
-settings = @settings
+
+defaultResources = 
+  "dashboard": {
+    "roles": ["guest", "administrator", "editor"],
+    "pageFields": [
+      {
+        "type": "welcome",
+        "label": "Welcome to Vector.",
+        "options": {
+          "logged": "No settings.json file detected!",
+          "unlogged": "No settings.json file detected!",
+          "loggingIn": "No settings.json file detected!"
+        }
+      }
+    ]
+  }
+
+defaultSettings = 
+  "adminRoot": "/admin",
+  "defaultDocumentTitleKey": "title",
+  "defaultDocumentTitle": "New document",
+  "defaultCollectionRoles": ["administrator"],
+  "defaultDeleteWarning": "Click again to delete forever",
+  "defaultNoTemplateWarning": "Template not found",
+  "defaultLoginErrorWarning": "Login error",
+  "defaultLoginSuccess": "Welcome",
+  "sendVerificationEmail": false,
+  "forbidClientAccountCreation": true,
+  "cloudinary":{
+    "cloud": "cloudName"
+  }
 
 Vector =
-  resources: Meteor.settings.public.vectorResources
-  settings: Meteor.settings.public.vectorSettings
+  resources: if Meteor.settings and Meteor.settings.public and Meteor.settings.public.resources then Meteor.settings.public.vectorResources else defaultResources
+  settings: if Meteor.settings and Meteor.settings.public and Meteor.settings.public.vectorSettings then Meteor.settings.public.vectorSettings else defaultSettings
   collections: {}
   subscriptionId: null
 
@@ -24,4 +53,14 @@ Vector =
       location.reload()
 
 if Meteor.isServer
-  Vector.privateSettings = Meteor.settings.vectorSettings
+
+  defaultPrivateSettings =
+    "vectorSettings":{
+      "cloudinary":{
+        "key": "key",
+        "secret": "secret",
+        "cloud": "cloudName"
+      }
+    }
+
+  Vector.privateSettings = if Meteor.settings and Meteor.settings.vectorSettings then Meteor.settings.vectorSettings else defaultPrivateSettings
