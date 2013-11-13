@@ -25,10 +25,9 @@ Vector allow the developer to create and extend administration panels for end us
 
 ## Roadmap
 
-- 0.6 Collection sort and pagination options
-- 0.7 Official user interface
-- 0.8 More modules
-- future: better software architecture, official tests
+- 0.1 (current) preview mode; fully functional but untested
+- 0.2 better core and more modularity
+- 0.3 production reeady
 
 ## License
 

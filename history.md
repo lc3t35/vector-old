@@ -1,20 +1,20 @@
 # History
 
-0.5 12.11.2013
+0.0.11 12.11.2013
 - better relationships
 - create/update accounts
 - use settings.json
 
-0.4 4.11.2013
+0.0.10 4.11.2013
 - relatioship API
 - relationships document fields
 
-0.3 11.04.2013
+0.0.9 11.04.2013
 - modals API
 - gallery module
 - change password module
 
-0.2 10.29.2013
+0.0.8 10.29.2013
 - authentication roles
 - main menu improved
 - route and layout namespacing

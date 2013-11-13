@@ -113,6 +113,9 @@
         ],
         "collectionActions": [
           {
+            "label": "Pagination",
+            "type": "pagination"
+          }, {
             "label": "Create new",
             "type": "create"
           }
