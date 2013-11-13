@@ -1,7 +1,4 @@
 
-Handlebars.registerHelper 'page', ->
-  Session.get 'page'
-
 Handlebars.registerHelper 'navigation', ->
   page = Session.get 'page'
   count = Router.getData().collectionCount
