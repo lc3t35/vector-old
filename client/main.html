@@ -43,6 +43,7 @@
           <li><a href="#docUse">Using the admin panel</a></li>
           <li><a href="#docRoles">Managing accounts and roles</a></li>
           <li><a href="#docRel">Relationships between collections</a></li>
+          <li><a href="#docRoutes">Routes</a></li>
           <li><a href="#docSite">Integrating with your website</a></li>
           <li><a href="#docCustom">Building custom modules</a></li>
           <li><a href="#docStandard">Convestions and default settings</a></li>
@@ -304,6 +305,12 @@
         <p>Vector currently offers a couple of modules to manage the relationships between dcocuments: the <code>children</code> and <code>parents</code> document fields.</p>
         <p><strong>Since these relationships aren't part of a formal model, you don't need to specify both parents and children. They are used only to publish documents when you need it.</strong></p>
         <p><strong>Relatiobships aren't yet implemented for the users collection.</strong></p>
+        <h3 id="docRoutes">Routes</h3>
+        <p>Vector manages admin routes for you and don't interfere with your main site routes.</p>
+        <p>The admin route is, by default <code>/admin</code>.<br>
+        You can change the default admin url inside <code>settings.json</code><br>
+        Collections are managed at <code>/admin/collectionName</code>, while documents are accessible at <code>/admin/collectionName/_id</code><br>
+        If you set up relationships, you can find related documents at <code>/admin/collectionName/_id/relatedCollectionName</code></p>
         <h3 id="docSite">Integrating with your website</h3>
         <p>Vector is designed to minimize the impact on existing websites. Currently, the only effective contraints are 
         <ul>
@@ -371,7 +378,7 @@
             <tr>
               <td><code>this</code></td>
               <td>Javascript templates</td>
-              <td>Contains the context of the template</td>
+              <td>Contains the context of the template<br></td>
             </tr>
             <tr>
               <td><code>Vector.collections</code></td>
@@ -392,7 +399,12 @@
               <td><code>Router.getData</code></td>
               <td>Javascript</td>
               <td>Usable inside templates.<br>Contains useful data expressed within ironrouter controllers</td>
-            </tr>         
+            </tr>    
+            <tr>
+              <td><code>navigation</code></td>
+              <td>HTML</td>
+              <td>Handlebars helper. Returns an array of objects, one for each page of the current collection.<br>The object contains the page number (<code>index</code>) and an <code>active</code> property, true is <code>index</code> is equal to the current page.</td>
+            </tr>     
             <tr>
               <td><code>plainValue</code></td>
               <td>HTML</td>
@@ -504,6 +516,11 @@
               <td><code>create</code></td>
               <td>Collection action</td>
               <td>Creates a new document</td>
+            </tr>
+            <tr>
+              <td><code>pagination</code></td>
+              <td>Collection action</td>
+              <td>Displays a list of buttons, one for each page. <br>Visible only if more that one page is selectable.</td>
             </tr>
             <tr>
               <td><code>accountCreate</code></td>
