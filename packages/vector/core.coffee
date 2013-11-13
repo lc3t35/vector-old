@@ -31,7 +31,7 @@ defaultSettings =
   }
 
 Vector =
-  resources: if Meteor.settings and Meteor.settings.public and Meteor.settings.public.resources then Meteor.settings.public.vectorResources else defaultResources
+  resources: if Meteor.settings and Meteor.settings.public and Meteor.settings.public.vectorResources then Meteor.settings.public.vectorResources else defaultResources
   settings: if Meteor.settings and Meteor.settings.public and Meteor.settings.public.vectorSettings then Meteor.settings.public.vectorSettings else defaultSettings
   collections: {}
   subscriptionId: null
