@@ -26,6 +26,7 @@ defaultSettings =
   "defaultLoginSuccess": "Welcome",
   "sendVerificationEmail": false,
   "forbidClientAccountCreation": true,
+  "documentsPerPage": 10,
   "cloudinary":{
     "cloud": "cloudName"
   }

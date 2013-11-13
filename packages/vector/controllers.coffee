@@ -13,7 +13,8 @@ Router.map ->
     path: "#{adminRoot}/:collectionName"
     layoutTemplate: 'vectorLayout'
     waitOn: ->
-      Vector.subscriptionId = Meteor.subscribe "vector_" + @params.collectionName
+      page = @params.page or 1
+      Vector.subscriptionId = Meteor.subscribe "vector_" + @params.collectionName, null, page
     data: ->
       model = Vector.resources[@params.collectionName]
       collectionName = @params.collectionName
@@ -30,7 +31,8 @@ Router.map ->
     path: "#{adminRoot}/:collectionName/:_id"
     layoutTemplate: 'vectorLayout'
     waitOn: ->
-      Vector.subscriptionId = Meteor.subscribe "vector_" + @params.collectionName, @params._id
+      page = @params.page or 1
+      Vector.subscriptionId = Meteor.subscribe "vector_" + @params.collectionName, @params._id, page
     before: ->
       if this.ready()
         _id = @params._id
