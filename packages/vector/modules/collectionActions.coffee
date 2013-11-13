@@ -12,3 +12,8 @@ Template.accountCreate.events
     'click': ->
         context = @
         Session.set 'forms', {type: 'vectorFormAccountCreate', context: @}
+
+Template.pagination.events
+    'click button': (e,t)->
+        button = e.target.innerHTML
+        Session.set 'page', parseInt(button)

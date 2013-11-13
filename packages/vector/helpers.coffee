@@ -1,4 +1,20 @@
 
+Handlebars.registerHelper 'page', ->
+  Session.get 'page'
+
+Handlebars.registerHelper 'navigation', ->
+  page = Session.get 'page'
+  count = Router.getData().collectionCount
+  documentsPerPage = Vector.settings.documentsPerPage
+  pageCount = Math.ceil  count / documentsPerPage
+  pages = []
+  if pageCount >= 2
+    for i in [1..pageCount] by 1
+      pages.push
+        index: i
+        active: if i is page then true else false
+  pages
+
 Handlebars.registerHelper 'renderField', (field,data,collectionName) ->
     context =
       data: data

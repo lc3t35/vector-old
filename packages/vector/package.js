@@ -39,6 +39,7 @@ Package.on_use(function (api, where){
     'modules/documentFields.html',
     'modules/forms.coffee',
     'modules/pageFields.coffee',
+    'modules/collectionFields.coffee',
     'modules/collectionActions.coffee',
     'modules/documentActions.coffee',
     'modules/documentFields.coffee',], 'client');
