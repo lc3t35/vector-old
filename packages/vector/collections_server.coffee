@@ -1,14 +1,12 @@
 
 _publish = (i) ->
   Vector.collections[i] = new Meteor.Collection i
-  Meteor.publish "vector_#{i}", (docId,page) ->
+  Meteor.publish "vector_#{i}", (docId) ->
     collections = []
     userId = this.userId
-    docsPerPage = Vector.settings.documentsPerPage
-    paginationQuery = {skip: (page - 1) * docsPerPage,limit: docsPerPage}
 
     if Vector.checkPermissions(userId,i)
-      collections.push Vector.collections[i].find({},paginationQuery)   
+      collections.push Vector.collections[i].find()   
       if docId
         for ii,collectionName of Vector.resources[i].children
           if userId and Vector.checkPermissions(userId,collectionName)

@@ -13,15 +13,19 @@ Router.map ->
     path: "#{adminRoot}/:collectionName"
     layoutTemplate: 'vectorLayout'
     waitOn: ->
-      page = @params.page or 1
-      Vector.subscriptionId = Meteor.subscribe "vector_" + @params.collectionName, null, page
+      Vector.subscriptionId = Meteor.subscribe "vector_" + @params.collectionName
     data: ->
+      page = @params.page or 1
+      docsPerPage = Vector.settings.documentsPerPage
       model = Vector.resources[@params.collectionName]
       collectionName = @params.collectionName
       pageFields: if model.pageFields then model.pageFields else null
       collectionFields: if model.collectionFields then model.collectionFields else null
       collectionActions: if model.collectionActions then model.collectionActions else null
-      collection: Vector.collections[collectionName].find({},sort: {created_at: -1}).fetch()
+      collection: Vector.collections[collectionName].find({},
+        sort: {created_at: -1},
+        skip: (page - 1) * docsPerPage,
+        limit: docsPerPage).fetch()
       documentFields: if model.documentFields then model.documentFields else null
       documentActions: if model.documentActions then model.documentActions else null
       collectionName: collectionName
@@ -32,7 +36,7 @@ Router.map ->
     layoutTemplate: 'vectorLayout'
     waitOn: ->
       page = @params.page or 1
-      Vector.subscriptionId = Meteor.subscribe "vector_" + @params.collectionName, @params._id, page
+      Vector.subscriptionId = Meteor.subscribe "vector_" + @params.collectionName, @params._id
     before: ->
       if this.ready()
         _id = @params._id
