@@ -6,7 +6,7 @@
 - use settings.json
 
 0.0.10 4.11.2013
-- relatioship API
+- relationship API
 - relationships document fields
 
 0.0.9 11.04.2013

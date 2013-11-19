@@ -53,12 +53,12 @@
         </ul>
         <h3 id="docDeps">Dependencies</h3>
         <ul>
-          <li>Iron router, coffeescript and stylys packages are required by the package itself</li>
+          <li>Iron router, coffeescript and stylus packages are required by the package itself</li>
           <li>The Notifications package included into the repo</li>
           <li>The package includes Bootstrap 3 into your html</li>
         </ul>
         <h3 id="docInstallation">Installation</h3>
-        <p>This package is not currently avaible through Meteorite. To use it:
+        <p>This package is not currently available through Meteorite. To use it:
         <ul>
           <li>Clone the repository at <code>https://github.com/handmadeadv/vector.git</code></li>
           <li>Or download the repo as a zip archive at <a href="https://github.com/handmadeadv/vector">https://github.com/handmadeadv/vector</a></li>
@@ -70,7 +70,7 @@
         <h3 id="docConfig">Basic configuration</h3>
         <p>Your main configuration file will be <code>settings.json</code> inside the <code>vectorResources</code> object.<br>Here you will setup which collections and which fields will be available to the end user.
         <br>Meteor settings are loaded on server startup using the option <code>--settings settings.json</code></p>
-        <p>This is an examle of an empty resource definition:</p>
+        <p>This is an example of an empty resource definition:</p>
         <pre>
 {
   "public":{
@@ -170,7 +170,7 @@
   }
 }
         </pre>
-        <p><code>documentFields</code> regsters the editable fields on the document area. An additional <code>key</code> property is required and refers to the mongo document propery name.<br>
+        <p><code>documentFields</code> registers the editable fields on the document area. An additional <code>key</code> property is required and refers to the mongo document property name.<br>
         <pre>
 {
   "public":{
@@ -275,10 +275,10 @@
         <h3 id="docUse">Using the admin panel</h3>
         <p>The panel is available at <code>/admin</code></p>
         <p>Vector crates a new user with username <code>super@user.com</code> and password <code>super</code></p>
-        <p>The admin panel will display only the fields specificed within the configuration; furthermore, a collection will be available to the user only if there is a matching role. Collections marked with <code>guest</code> will be readable to non logged users.</p>
+        <p>The admin panel will display only the fields specified within the configuration; furthermore, a collection will be available to the user only if there is a matching role. Collections marked with <code>guest</code> will be readable to non logged users.</p>
         <h3 id="docRoles">Managing users and roles</h3>
         <p>Users are managed with the <code>accounts</code> collections. In order to manage users visibility and roles, you will need to include an <code>accounts</code> resource in the settings.json.</p>
-        <p>The <code>accounts</code> resource is managed exaclty like the others, but listing and displaying user data will require specific modules. These modules are already available in the core package (see the module documentation).</p>
+        <p>The <code>accounts</code> resource is managed exactly like the others, but listing and displaying user data will require specific modules. These modules are already available in the core package (see the module documentation).</p>
         <p>Vector features a permission system based on roles. Roles are declared within the resource settings (see example above)</p>
         <p>The role for the default user is <code>administrator</code></p>
         <h3 id="docRel">Relationships between collections</h3>
@@ -302,9 +302,9 @@
   "roles": ["administrator"],
   "parents": ["pages"]
         </pre>
-        <p>Vector currently offers a couple of modules to manage the relationships between dcocuments: the <code>children</code> and <code>parents</code> document fields.</p>
+        <p>Vector currently offers a couple of modules to manage the relationships between documents: the <code>children</code> and <code>parents</code> document fields.</p>
         <p><strong>Since these relationships aren't part of a formal model, you don't need to specify both parents and children. They are used only to publish documents when you need it.</strong></p>
-        <p><strong>Relatiobships aren't yet implemented for the users collection.</strong></p>
+        <p><strong>Relationships aren't yet implemented for the users collection.</strong></p>
         <h3 id="docRoutes">Routes</h3>
         <p>Vector manages admin routes for you and don't interfere with your main site routes.</p>
         <p>The admin route is, by default <code>/admin</code>.<br>
@@ -312,13 +312,13 @@
         Collections are managed at <code>/admin/collectionName</code>, while documents are accessible at <code>/admin/collectionName/_id</code><br>
         If you set up relationships, you can find related documents at <code>/admin/collectionName/_id/relatedCollectionName</code></p>
         <h3 id="docSite">Integrating with your website</h3>
-        <p>Vector is designed to minimize the impact on existing websites. Currently, the only effective contraints are 
+        <p>Vector is designed to minimize the impact on existing websites. Currently, the only effective constraints are
         <ul>
           <li>The automatic inclusion of the Bootstrap 3</li>
           <li>The use of ironrouter</li>
-          <li>Collection objects are already created and accessibile with the <code>Vector.collections</code> array</li>
+          <li>Collection objects are already created and accessible with the <code>Vector.collections</code> array</li>
         </ul>
-        <p>You can use this website, included whithin the repository, as a starting point to integate a website with vector. </p>
+        <p>You can use this website, included within the repository, as a starting point to integrate a website with vector. </p>
         <h3 id="docCustom">Building custom modules</h3>
         <p>A module is a plain Meteor template. Each time a collection or a document is displayed, the system call the corresponding templates and assign them a data context.<br>
         The context is available on both helpers and events methods and includes:</p>
@@ -331,10 +331,10 @@
         <p>Vector follows the following conventions:</p>
         <ul>
           <li>
-            The resouce name on <code>settings.json</code> determines the name of the collection; names are pluralized
+            The resource name on <code>settings.json</code> determines the name of the collection; names are pluralized
           </li>
-          <li>A collection is published unader the name <code>vector_collectionName</code>.<br>Example: <code>pages</code> is published under <code>vector_pages</code>.<br>This allow developers to publish other streams with different names</li>
-          <li>Relationships take the name <code>collectionName_id</code>. Example: a <code>pages</code> collections will have its documends referred with foreign keys <code>pages_id</code> inside documents of children collections</li>
+          <li>A collection is published under the name <code>vector_collectionName</code>.<br>Example: <code>pages</code> is published under <code>vector_pages</code>.<br>This allow developers to publish other streams with different names</li>
+          <li>Relationships take the name <code>collectionName_id</code>. Example: a <code>pages</code> collections will have its documents referred with foreign keys <code>pages_id</code> inside documents of children collections</li>
           <li><code>settings.json</code> contain all the default settings</li>
         </ul>
         <h3 id="docForms">Modals API</h3>
@@ -434,7 +434,7 @@
         </table>
 
         <h2 id="modules">Modules documentation</h2>
-        <p>Vector provide core modules for the everyday admin panel: textareas, collection lists, galleries, relationships, account managementq. More modules will come in the future; we are working at permalinks, rich text editors and taxonomies.</p>
+        <p>Vector provide core modules for the everyday admin panel: textareas, collection lists, galleries, relationships, account management. More modules will come in the future; we are working at permalinks, rich text editors and taxonomies.</p>
         <p>Custom modules are asy to develop: they are plain Meteor templates.</p>
         <h3>Document level</h3>
         <table class="table table-striped">
@@ -474,12 +474,12 @@
             <tr>
               <td><code>children</code></td>
               <td>Document field</td>
-              <td>Displays a list of children documents with links. To use with the <code>children</code> resource propery</td>
+              <td>Displays a list of children documents with links. To use with the <code>children</code> resource property</td>
             </tr>
             <tr>
               <td><code>parents</code></td>
               <td>Document field</td>
-              <td>Displays a list of parent documents with links. To use with the <code>parents</code> resource propery</td>
+              <td>Displays a list of parent documents with links. To use with the <code>parents</code> resource property</td>
             </tr>
             <tr>
               <td><code>duplicate</code></td>
@@ -598,13 +598,13 @@
         <h3>Contributing with modules</h3>
         <p>Modules are plain Meteor templates; they can be created and distributed as independent packages.</p>
         <p>We propose the syntax <code>vector-packagename</code> to standardize the package naming.</p>
-        <p>Of coure, you can also improve existing modules or propose additions to the core.</p>
+        <p>Of course, you can also improve existing modules or propose additions to the core.</p>
         <h3>Contributing to the core</h3>
         <p>The core of Vector is really thin. Here is how is works under the hood:</p>
         <ul>
           <li>Ironrouter is responsible for reading the route parameters and filling the global context with data</li>
           <li>The context is typically made of collection cursors, document data and fields data</li>
-          <li>The main template hase three main loops: page, collection and document</li>
+          <li>The main template has three main loops: page, collection and document</li>
           <li>Each of these loops accept an array of fields (modules) which are Meteor templates</li>
           <li>Each fields receive the right context; i.e. a cursor for a collection field and a document for a document field</li>
           <li>The looping and the context assignation is made by Handlebars helpers</li>
